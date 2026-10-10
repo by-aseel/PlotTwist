@@ -1,1 +1,53 @@
-# Plot Twist
+# PlotTwist Experiences
+
+**Make a memory. Leave a mystery.**
+
+Two EECE 503P/798S coursework projects built around a fictional studio that creates personalized mystery experiences. The business team is **Aseel, Noah, Jiso, and Felix**; the names describe fictional business roles.
+
+| Project | Implementation | Open |
+|---|---|---|
+| **C3 — Business Assistant** | Clue's persona and instructions, three-way routing, customer enquiry and feedback tools, conversation memory, and reflection | [README](c3_business_assistant/README.md) · [Notebook](c3_business_assistant/business_agent.ipynb) |
+| **C4 — Persona Lab** | A manual LangGraph ReAct loop; Clue, Cipher, and Muse personas; configurable prompts and generation; an experiment runner and reflection | [README](c4_persona_lab/README.md) · [Notebook](c4_persona_lab/react_agent.ipynb) |
+
+## Run an app
+
+Use Python 3.11 or 3.12. Open the desired project folder and double-click `launch_demo.bat` on Windows. Alternatively, from that folder:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe app.py --mode demo
+```
+
+C3 uses port **7860** and C4 uses **7861**. Keep the terminal running and open its printed local URL. Demo mode works without an API key and is explicitly labeled as a scripted offline demonstration. Each notebook is self-contained and can be uploaded alone to Colab.
+
+For real model use, copy the project's `.env.example` to `.env`, configure your own `OPENAI_API_KEY`, and launch with `--mode live`. Keep real credentials local.
+
+## Demonstrations and submission evidence
+
+- **C3:** [supplementary walkthrough video](c3_business_assistant/docs/demo_walkthrough.mp4), [presentation script](c3_business_assistant/docs/demo_script.md), and [assignment checklist](c3_business_assistant/docs/assignment_checklist.md).
+- **C4:** [supplementary walkthrough video](c4_persona_lab/docs/demo_walkthrough.mp4), [presentation script](c4_persona_lab/docs/demo_script.md), [assignment checklist](c4_persona_lab/docs/assignment_checklist.md), and [reflection](c4_persona_lab/docs/reflection.md).
+
+The included MP4s are 32-second captioned presentations of actual offline interface screenshots. They are supplementary demonstrations, not continuous recordings of live API calls. C3's final course video should demonstrate actual model-selected tools. C4's empirical findings should be completed using real model comparisons and placed in the notebook or a PDF as required by the assignment.
+
+## Verification
+
+**15 C3 tests and 23 C4 tests passed.** The 10 C3 and 14 C4 offline notebook code cells were executed in order through IPython. The C4 demo report contains **224 deterministic runs**; these test workflow mechanics and do not establish a best LLM configuration.
+
+From either installed project folder:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Live API calls and hosted deployment have not been verified during preparation.
+
+## Business dossiers
+
+[C3 dossier](c3_business_assistant/me/about_business.pdf) · [C4 dossier](c4_persona_lab/me/about_business.pdf)
+
+The business, starting prices, and example contact details are fictional. Enquiry tools save local records; they do not send email or confirm bookings. Runtime databases, virtual environments, and real `.env` files are excluded from Git.
+
+![PlotTwist Persona Lab](c4_persona_lab/docs/screenshots/desktop.jpg)
+
+[Detailed start guide](START_HERE.md) · [MIT license](LICENSE)

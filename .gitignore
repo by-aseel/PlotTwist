@@ -1,0 +1,19 @@
+# Local secrets and environments
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+# Runtime records and private live outputs
+data/
+*.db
+*.sqlite*
+experiments/live*/
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
