@@ -68,6 +68,15 @@ The initial model is `gpt-4.1-mini`. `--mode auto` selects live mode when a key 
 | `docs/demo_walkthrough.mp4` | Supplementary captioned walkthrough made from actual offline UI screenshots |
 | `tests/` | Behavioral checks for the implementation |
 
+## Defined use case
+
+**Scenario:** a fictional PlotTwist Experiences concierge helps a guest plan a mystery event. Example request: "Plan a birthday mystery for 10 friends with a USD 300 budget."
+
+- **Goal:** recommend a suitable experience, check group capacity and indicative price, propose a labeled story concept when appropriate, and record authorized enquiries or feedback.
+- **Target audience:** birthday hosts, friends and small groups, workplace teams, and guests requesting custom stories.
+- **Tools:** `search_experiences`, `estimate_event`, `record_customer_interest`, and `record_feedback`.
+- **Constraints:** use only known catalogue facts; custom adventures require a quote. No live availability, verified venue/access arrangements, payment, email-sending or booking service exists. SQLite records are local, and a recorded enquiry does not confirm an event.
+
 ## The manual ReAct loop
 
 The code constructs a `StateGraph` with explicit state, custom nodes, and conditional edges. It does not use `AgentExecutor`, `create_react_agent`, or a prebuilt tool executor.
