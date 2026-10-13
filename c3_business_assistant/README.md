@@ -86,6 +86,8 @@ The source code contains the exact machine-readable JSON schemas. These are ordi
 | `record_customer_interest` | `email: string`, `name: string`, `message: string` | Validates the enquiry, writes a local SQLite lead record, and returns a success/error observation |
 | `record_feedback` | `question: string` | Writes feedback or an unanswered question to SQLite and returns a success/error observation |
 
+See [tool schemas and expected outputs](docs/tool_schemas.md) for each tool's exact inputs, success/error fields, example JSON, and logging evidence. Every successful save also prints a `[tool log]` line in the terminal or notebook output.
+
 A saved record **does not send email or reserve an event**. Demonstrate persistence with synthetic data, such as `sam@example.com`. The app has no payment system, booking calendar, or real customer support inbox. The notebook and trace show what the tools actually returned.
 
 ### Business facts

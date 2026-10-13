@@ -92,6 +92,8 @@ class EventStore:
                 (session_id, kind, fingerprint),
             ).fetchone()
         LOGGER.info("session tool record: kind=%s id=%s status=%s", kind, row["id"], "saved" if inserted else "duplicate")
+        # Explicit console evidence for the coursework; contact details stay in the local store.
+        print(f"[tool log] {kind}: record #{row['id']} ({'saved' if inserted else 'already_recorded'})")
         return {"ok": True, "id": row["id"], "kind": kind, "status": "saved" if inserted else "already_recorded"}
 
     def records(self, session_id: str) -> list[dict]:
@@ -247,6 +249,7 @@ class PlotTwistAgent:
         return str(target.resolve())
 
     def _call_tool(self, name: str, arguments: str | dict, session_id: str, trace: list, user_text: str) -> dict:
+        args = None
         try:
             if isinstance(arguments, str):
                 if len(arguments) > 12000:
@@ -266,7 +269,7 @@ class PlotTwistAgent:
             result = getattr(self.tools_for(session_id), name)(**args)
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             result = {"ok": False, "kind": "validation_error", "error": str(exc)}
-        trace.append({"stage": "tool", "tool": name, "result": result, "source": "model" if self.mode == "live" else "deterministic_demo"})
+        trace.append({"stage": "tool", "tool": name, "arguments": args if isinstance(args, dict) else None, "result": result, "source": "model" if self.mode == "live" else "deterministic_demo"})
         return result
 
     def respond(self, message: str, history: list[dict] | None = None, session_id: str = "demo", settings: dict | None = None) -> dict:

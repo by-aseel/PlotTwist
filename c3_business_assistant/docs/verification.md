@@ -34,3 +34,7 @@ For a notebook review, open `business_agent.ipynb` in Jupyter or upload that fil
 - The supplementary walkthrough is a captioned presentation of offline UI screenshots, not continuous live model footage.
 
 To complete the live evidence, supply a key locally, launch with `--mode live`, exercise the three routes, inspect actual tool observations and reflection, and record the successful run. Do not infer live readiness from the demo mode label or from a passing mocked-client test alone.
+
+## Tool-evidence update — 13 October 2026
+
+Successful tool saves now print record metadata explicitly, and the notebook trace cell includes the actual `tool` event category with arguments and results. `tool_schemas.md` documents the required inputs and expected success/error output fields. The offline notebook was re-executed and its 15 backend tests rerun after this update. No live API request is claimed.
