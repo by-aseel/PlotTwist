@@ -18,6 +18,14 @@ This standalone C4 project extends PlotTwist into a custom ReAct agent built wit
 
 The fictional business team is **Aseel** (Story Director), **Noah** (Puzzle Architect), **Jiso** (Experience Producer), and **Felix** (Guest Experience Lead).
 
+## English functionality video
+
+**[Watch the short working demo](docs/quick_demo.mp4)** — 32 seconds, focused on replies, tools, and saved records.
+
+[Watch the full narrated C4 walkthrough](docs/functionality_walkthrough.mp4) · [Transcript](docs/functionality_transcript.md) · [Subtitles](docs/functionality_walkthrough.srt)
+
+The 8:31 video covers the working features, implementation, setup, and checks. It uses actual offline UI captures and source explanations, with synthesized English narration. [Video scope and evidence limits](docs/functionality_video.md) explains what still needs a live model run.
+
 ## Run locally
 
 Use Python 3.11 or 3.12. Open a terminal inside this folder.

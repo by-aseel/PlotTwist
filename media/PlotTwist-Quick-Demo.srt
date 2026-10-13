@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:07,509
+C3 is running in offline demo mode. Clue answers a business question with the known package details.
+
+2
+00:00:07,509 --> 00:00:13,142
+The first message supplies the event brief. Clue asks for the missing name and email.
+
+3
+00:00:13,142 --> 00:00:19,775
+The next message completes the enquiry. The local tool saves it and confirms success.
+
+4
+00:00:19,775 --> 00:00:22,689
+Feedback is saved through the feedback tool.
+
+5
+00:00:22,689 --> 00:00:28,813
+An unknown policy is also recorded, and the assistant admits the information gap.
+
+6
+00:00:28,813 --> 00:00:36,491
+The casebook contains the enquiry and both feedback records. Its JSON export is ready to download.
+
+7
+00:00:36,491 --> 00:00:44,394
+C4 runs through its LangGraph workflow. Cipher searches and estimates a birthday mystery for ten guests.
+
+8
+00:00:44,394 --> 00:00:51,222
+The actual observation confirms capacity, duration, and the two-hundred-forty-dollar starting price.
+
+9
+00:00:51,222 --> 00:00:59,115
+Persona Studio compares the same brief across Clue, Cipher, and Muse, keeping the facts and changing the style.
+
+10
+00:00:59,115 --> 00:01:08,943
+C4 also stores three records and exports JSON. These offline demos use real local tools; live model calls require a key.

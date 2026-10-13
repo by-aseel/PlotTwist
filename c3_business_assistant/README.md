@@ -18,6 +18,14 @@ Clue is the virtual adventure consultant for PlotTwist Experiences, a fictional 
 
 The business team is **Aseel** (Story Director), **Noah** (Puzzle Architect), **Jiso** (Experience Producer), and **Felix** (Guest Experience Lead). These are fictional business roles, not an attribution of coursework authorship.
 
+## English functionality video
+
+**[Watch the short working demo](docs/quick_demo.mp4)** — 37 seconds, focused on replies, tools, and saved records.
+
+[Watch the full narrated C3 walkthrough](docs/functionality_walkthrough.mp4) · [Transcript](docs/functionality_transcript.md) · [Subtitles](docs/functionality_walkthrough.srt)
+
+The 7:21 video covers the working features, implementation, setup, and checks. It uses actual offline UI captures and source explanations, with synthesized English narration. [Video scope and evidence limits](docs/functionality_video.md) explains what still needs a live model run.
+
 ## Start in five minutes
 
 Use Python 3.11 or 3.12. Open a terminal **inside this folder**.

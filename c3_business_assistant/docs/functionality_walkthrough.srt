@@ -1,0 +1,303 @@
+1
+00:00:00,000 --> 00:00:05,039
+Welcome to PlotTwist, a fictional mystery experience business.
+
+2
+00:00:05,039 --> 00:00:08,678
+This is the C3 business assistant walkthrough.
+
+3
+00:00:08,678 --> 00:00:16,011
+It shows the working interface, message routing, memory, local tools, and reflection.
+
+4
+00:00:16,011 --> 00:00:19,990
+The captured conversations use offline demo mode.
+
+5
+00:00:19,990 --> 00:00:28,033
+Real OpenAI integration is implemented in the code, but no live API call is shown in this video.
+
+6
+00:00:28,033 --> 00:00:35,496
+The business offers Birthday Mystery Nights, City Quests, Corporate Missions, and Custom Story Adventures.
+
+7
+00:00:35,496 --> 00:00:40,845
+Package details come from the text summary and four-page PDF dossier.
+
+8
+00:00:40,845 --> 00:00:44,678
+Prices are illustrative starting prices per group.
+
+9
+00:00:44,678 --> 00:00:53,351
+Behind the Plot introduces Aseel, Noah, Jiso, and Felix, and provides the business PDF for download.
+
+10
+00:00:53,351 --> 00:00:59,600
+The persona and operating instructions are clearly separated in prompts dot py and in the notebook.
+
+11
+00:00:59,600 --> 00:01:02,529
+Clue sounds warm and curious.
+
+12
+00:01:02,529 --> 00:01:13,036
+The instructions require grounded answers, missing-field collection, honest handling of unknowns, and acknowledgement only after successful tool results.
+
+13
+00:01:13,036 --> 00:01:19,215
+These two labeled blocks are assembled with the business knowledge into the system prompt.
+
+14
+00:01:19,215 --> 00:01:28,167
+Before answering, the agent classifies the incoming message into general question, lead collection, or feedback and unanswered question.
+
+15
+00:01:28,167 --> 00:01:33,936
+This implementation uses lightweight heuristics and recent conversation context.
+
+16
+00:01:33,936 --> 00:01:37,475
+The latest activity panel exposes the route.
+
+17
+00:01:37,475 --> 00:01:47,767
+Because the router is heuristic, unfamiliar wording can fall into the unanswered path; live model quality still needs separate evaluation.
+
+18
+00:01:47,767 --> 00:01:51,361
+I ask, What adventures do you offer?
+
+19
+00:01:51,361 --> 00:01:56,735
+Clue describes the four experiences and their known limits and starting prices.
+
+20
+00:01:56,735 --> 00:01:59,874
+The activity shows general question.
+
+21
+00:01:59,874 --> 00:02:05,307
+The knowledge trace identifies the text summary and PDF as loaded sources.
+
+22
+00:02:05,307 --> 00:02:12,045
+The answer invites a useful next step without inventing availability or confirming a booking.
+
+23
+00:02:12,045 --> 00:02:17,274
+Next, I request contact about a birthday mystery for ten people.
+
+24
+00:02:17,274 --> 00:02:20,203
+The route changes to lead collection.
+
+25
+00:02:20,203 --> 00:02:26,266
+Clue asks for the missing name and email address while keeping the event brief from the previous turn.
+
+26
+00:02:26,266 --> 00:02:34,714
+This demonstrates short-term conversational memory: the customer does not need to repeat all of the event details.
+
+27
+00:02:34,714 --> 00:02:42,067
+I supply the fictional name Sam Rivera, the example email address, and permission to save the enquiry.
+
+28
+00:02:42,067 --> 00:02:46,636
+The agent combines these details with the earlier event request.
+
+29
+00:02:46,636 --> 00:02:50,780
+The customer interest tool writes an actual local record.
+
+30
+00:02:50,780 --> 00:02:57,028
+Only after its successful result does Clue confirm that the enquiry was saved.
+
+31
+00:02:57,028 --> 00:03:03,556
+The required function is record customer interest, with email, name, and message parameters.
+
+32
+00:03:03,556 --> 00:03:10,534
+Its documented schema rejects extra fields, and the implementation validates the supplied details.
+
+33
+00:03:10,534 --> 00:03:18,558
+Here is the captured tool result from this run: success is true, the kind is lead, and the status is saved.
+
+34
+00:03:18,558 --> 00:03:22,852
+Local logging also prints the tool event.
+
+35
+00:03:22,852 --> 00:03:27,465
+I report that the instructions at the start of the mystery felt rushed.
+
+36
+00:03:27,465 --> 00:03:31,314
+The router selects feedback and unanswered question.
+
+37
+00:03:31,314 --> 00:03:38,237
+The second required function, record feedback, receives the question text and saves it locally.
+
+38
+00:03:38,237 --> 00:03:46,750
+The visible arguments and returned record show that this is a real persistence action, even though the demo reply is scripted.
+
+39
+00:03:46,750 --> 00:03:50,009
+I ask about the cancellation policy.
+
+40
+00:03:50,009 --> 00:03:53,798
+That policy is absent from the business profile.
+
+41
+00:03:53,798 --> 00:03:59,741
+Clue admits the information gap and records the unanswered question through the feedback tool.
+
+42
+00:03:59,741 --> 00:04:05,015
+It does not manufacture terms or promise that somebody received a message.
+
+43
+00:04:05,015 --> 00:04:09,769
+The record is available for local review in the casebook.
+
+44
+00:04:09,769 --> 00:04:13,327
+Reflection is enabled before the final reply.
+
+45
+00:04:13,327 --> 00:04:20,651
+This captured audit shows the original draft, revised reply, checks, and a changed flag.
+
+46
+00:04:20,651 --> 00:04:24,955
+The draft already passed, so changed is false.
+
+47
+00:04:24,955 --> 00:04:28,924
+Offline mode uses a deterministic guardrail audit.
+
+48
+00:04:28,924 --> 00:04:37,537
+Live mode uses a second model request to review and revise the draft when necessary; the code logs both versions.
+
+49
+00:04:37,537 --> 00:04:43,655
+The casebook contains the lead, feedback, and unanswered question from this browser session.
+
+50
+00:04:43,655 --> 00:04:47,244
+Refresh retrieves only this session’s records.
+
+51
+00:04:47,244 --> 00:04:52,318
+Export creates a JSON file that can be downloaded and checked.
+
+52
+00:04:52,318 --> 00:04:55,722
+SQLite provides local persistence.
+
+53
+00:04:55,722 --> 00:05:03,625
+Starting a new browser session changes the visible casebook while earlier records remain in the local database.
+
+54
+00:05:03,625 --> 00:05:13,613
+The live adapter passes the system prompt, current route, chat history, user message, and tool schemas to OpenAI Chat Completions.
+
+55
+00:05:13,613 --> 00:05:18,231
+A model tool request is executed by the validated registry.
+
+56
+00:05:18,231 --> 00:05:23,784
+Its result is appended with the matching tool call identifier and returned to the model.
+
+57
+00:05:23,784 --> 00:05:30,023
+If no tool is requested, the generated text becomes the draft reply.
+
+58
+00:05:30,023 --> 00:05:37,106
+The main notebook contains readable persona, instructions, schemas, and agent implementation cells.
+
+59
+00:05:37,106 --> 00:05:41,975
+It reconstructs the supporting files in a separate notebook workspace.
+
+60
+00:05:41,975 --> 00:05:46,199
+The launch section creates the designed Gradio interface.
+
+61
+00:05:46,199 --> 00:05:50,297
+Set Run UI to true after running the earlier cells.
+
+62
+00:05:50,297 --> 00:05:55,506
+The folder version also launches directly from app dot py.
+
+63
+00:05:55,506 --> 00:05:59,880
+This public Hugging Face Space is running the free Static edition.
+
+64
+00:05:59,880 --> 00:06:03,684
+I enter a business question and receive a response.
+
+65
+00:06:03,684 --> 00:06:10,012
+It includes browser-based routing, local records, and a rule-based reflection check.
+
+66
+00:06:10,012 --> 00:06:20,415
+This free edition uses JavaScript and scripted replies; it does not host the full Python agent, Gradio backend, or live OpenAI calls.
+
+67
+00:06:20,415 --> 00:06:29,003
+To try C3 locally, create a virtual environment, install the requirements, and launch app dot py in demo mode.
+
+68
+00:06:29,003 --> 00:06:33,782
+The default address uses port 7860.
+
+69
+00:06:33,782 --> 00:06:40,730
+For live mode, privately configure your API key in the local environment file and change the mode.
+
+70
+00:06:40,730 --> 00:06:47,729
+Fifteen behavioral tests pass, including controlled model tool-round-trip and reflection checks.
+
+71
+00:06:47,729 --> 00:06:52,347
+These tests do not measure live model quality.
+
+72
+00:06:52,347 --> 00:06:57,406
+C3 is submitted as a GitHub repository and a functionality video.
+
+73
+00:06:57,406 --> 00:07:03,164
+Include the notebook, business sources, requirements, README, and working code.
+
+74
+00:07:03,164 --> 00:07:09,278
+This walkthrough documents the offline functionality and explains the implemented live path.
+
+75
+00:07:09,278 --> 00:07:15,506
+Before presenting real model behavior as tested, configure the key and record a live run.
+
+76
+00:07:15,506 --> 00:07:21,944
+The Static Space supplements the project; it does not replace the full agent.

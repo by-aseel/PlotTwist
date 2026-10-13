@@ -27,10 +27,14 @@ For real model use, copy the project's `.env.example` to `.env`, configure your 
 
 ## Demonstrations and submission evidence
 
-- **C3:** [supplementary walkthrough video](c3_business_assistant/docs/demo_walkthrough.mp4), [presentation script](c3_business_assistant/docs/demo_script.md), and [assignment checklist](c3_business_assistant/docs/assignment_checklist.md).
-- **C4:** [supplementary walkthrough video](c4_persona_lab/docs/demo_walkthrough.mp4), [presentation script](c4_persona_lab/docs/demo_script.md), [assignment checklist](c4_persona_lab/docs/assignment_checklist.md), and [reflection](c4_persona_lab/docs/reflection.md).
+**[Watch the 69-second working demo](media/PlotTwist-Quick-Demo.mp4)** — C3 and C4 replies, tool results, records, and persona comparison.
 
-The included MP4s are 32-second captioned presentations of actual offline interface screenshots. They are supplementary demonstrations, not continuous recordings of live API calls. C3's final course video should demonstrate actual model-selected tools. C4's empirical findings should be completed using real model comparisons and placed in the notebook or a PDF as required by the assignment.
+**[Watch the complete English walkthrough](media/PlotTwist-Complete-Walkthrough.mp4)** · [Video guide, transcripts, and subtitles](VIDEO_WALKTHROUGHS.md)
+
+- **C3:** [full functionality video](c3_business_assistant/docs/functionality_walkthrough.mp4), [presentation script](c3_business_assistant/docs/demo_script.md), and [assignment checklist](c3_business_assistant/docs/assignment_checklist.md).
+- **C4:** [full functionality video](c4_persona_lab/docs/functionality_walkthrough.mp4), [presentation script](c4_persona_lab/docs/demo_script.md), [assignment checklist](c4_persona_lab/docs/assignment_checklist.md), and [reflection](c4_persona_lab/docs/reflection.md).
+
+The detailed videos are narrated, edited walkthroughs of actual offline UI captures and source explanations. They are not continuous recordings of live API calls. The earlier 32-second videos remain short previews. C3's final live evidence should demonstrate actual model-selected tools. C4's empirical findings should use real model comparisons and be placed in the notebook or a PDF as required by the assignment.
 
 ## Verification
 

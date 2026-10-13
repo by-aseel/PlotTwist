@@ -1,0 +1,615 @@
+1
+00:00:00,000 --> 00:00:05,039
+Welcome to PlotTwist, a fictional mystery experience business.
+
+2
+00:00:05,039 --> 00:00:08,678
+This is the C3 business assistant walkthrough.
+
+3
+00:00:08,678 --> 00:00:16,011
+It shows the working interface, message routing, memory, local tools, and reflection.
+
+4
+00:00:16,011 --> 00:00:19,990
+The captured conversations use offline demo mode.
+
+5
+00:00:19,990 --> 00:00:28,033
+Real OpenAI integration is implemented in the code, but no live API call is shown in this video.
+
+6
+00:00:28,033 --> 00:00:35,496
+The business offers Birthday Mystery Nights, City Quests, Corporate Missions, and Custom Story Adventures.
+
+7
+00:00:35,496 --> 00:00:40,845
+Package details come from the text summary and four-page PDF dossier.
+
+8
+00:00:40,845 --> 00:00:44,678
+Prices are illustrative starting prices per group.
+
+9
+00:00:44,678 --> 00:00:53,351
+Behind the Plot introduces Aseel, Noah, Jiso, and Felix, and provides the business PDF for download.
+
+10
+00:00:53,351 --> 00:00:59,600
+The persona and operating instructions are clearly separated in prompts dot py and in the notebook.
+
+11
+00:00:59,600 --> 00:01:02,529
+Clue sounds warm and curious.
+
+12
+00:01:02,529 --> 00:01:13,036
+The instructions require grounded answers, missing-field collection, honest handling of unknowns, and acknowledgement only after successful tool results.
+
+13
+00:01:13,036 --> 00:01:19,215
+These two labeled blocks are assembled with the business knowledge into the system prompt.
+
+14
+00:01:19,215 --> 00:01:28,167
+Before answering, the agent classifies the incoming message into general question, lead collection, or feedback and unanswered question.
+
+15
+00:01:28,167 --> 00:01:33,936
+This implementation uses lightweight heuristics and recent conversation context.
+
+16
+00:01:33,936 --> 00:01:37,475
+The latest activity panel exposes the route.
+
+17
+00:01:37,475 --> 00:01:47,767
+Because the router is heuristic, unfamiliar wording can fall into the unanswered path; live model quality still needs separate evaluation.
+
+18
+00:01:47,767 --> 00:01:51,361
+I ask, What adventures do you offer?
+
+19
+00:01:51,361 --> 00:01:56,735
+Clue describes the four experiences and their known limits and starting prices.
+
+20
+00:01:56,735 --> 00:01:59,874
+The activity shows general question.
+
+21
+00:01:59,874 --> 00:02:05,307
+The knowledge trace identifies the text summary and PDF as loaded sources.
+
+22
+00:02:05,307 --> 00:02:12,045
+The answer invites a useful next step without inventing availability or confirming a booking.
+
+23
+00:02:12,045 --> 00:02:17,274
+Next, I request contact about a birthday mystery for ten people.
+
+24
+00:02:17,274 --> 00:02:20,203
+The route changes to lead collection.
+
+25
+00:02:20,203 --> 00:02:26,266
+Clue asks for the missing name and email address while keeping the event brief from the previous turn.
+
+26
+00:02:26,266 --> 00:02:34,714
+This demonstrates short-term conversational memory: the customer does not need to repeat all of the event details.
+
+27
+00:02:34,714 --> 00:02:42,067
+I supply the fictional name Sam Rivera, the example email address, and permission to save the enquiry.
+
+28
+00:02:42,067 --> 00:02:46,636
+The agent combines these details with the earlier event request.
+
+29
+00:02:46,636 --> 00:02:50,780
+The customer interest tool writes an actual local record.
+
+30
+00:02:50,780 --> 00:02:57,028
+Only after its successful result does Clue confirm that the enquiry was saved.
+
+31
+00:02:57,028 --> 00:03:03,556
+The required function is record customer interest, with email, name, and message parameters.
+
+32
+00:03:03,556 --> 00:03:10,534
+Its documented schema rejects extra fields, and the implementation validates the supplied details.
+
+33
+00:03:10,534 --> 00:03:18,558
+Here is the captured tool result from this run: success is true, the kind is lead, and the status is saved.
+
+34
+00:03:18,558 --> 00:03:22,852
+Local logging also prints the tool event.
+
+35
+00:03:22,852 --> 00:03:27,465
+I report that the instructions at the start of the mystery felt rushed.
+
+36
+00:03:27,465 --> 00:03:31,314
+The router selects feedback and unanswered question.
+
+37
+00:03:31,314 --> 00:03:38,237
+The second required function, record feedback, receives the question text and saves it locally.
+
+38
+00:03:38,237 --> 00:03:46,750
+The visible arguments and returned record show that this is a real persistence action, even though the demo reply is scripted.
+
+39
+00:03:46,750 --> 00:03:50,009
+I ask about the cancellation policy.
+
+40
+00:03:50,009 --> 00:03:53,798
+That policy is absent from the business profile.
+
+41
+00:03:53,798 --> 00:03:59,741
+Clue admits the information gap and records the unanswered question through the feedback tool.
+
+42
+00:03:59,741 --> 00:04:05,015
+It does not manufacture terms or promise that somebody received a message.
+
+43
+00:04:05,015 --> 00:04:09,769
+The record is available for local review in the casebook.
+
+44
+00:04:09,769 --> 00:04:13,327
+Reflection is enabled before the final reply.
+
+45
+00:04:13,327 --> 00:04:20,651
+This captured audit shows the original draft, revised reply, checks, and a changed flag.
+
+46
+00:04:20,651 --> 00:04:24,955
+The draft already passed, so changed is false.
+
+47
+00:04:24,955 --> 00:04:28,924
+Offline mode uses a deterministic guardrail audit.
+
+48
+00:04:28,924 --> 00:04:37,537
+Live mode uses a second model request to review and revise the draft when necessary; the code logs both versions.
+
+49
+00:04:37,537 --> 00:04:43,655
+The casebook contains the lead, feedback, and unanswered question from this browser session.
+
+50
+00:04:43,655 --> 00:04:47,244
+Refresh retrieves only this session’s records.
+
+51
+00:04:47,244 --> 00:04:52,318
+Export creates a JSON file that can be downloaded and checked.
+
+52
+00:04:52,318 --> 00:04:55,722
+SQLite provides local persistence.
+
+53
+00:04:55,722 --> 00:05:03,625
+Starting a new browser session changes the visible casebook while earlier records remain in the local database.
+
+54
+00:05:03,625 --> 00:05:13,613
+The live adapter passes the system prompt, current route, chat history, user message, and tool schemas to OpenAI Chat Completions.
+
+55
+00:05:13,613 --> 00:05:18,231
+A model tool request is executed by the validated registry.
+
+56
+00:05:18,231 --> 00:05:23,784
+Its result is appended with the matching tool call identifier and returned to the model.
+
+57
+00:05:23,784 --> 00:05:30,023
+If no tool is requested, the generated text becomes the draft reply.
+
+58
+00:05:30,023 --> 00:05:37,106
+The main notebook contains readable persona, instructions, schemas, and agent implementation cells.
+
+59
+00:05:37,106 --> 00:05:41,975
+It reconstructs the supporting files in a separate notebook workspace.
+
+60
+00:05:41,975 --> 00:05:46,199
+The launch section creates the designed Gradio interface.
+
+61
+00:05:46,199 --> 00:05:50,297
+Set Run UI to true after running the earlier cells.
+
+62
+00:05:50,297 --> 00:05:55,506
+The folder version also launches directly from app dot py.
+
+63
+00:05:55,506 --> 00:05:59,880
+This public Hugging Face Space is running the free Static edition.
+
+64
+00:05:59,880 --> 00:06:03,684
+I enter a business question and receive a response.
+
+65
+00:06:03,684 --> 00:06:10,012
+It includes browser-based routing, local records, and a rule-based reflection check.
+
+66
+00:06:10,012 --> 00:06:20,415
+This free edition uses JavaScript and scripted replies; it does not host the full Python agent, Gradio backend, or live OpenAI calls.
+
+67
+00:06:20,415 --> 00:06:29,003
+To try C3 locally, create a virtual environment, install the requirements, and launch app dot py in demo mode.
+
+68
+00:06:29,003 --> 00:06:33,782
+The default address uses port 7860.
+
+69
+00:06:33,782 --> 00:06:40,730
+For live mode, privately configure your API key in the local environment file and change the mode.
+
+70
+00:06:40,730 --> 00:06:47,729
+Fifteen behavioral tests pass, including controlled model tool-round-trip and reflection checks.
+
+71
+00:06:47,729 --> 00:06:52,347
+These tests do not measure live model quality.
+
+72
+00:06:52,347 --> 00:06:57,406
+C3 is submitted as a GitHub repository and a functionality video.
+
+73
+00:06:57,406 --> 00:07:03,164
+Include the notebook, business sources, requirements, README, and working code.
+
+74
+00:07:03,164 --> 00:07:09,278
+This walkthrough documents the offline functionality and explains the implemented live path.
+
+75
+00:07:09,278 --> 00:07:15,506
+Before presenting real model behavior as tested, configure the key and record a live run.
+
+76
+00:07:15,506 --> 00:07:21,944
+The Static Space supplements the project; it does not replace the full agent.
+
+77
+00:07:21,944 --> 00:07:25,158
+Now, the C4 Persona Lab.
+
+78
+00:07:25,158 --> 00:07:32,611
+It extends the same fictional business with three distinct agent personas and a manually assembled LangGraph action loop.
+
+79
+00:07:32,611 --> 00:07:42,879
+This section shows configuration controls, search and estimate tools, persona comparison, records, experiments, and reflection.
+
+80
+00:07:42,879 --> 00:07:51,482
+The captured responses are offline simulations running through the real graph, not measurements of a live language model.
+
+81
+00:07:51,482 --> 00:07:55,571
+Clue helps first-time guests select an experience.
+
+82
+00:07:55,571 --> 00:07:59,795
+Cipher checks group capacity, budget, and duration.
+
+83
+00:07:59,795 --> 00:08:04,988
+Muse develops original story concepts within known business constraints.
+
+84
+00:08:04,988 --> 00:08:10,207
+Each persona has its own prompt, task, settings, and rationale.
+
+85
+00:08:10,207 --> 00:08:23,479
+The configuration file starts Clue at temperature 0.45, Cipher at 0.10, and Muse at 0.85, with different penalties and output budgets.
+
+86
+00:08:23,479 --> 00:08:34,162
+The interface lets me choose a persona, direct or brief-plan responses, zero-shot or few-shot examples, and system or in-message instruction placement.
+
+87
+00:08:34,162 --> 00:08:41,476
+Sampling controls include temperature, top-p, penalties, and maximum output tokens.
+
+88
+00:08:41,476 --> 00:08:44,800
+Switching persona loads its defaults.
+
+89
+00:08:44,800 --> 00:08:54,587
+Offline mode demonstrates the control wiring; changing sampling values does not turn the scripted simulator into a stochastic model.
+
+90
+00:08:54,587 --> 00:09:00,406
+I ask Cipher to plan a birthday mystery for ten people with a three-hundred-dollar budget.
+
+91
+00:09:00,406 --> 00:09:07,799
+The graph searches the catalogue, estimates the selected package, and produces a grounded planning brief.
+
+92
+00:09:07,799 --> 00:09:16,512
+Birthday Mystery Nights fits ten guests, lasts one hundred twenty minutes, and starts at two hundred forty dollars per group.
+
+93
+00:09:16,512 --> 00:09:21,656
+Final scope and availability still require human review.
+
+94
+00:09:21,656 --> 00:09:27,824
+The trace exposes an action with tool arguments, then the actual returned observation.
+
+95
+00:09:27,824 --> 00:09:31,773
+A second action estimates the selected experience.
+
+96
+00:09:31,773 --> 00:09:39,536
+The observation reports capacity, duration, and starting price, and the next step produces the final reply.
+
+97
+00:09:39,536 --> 00:09:43,830
+The brief plan is a concise explanation of the next action.
+
+98
+00:09:43,830 --> 00:09:50,008
+It is not private model reasoning or evidence of a live model thinking process.
+
+99
+00:09:50,008 --> 00:09:56,676
+I start a fresh chat with Muse and request the same birthday plan, adding an original story hook.
+
+100
+00:09:56,676 --> 00:10:03,139
+The answer proposes a missing-alibi concept where each guest contributes one page to the final reveal.
+
+101
+00:10:03,139 --> 00:10:07,843
+The package size, duration, and starting price remain the same.
+
+102
+00:10:07,843 --> 00:10:14,257
+The imagined story is labeled as a concept rather than a confirmed service inclusion.
+
+103
+00:10:14,257 --> 00:10:20,815
+Persona Studio sends the shared brief to fresh conversations for Clue, Cipher, and Muse.
+
+104
+00:10:20,815 --> 00:10:23,734
+Clue asks about the atmosphere.
+
+105
+00:10:23,734 --> 00:10:26,838
+Cipher lists practical checks.
+
+106
+00:10:26,838 --> 00:10:31,402
+Muse offers a story concept and personalization question.
+
+107
+00:10:31,402 --> 00:10:36,161
+The side-by-side display keeps the factual baseline comparable.
+
+108
+00:10:36,161 --> 00:10:45,898
+Here, these style differences are scripted demonstrations; the display does not establish which real model persona performs best.
+
+109
+00:10:45,898 --> 00:10:52,712
+I provide the fictional customer name, email address, and permission to save the event enquiry.
+
+110
+00:10:52,712 --> 00:11:01,385
+The graph selects record customer interest, validates the arguments, writes a local record, and returns the observation.
+
+111
+00:11:01,385 --> 00:11:04,599
+The final reply acknowledges storage.
+
+112
+00:11:04,599 --> 00:11:10,942
+It explicitly avoids claiming that an email was sent or a reservation was created.
+
+113
+00:11:10,942 --> 00:11:15,166
+Feedback about difficult puzzles triggers the feedback tool.
+
+114
+00:11:15,166 --> 00:11:23,124
+A later question about wheelchair access and next Friday is also logged because the catalogue cannot verify those details.
+
+115
+00:11:23,124 --> 00:11:29,832
+The graph returns a successful storage observation, and the assistant states the information gap.
+
+116
+00:11:29,832 --> 00:11:37,035
+These cases show the boundary between a known business fact and a detail that needs team confirmation.
+
+117
+00:11:37,035 --> 00:11:40,304
+I lower the budget to one hundred dollars.
+
+118
+00:11:40,304 --> 00:11:47,332
+The estimate still reports the real catalogue starting price of two hundred forty dollars for the birthday package.
+
+119
+00:11:47,332 --> 00:11:51,616
+Cipher explicitly says that this exceeds the stated budget.
+
+120
+00:11:51,616 --> 00:11:58,719
+The answer preserves the constraint rather than changing the price to make the recommendation seem feasible.
+
+121
+00:11:58,719 --> 00:12:06,802
+The C4 casebook shows the saved customer enquiry, puzzle feedback, and unanswered accessibility question from this session.
+
+122
+00:12:06,802 --> 00:12:10,851
+Export creates a downloadable JSON file.
+
+123
+00:12:10,851 --> 00:12:15,344
+The local records preserve the actual payloads and timestamps.
+
+124
+00:12:15,344 --> 00:12:25,022
+The same storage boundary applies: the records support a classroom review, and no external customer service workflow is triggered.
+
+125
+00:12:25,022 --> 00:12:34,180
+I switch to direct output, zero solved task examples, and in-message instruction placement to demonstrate the alternate controls.
+
+126
+00:12:34,180 --> 00:12:38,799
+The experiment runner isolates these factors in separate variants.
+
+127
+00:12:38,799 --> 00:12:43,412
+A fixed protocol example stays in both example conditions.
+
+128
+00:12:43,412 --> 00:12:52,635
+The role comparison moves the experimental instruction block while essential business and protocol boundaries remain in the system message.
+
+129
+00:12:52,635 --> 00:13:01,058
+The implementation creates model, parse, action, recover, and finish nodes in a LangGraph StateGraph.
+
+130
+00:13:01,058 --> 00:13:05,542
+The parser selects an action, recovery, or final path.
+
+131
+00:13:05,542 --> 00:13:09,416
+Action observations feed back into the model node.
+
+132
+00:13:09,416 --> 00:13:13,170
+A configured call bound prevents an endless loop.
+
+133
+00:13:13,170 --> 00:13:19,983
+This graph uses the project’s own parser and registry rather than a prebuilt agent executor.
+
+134
+00:13:19,983 --> 00:13:27,396
+The C4 system separates the chosen persona from detailed operating rules and the JSON action protocol.
+
+135
+00:13:27,396 --> 00:13:35,944
+Its instructions cover grounded facts, missing information, customer permission, tool failures, and final response behavior.
+
+136
+00:13:35,944 --> 00:13:39,687
+A minimal worked protocol example is included.
+
+137
+00:13:39,687 --> 00:13:43,926
+Few-shot mode adds solved tool-use demonstrations.
+
+138
+00:13:43,926 --> 00:13:50,584
+Invalid model outputs are handled by the recovery path and remain visible in the trace.
+
+139
+00:13:50,584 --> 00:13:59,982
+The saved experiment matrix covers sixteen variants, seven cases, and two repeats, for two hundred twenty-four deterministic runs.
+
+140
+00:13:59,982 --> 00:14:07,310
+Expected tool observations and completed responses are recorded for all runs, with zero tool errors.
+
+141
+00:14:07,310 --> 00:14:12,609
+Raw traces, metrics, and comparison reports are included.
+
+142
+00:14:12,609 --> 00:14:20,982
+These results check mechanics; they do not measure live-model creativity, naturalness, or prompt quality.
+
+143
+00:14:20,982 --> 00:14:31,745
+The reflection document addresses persona helpfulness, prompt and configuration performance, tool reasoning, instruction effects, and implementation challenges.
+
+144
+00:14:31,745 --> 00:14:35,708
+The notebook includes the reflection content as well.
+
+145
+00:14:35,708 --> 00:14:41,617
+It separates design rationale from measured results and does not invent a live-model winner.
+
+146
+00:14:41,617 --> 00:14:49,660
+After real API experiments, add measured findings and human ratings to support the final comparison.
+
+147
+00:14:49,660 --> 00:14:57,018
+C4 launches with the same environment setup, normally on port 7861.
+
+148
+00:14:57,018 --> 00:15:06,631
+The behavioral suite passes twenty-three tests, including parsing, tools, failures, persistence, and loop bounds.
+
+149
+00:15:06,631 --> 00:15:13,299
+To evaluate real model behavior, configure the private key and run the live experiment command.
+
+150
+00:15:13,299 --> 00:15:22,072
+Review raw outputs, complete human ratings, and preserve the run mode and model configuration with every result.
+
+151
+00:15:22,072 --> 00:15:32,814
+The repository contains two separate project folders, executable notebooks, business sources, READMEs, requirements, tests, and experiment artifacts.
+
+152
+00:15:32,814 --> 00:15:36,898
+C4 also includes its five-question reflection.
+
+153
+00:15:36,898 --> 00:15:43,751
+Use the chapter videos to review functionality, and run the notebooks to inspect the implementation.
+
+154
+00:15:43,751 --> 00:15:53,689
+This edited walkthrough documents actual offline actions; a live API run and measured C4 comparisons remain the final evidence to add.

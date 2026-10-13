@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:07,903
+C4 runs through its LangGraph workflow. Cipher searches and estimates a birthday mystery for ten guests.
+
+2
+00:00:07,903 --> 00:00:14,731
+The actual observation confirms capacity, duration, and the two-hundred-forty-dollar starting price.
+
+3
+00:00:14,731 --> 00:00:22,624
+Persona Studio compares the same brief across Clue, Cipher, and Muse, keeping the facts and changing the style.
+
+4
+00:00:22,624 --> 00:00:32,452
+C4 also stores three records and exports JSON. These offline demos use real local tools; live model calls require a key.
