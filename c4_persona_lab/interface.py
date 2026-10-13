@@ -27,7 +27,7 @@ def render_trace(events):
 
 def brand(mode):
     tag = 'THE PERSONA LAB / CHAPTER 04' if IS_LAB else 'EXPERIENCES WITH A SECRET / CHAPTER 03'
-    runtime = 'LIVE AI · OPENAI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED'
+    runtime = 'LIVE AI · GEMINI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED'
     return f'<div class="brandbar"><div class="wordmark">plot<span>twist</span><i>®</i></div><span class="brand-note">{tag}</span><span class="runtime"><b></b>{runtime}</span></div>'
 
 def hero():
@@ -88,6 +88,7 @@ def create_app(mode=None):
                             with gr.Accordion('Sampling controls',open=False):
                                 temperature = gr.Slider(0,2,value=.45,step=.05,label='Temperature')
                                 top_p = gr.Slider(.1,1,value=1,step=.05,label='Top-p')
+                                top_k = gr.Slider(1,64,value=40,step=1,label='Top-k')
                                 frequency = gr.Slider(-2,2,value=.15,step=.05,label='Frequency penalty')
                                 presence = gr.Slider(-2,2,value=0,step=.1,label='Presence penalty')
                                 max_tokens = gr.Slider(128,2048,value=700,step=32,label='Maximum output tokens')
@@ -104,15 +105,15 @@ def create_app(mode=None):
                             if not sid:
                                 raise gr.Error('Your browser session expired. Refresh the page and try again.')
                             result=agent.respond(message,history=history,session_id=sid,settings=settings)
-                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Live OpenAI' if result.get('mode')=='live' else 'Scripted offline demo')
+                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Live Gemini' if result.get('mode')=='live' else 'Scripted offline demo')
                         if IS_LAB:
-                            def respond(message,history,persona,reasoning,examples,instruction_role,temperature,top_p,frequency,presence,max_tokens,request:gr.Request):
-                                settings=dict(persona=persona,reasoning=reasoning,examples=examples,instruction_role=instruction_role,temperature=temperature,top_p=top_p,frequency_penalty=frequency,presence_penalty=presence,max_tokens=max_tokens)
+                            def respond(message,history,persona,reasoning,examples,instruction_role,temperature,top_p,top_k,frequency,presence,max_tokens,request:gr.Request):
+                                settings=dict(persona=persona,reasoning=reasoning,examples=examples,instruction_role=instruction_role,temperature=temperature,top_p=top_p,top_k=top_k,frequency_penalty=frequency,presence_penalty=presence,max_tokens=max_tokens)
                                 return execute(message,history,request,settings)
                         else:
                             def respond(message,history,reflection,request:gr.Request):
                                 return execute(message,history,request,{'reflection':bool(reflection)})
-                        extra = [persona,reasoning,examples,instruction_role,temperature,top_p,frequency,presence,max_tokens] if IS_LAB else [reflection]
+                        extra = [persona,reasoning,examples,instruction_role,temperature,top_p,top_k,frequency,presence,max_tokens] if IS_LAB else [reflection]
                         interface=gr.ChatInterface(fn=respond,chatbot=chat,textbox=textbox,type='messages',additional_inputs=extra,additional_outputs=[trace,route],additional_inputs_accordion='Reply settings',submit_btn='Send clue ↗',save_history=False,autofocus=False,api_name='chat')
                         gr.Examples(examples=[[s] for s in ['What adventures do you offer?', 'I want a birthday mystery for 12 people.', 'The puzzles were too difficult.', 'Are your City Quests wheelchair accessible?']],inputs=[textbox],cache_examples=False,label='Start with a clue')
                         with gr.Accordion('Latest activity',open=True,elem_id='activity-panel'):
@@ -126,11 +127,11 @@ def create_app(mode=None):
                         from personas import PERSONAS
                         p=PERSONAS[key]
                         config=p.get('config',p.get('llm_config',{})) if isinstance(p,dict) else {}
-                        defaults={'clue':(.45,1,0,0,700),'cipher':(.1,1,0,0,700),'muse':(.85,1,.2,.3,900)}
+                        defaults={'clue':(.45,1,40,0,0,700),'cipher':(.1,1,40,0,0,700),'muse':(.85,1,40,.2,.3,900)}
                         values=defaults[key]
                         notes={'clue':'**Clue** helps guests choose an experience with warmth and focused questions.','cipher':'**Cipher** checks group size, budget, and constraints with precision.','muse':'**Muse** develops imaginative story concepts while keeping proposals separate from confirmed services.'}
-                        return notes[key], *[config.get(k,v) for k,v in zip(['temperature','top_p','frequency_penalty','presence_penalty','max_tokens'],values)]
-                    persona.change(preset,inputs=persona,outputs=[persona_note,temperature,top_p,frequency,presence,max_tokens],api_name=False)
+                        return notes[key], *[config.get(k,v) for k,v in zip(['temperature','top_p','top_k','frequency_penalty','presence_penalty','max_tokens'],values)]
+                    persona.change(preset,inputs=persona,outputs=[persona_note,temperature,top_p,top_k,frequency,presence,max_tokens],api_name=False)
             if IS_LAB:
                 with gr.Tab('Persona studio',id='studio'):
                     gr.HTML('<div class="chapter-heading"><span class="eyebrow">SAME BRIEF / THREE PERSPECTIVES</span><h2>Let the personalities speak.</h2><p>Compare fresh conversations with each persona’s default settings.</p></div>')

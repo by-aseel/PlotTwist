@@ -11,3 +11,7 @@ The local app is explicitly in offline demo mode. Its tools and persistence real
 For final live-model evidence, configure your private API key and record the model tool cycle. C4 also needs measured live comparisons and completed human ratings before making empirical claims.
 
 The video covers the business, the relevant agent workflow, tools, records, interface, implementation, setup, testing, and submission evidence. C3 includes intent routing, short-term memory, reflection, and the hosted Static preview. C4 includes personas, configuration, search/estimate actions, prompt variants, the manual graph, experiments, and the five reflection questions.
+
+## October 2026 migration note
+
+This archived recording predates the native Gemini migration and the 238-check matrix. Its OpenAI source narration and 224-check references describe the earlier version. Use the current README, source, notebook and verification report for the submitted Gemini version. The recorded offline UI features still illustrate the workflow.

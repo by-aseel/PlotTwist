@@ -28,7 +28,7 @@ CASES = [
     {"id": "team_facts", "prompt": "Who are Aseel, Noah, Jiso and Felix on your team?", "expected_tools": [], "rubric": "Correct four team names and roles; no invented credentials."},
 ]
 
-def experiment_variants(model="gpt-4.1-mini", compare_model=None):
+def experiment_variants(model="gemini-2.5-flash-lite", compare_model=None):
     """Each single-axis row changes one field from an identical baseline."""
     baseline = {**DEFAULT_SETTINGS, "model": model}
     variants = [{"id": "baseline", "factor": "baseline", "change": "Clue / direct / zero task demos / system instructions", "settings": baseline}]
@@ -40,6 +40,7 @@ def experiment_variants(model="gpt-4.1-mini", compare_model=None):
         ("temperature_low", "temperature", 0.1),
         ("temperature_high", "temperature", 0.85),
         ("top_p_low", "top_p", 0.4),
+        ("top_k_low", "top_k", 20),
         ("frequency_high", "frequency_penalty", 0.8),
         ("presence_high", "presence_penalty", 0.8),
         ("short_output", "max_tokens", 180),
@@ -94,10 +95,10 @@ def write_report(path, records, variants, mode, repeats, seed):
     lines += ["", "These checks measure tool execution and response size. They do not prove factual correctness, naturalness, creativity, or task completion. An extra valid tool call can lower exact-tool-set match without being a failure.", "", "## Paired study design", "", "The same cases and repetition indices run under each variant. A seeded shuffle limits order bias. Single-axis rows differ from baseline in exactly one setting; persona bundles deliberately change the prompt, task and configuration together, so they are not single-factor causal comparisons. Prompt-only persona rows help separate wording from the bundle. Temperature is changed with top-p held at 1; the top-p variant holds temperature fixed. API sampling remains stochastic even when the runner order is reproducible.", "", "| Variant | Factor | Change |", "|---|---|---|"]
     for variant in variants:
         lines.append(f"| {variant['id']} | {variant['factor']} | {variant['change']} |")
-    lines += ["", "## What the course comparisons mean here", "", "- Direct vs brief-plan is a CoT-style prompting comparison using a short, user-facing action rationale. It does not request, expose, or measure private chain-of-thought.", "- Zero-shot means zero solved *task* demonstrations. Both arms keep one greeting/protocol format example because the assignment explicitly requires a worked example inside the instructions. Few-shot adds two complete tool-use demonstrations.", "- System vs in-message moves the same experimental instruction/persona/tool-description block. Fixed business facts and the JSON protocol boundary remain system-level in both arms.", "- The compact-instructions variant isolates the effect of the detailed instruction block while retaining the protocol, factual boundaries and enquiry permission rule.", "- `top_k` is unavailable in OpenAI Chat Completions and is reported as not applicable. It is never silently passed or ignored. The UI's `max_tokens` maps to the API's `max_completion_tokens`.", "- An alternate model is optional because access varies. Use `--compare-model gpt-4.1` for a supported non-reasoning Chat Completions comparison if your account has access. Unsupported parameter/model combinations remain errors in the logs.", "", "## Human rubric and reflection", "", "Use `human_ratings.csv`. Blind the variant labels when possible and rate each criterion from 1 (poor) to 5 (excellent). Review the case-specific rubric, the reply and observations together.", "", "1. Factual grounding: correct catalogue facts; no invented prices, availability or promises.", "2. Task usefulness: the recommendation answers the actual request and identifies missing inputs.", "3. Tool judgment: appropriate selection, sequence, validation and recovery.", "4. Persona fit: vocabulary, structure and task emphasis match Clue, Cipher or Muse.", "5. Naturalness: clear, respectful wording with appropriate length.", "6. Creativity: coherent original story ideas where requested, marked as concepts.", "", "Suggested decision rule: first reject variants with serious factual or privacy failures. Compare mean usefulness and naturalness on the same cases, then use latency and verbosity as secondary criteria. Report per-case variation and sample size; do not treat a small mean difference as proof.", "", "Reflection prompts: Which persona was most useful for which task? Which single-axis prompt/configuration choice helped? Did tool observations change the next action? How did the full instruction block differ from compact instructions? What failures or implementation challenges remain?", "", "**Current conclusion:** " + ("The saved demo run establishes a working experiment harness and action-observation-final pipeline. A best LLM persona/configuration has not been established because no live LLM evidence was collected in this run." if mode == "demo" else "Inspect failures and complete human ratings before stating which configuration worked best."), ""]
+    lines += ["", "## What the course comparisons mean here", "", "- Direct vs brief-plan is a CoT-style prompting comparison using a short, user-facing action rationale. It does not request, expose, or measure private chain-of-thought.", "- Zero-shot means zero solved *task* demonstrations. Both arms keep one greeting/protocol format example because the assignment explicitly requires a worked example inside the instructions. Few-shot adds two complete tool-use demonstrations.", "- System vs in-message moves the same experimental instruction/persona/tool-description block. Fixed business facts and the JSON protocol boundary remain system-level in both arms.", "- The compact-instructions variant isolates the effect of the detailed instruction block while retaining the protocol, factual boundaries and enquiry permission rule.", "- Gemini 2.5 generation controls are explicitly forwarded, including top-k. The UI max_tokens maps to native max_output_tokens. Gemini 3 sampling changes are discouraged by Google; use 2.5 for this coursework matrix if your account has access.", "- An alternate model is optional because access varies. Use `--compare-model gemini-2.5-flash` for an alternate Gemini model comparison if your account has access. Unsupported parameter/model combinations remain errors in the logs.", "", "## Human rubric and reflection", "", "Use `human_ratings.csv`. Blind the variant labels when possible and rate each criterion from 1 (poor) to 5 (excellent). Review the case-specific rubric, the reply and observations together.", "", "1. Factual grounding: correct catalogue facts; no invented prices, availability or promises.", "2. Task usefulness: the recommendation answers the actual request and identifies missing inputs.", "3. Tool judgment: appropriate selection, sequence, validation and recovery.", "4. Persona fit: vocabulary, structure and task emphasis match Clue, Cipher or Muse.", "5. Naturalness: clear, respectful wording with appropriate length.", "6. Creativity: coherent original story ideas where requested, marked as concepts.", "", "Suggested decision rule: first reject variants with serious factual or privacy failures. Compare mean usefulness and naturalness on the same cases, then use latency and verbosity as secondary criteria. Report per-case variation and sample size; do not treat a small mean difference as proof.", "", "Reflection prompts: Which persona was most useful for which task? Which single-axis prompt/configuration choice helped? Did tool observations change the next action? How did the full instruction block differ from compact instructions? What failures or implementation challenges remain?", "", "**Current conclusion:** " + ("The saved demo run establishes a working experiment harness and action-observation-final pipeline. A best LLM persona/configuration has not been established because no live LLM evidence was collected in this run." if mode == "demo" else "Inspect failures and complete human ratings before stating which configuration worked best."), ""]
     path.write_text("\n".join(lines), encoding="utf-8")
 
-def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="gpt-4.1-mini", compare_model=None, variant_ids=None, seed=42):
+def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="gemini-2.5-flash-lite", compare_model=None, variant_ids=None, seed=42, resume=False):
     if mode not in ("demo", "live"):
         raise ValueError("Experiments require explicit demo or live mode")
     if not isinstance(repeats, int) or repeats < 1:
@@ -116,9 +117,24 @@ def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="gp
     jobs = [(variant, case, repeat) for repeat in range(1, repeats + 1) for case in CASES for variant in variants]
     random.Random(seed).shuffle(jobs)
     records, raw = [], []
+    if resume and (destination / "raw_traces.json").exists():
+        previous = json.loads((destination / "raw_traces.json").read_text(encoding="utf-8"))
+        meta = previous["metadata"]
+        if (meta["mode"], meta["repeats"], meta["seed"], meta["planned_runs"]) != (mode, repeats, seed, len(jobs)):
+            raise ValueError("Resume checkpoint does not match this experiment design")
+        raw = previous["runs"]
+        for saved in raw:
+            matching = next((v for v in variants if v["id"] == saved["variant"]), None)
+            if not matching or saved["settings"] != normalize_settings(matching["settings"]):
+                raise ValueError("Resume settings differ from checkpoint")
+        fields = ["run_id", "variant", "factor", "case", "repeat", "mode", "model", "expected_tools_observed", "exact_tool_set_match", "tool_calls", "tool_errors", "format_or_runtime_errors", "completed", "latency_ms", "reply_words", "model_calls", "successful_local_saves"]
+        records = [{k: row[k] for k in fields} for row in raw]
+    done = {r["run_id"] for r in raw}
     started_at = datetime.now(timezone.utc).isoformat()
     for index, (variant, case, repeat) in enumerate(jobs, 1):
         run_id = f"{variant['id']}--{case['id']}--r{repeat}"
+        if run_id in done:
+            continue
         agent.store.clear_session(run_id)
         settings = normalize_settings(variant["settings"])
         started = time.perf_counter()
@@ -128,18 +144,25 @@ def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="gp
         records.append(row)
         raw.append({**row, "prompt": case["prompt"], "settings": settings, "reply": result["reply"], "route": result["route"], "trace": result["trace"], "records": agent.store.records(run_id), "rubric": case["rubric"]})
         if mode == "live":
-            print(f"[{index}/{len(jobs)}] {run_id}: {result['route']}", flush=True)
+            print(f"[{index}/{len(jobs)}] {run_id}: {result['route'].replace(chr(8594), '->')}", flush=True)
         # Save a checkpoint after every attempt so paid live runs survive interruption.
         (destination / "raw_traces.json").write_text(json.dumps({"metadata": {"mode": mode, "started_at_utc": started_at, "repeats": repeats, "seed": seed, "planned_runs": len(jobs), "completed_runs": len(raw), "demo_is_not_llm_evidence": mode == "demo"}, "runs": raw}, indent=2, ensure_ascii=False), encoding="utf-8")
+        if mode == "live" and result["route"] == "error" and any(x.get("api_code") in (403, 429, 401, 404) for x in result["trace"]):
+            print("Stopped on account/model/quota error; checkpoint saved. Resolve access before resuming.", flush=True)
+            break
     with (destination / "metrics.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(records[0]))
         writer.writeheader()
         writer.writerows(records)
     rating_fields = ["run_id", "case", "factual_grounding_1_5", "task_usefulness_1_5", "tool_judgment_1_5", "persona_fit_1_5", "naturalness_1_5", "creativity_1_5", "serious_failure", "notes"]
+    existing_ratings = {}
+    if resume and (destination / "human_ratings.csv").exists():
+        with (destination / "human_ratings.csv").open(newline="", encoding="utf-8") as handle:
+            existing_ratings = {r["run_id"]: r for r in csv.DictReader(handle)}
     with (destination / "human_ratings.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=rating_fields)
         writer.writeheader()
-        writer.writerows({"run_id": row["run_id"], "case": row["case"]} for row in records)
+        writer.writerows(existing_ratings.get(row["run_id"], {"run_id": row["run_id"], "case": row["case"]}) for row in records)
     write_report(destination / "comparison.md", records, variants, mode, repeats, seed)
     return records
 
@@ -148,13 +171,14 @@ if __name__ == "__main__":
     parser.add_argument("--mode", choices=("demo", "live"), default="demo")
     parser.add_argument("--repeats", type=int, default=2)
     parser.add_argument("--output", default=None)
-    parser.add_argument("--model", default="gpt-4.1-mini")
+    parser.add_argument("--model", default="gemini-2.5-flash-lite")
     parser.add_argument("--compare-model", default=None)
     parser.add_argument("--variants", default=None, help="Comma-separated variant IDs; omit for the full matrix")
+    parser.add_argument("--resume", action="store_true", help="Skip existing attempts in a matching checkpoint")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
     output = args.output or f"experiments/{args.mode}"
-    rows = run_experiments(args.mode, args.repeats, output, args.model, args.compare_model, args.variants.split(",") if args.variants else None, args.seed)
+    rows = run_experiments(args.mode, args.repeats, output, args.model, args.compare_model, args.variants.split(",") if args.variants else None, args.seed, args.resume)
     print(f"Saved {len(rows)} {args.mode.upper()} attempts to {Path(output).resolve()}")
     if args.mode == "demo":
         print("Simulator verification only. No LLM prompt/persona/configuration conclusions can be inferred.")

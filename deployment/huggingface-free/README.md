@@ -30,6 +30,6 @@ No API key, subscription, or Python server is needed to use this free demo. Reco
 
 [C3 Gradio/Python project](https://github.com/by-aseel/PlotTwist/tree/main/c3_business_assistant) · [C3 notebook](https://github.com/by-aseel/PlotTwist/blob/main/c3_business_assistant/business_agent.ipynb) · [C4 Persona Lab](https://github.com/by-aseel/PlotTwist/tree/main/c4_persona_lab)
 
-The full C3 implementation includes Gradio ChatInterface, OpenAI function calling, PDF/TXT loading, SQLite, and model reflection. This Space is the free browser-only demo; it does not host that Python backend or demonstrate live model calls. It should accompany, rather than replace, the required notebook and live assignment demonstration.
+The full C3 implementation includes Gradio ChatInterface, native Gemini function calling, PDF/TXT loading, SQLite, and model reflection. This Space is the free browser-only demo; it does not host that Python backend or demonstrate live model calls. It should accompany, rather than replace, the required notebook and live assignment demonstration.
 
 Deploy by uploading these six files to the root of a Static Space. No build step or external JavaScript dependencies are required.

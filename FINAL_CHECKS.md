@@ -1,15 +1,13 @@
-# Final delivery checks
+# Final delivery checks / 14 October 2026
 
-Verified locally on 10 October 2026.
+- Native Gemini migration: C3 function calls and reflection; C4 custom LangGraph JSON action loop.
+- C3: 20 behavior/transport tests passed; 10 offline notebook cells executed.
+- C4: 29 behavior/transport tests passed; 14 offline notebook cells executed.
+- C4 matrix: 238 deterministic checks, 17 variants × 7 cases × 2 repeats; all expected tools observed, all completed, zero tool errors. This is workflow evidence only.
+- Native SDK tests cover settings, response IDs, signatures, truncation and safe errors. Dependency compatibility check passed.
+- Real Gemini generation attempts failed with project access denial. The legacy 2.5 Flash-Lite model rejects new users. Logs and an interrupted live checkpoint are included; no successful live comparison or best model claim is made.
+- Gradio apps and updated C3 Space package construct locally. Free Static Space exists; full Python backend hosting remains pending.
+- Earlier UI captures, PDFs and narrated videos remain included, with a migration scope note identifying archived OpenAI narration.
+- Submission ZIPs and notebook bundles exclude `.env`, real credentials, runtime databases, caches and virtual environments.
 
-- C3: 15 backend tests passed; all 10 notebook code cells executed in order through IPython.
-- C4: 23 backend tests passed; all 14 notebook code cells executed in order through IPython.
-- C4 simulator: 224 recorded runs, covering 16 variants and 7 cases with 2 repeats. These are workflow checks, not live LLM findings.
-- Browser: C3 enquiry submission, casebook refresh, and JSON export worked with the same browser session.
-- Browser: C4 search and estimate sequence, persona switching, three-persona comparison, feedback storage, and JSON export worked.
-- Desktop interfaces inspected. C4 phone-width inspection found clipping from Gradio padding; the shared layout was corrected and rechecked.
-- Both four-page business PDFs were rendered and reviewed; the requested team is Aseel, Noah, Jiso, and Felix.
-- Two 32-second captioned screenshot walkthroughs are included. They show offline demo states and are supplementary presentation material.
-- The ZIP packages exclude runtime databases, caches, virtual environments, and real `.env` files.
-
-No live OpenAI request, empirical LLM comparison, GitHub publication, or hosted deployment was performed. Follow `START_HERE.md` for those account-dependent steps. The source includes real API integration; offline mode is clearly labeled in the interface and saved experiments.
+See each project's `docs/gemini_migration.md` for the remaining Google access action and exact rerun commands.

@@ -1,0 +1,8 @@
+{
+  "checked_at_utc": "2026-10-13T21:26:18.101571+00:00",
+  "mode": "demo",
+  "c3_chat_reflection_callback": "passed",
+  "c4_all_control_inputs_and_search_estimate_callback": "passed",
+  "c4_three_persona_callback": "passed",
+  "live_llm_evidence": false
+}

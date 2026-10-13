@@ -17,3 +17,10 @@ experiments/live*/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Public synthetic access-failure evidence only; other live outputs remain private.
+!c4_persona_lab/experiments/live-access-check/
+!c4_persona_lab/experiments/live-access-check/raw_traces.json
+!c4_persona_lab/experiments/live-access-check/metrics.csv
+!c4_persona_lab/experiments/live-access-check/human_ratings.csv
+!c4_persona_lab/experiments/live-access-check/comparison.md

@@ -14,7 +14,7 @@ pinned: false
 
 **Your people. Your story. One unexpected turn.**
 
-Clue is the virtual adventure consultant for PlotTwist Experiences, a fictional studio that turns birthdays, outings, and team events into shared mysteries. This standalone C3 submission combines a custom Gradio interface, a three-way message router, OpenAI tool calling, local lead and feedback records, and a reflection step.
+Clue is the virtual adventure consultant for PlotTwist Experiences, a fictional studio that turns birthdays, outings, and team events into shared mysteries. This standalone C3 submission combines a custom Gradio interface, a three-way message router, Gemini tool calling, local lead and feedback records, and a reflection step.
 
 The business team is **Aseel** (Story Director), **Noah** (Puzzle Architect), **Jiso** (Experience Producer), and **Felix** (Guest Experience Lead). These are fictional business roles, not an attribution of coursework authorship.
 
@@ -49,7 +49,7 @@ On macOS or Linux, activate with `source .venv/bin/activate` instead. If PowerSh
 Copy-Item .env.example .env
 ```
 
-Edit your local `.env` to set `OPENAI_API_KEY` and `OPENAI_MODEL`, then run:
+Edit your local `.env` to set `GEMINI_API_KEY` and `GEMINI_MODEL`, then run:
 
 ```powershell
 python app.py --mode live
@@ -62,6 +62,7 @@ Use the model name in `.env.example` as the initial choice. `--mode auto` uses t
 | File | Purpose |
 |---|---|
 | `business_agent.ipynb` | Guided, runnable main notebook: sources, persona, instructions, router, tools, conversation, and Gradio launch |
+| `gemini_client.py` | Native Google Gen AI transport, safe errors and matching tool observations |
 | `plottwist_agent.py` | Agent logic and the public `build_agent()` interface |
 | `app.py` | Designed Gradio application |
 | `me/about_business.pdf` | Four-page business dossier |
@@ -83,7 +84,7 @@ Use the model name in `.env.example` as the initial choice. `--mode auto` uses t
 5. Validate and execute requested tools, return their observations to the model, and complete the answer.
 6. Check the draft against the instructions and expose the draft/revision evidence in the trace.
 
-The router is deliberately small and inspectable. The implementation uses the current OpenAI Python client style, `client.chat.completions.create(...)`, for the Chat Completions interaction described in the assignment.
+The router is deliberately small and inspectable. The live transport uses the official `google.genai` SDK and `client.models.generate_content(...)`. `gemini_client.py` normalizes internal messages for the existing manual loop; its compatibility attribute is not an OpenAI network call. Native function calls and matching function responses carry observations back to Gemini. This modern SDK replaces the legacy `google.generativeai` package named in the assignment.
 
 ### Tools
 
@@ -121,7 +122,7 @@ For Colab, upload **only `business_agent.ipynb`** and run from the top; the busi
 python -m unittest discover -s tests -v
 ```
 
-The 15 included backend tests passed during package validation; the notebook's offline code cells were also executed through IPython. Those checks use offline or fake API responses and do not establish a successful connection to a real OpenAI account. See `docs/verification.md` for the validation scope and limits.
+The 15 included backend tests passed during package validation; the notebook's offline code cells were also executed through IPython. Those checks use offline or fake API responses and do not establish a successful connection to a real Gemini account. See `docs/verification.md` for the validation scope and limits.
 
 See `docs/demo_script.md` for a five-minute presentation plan and `docs/demo_walkthrough.mp4` for a supplementary captioned video made from actual offline UI screenshots. The video is not a continuous live API screen recording. Final coursework still needs your live API run and a recording that meets your instructor's expectations. Both project folders are published in this repository. A [free Static demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is deployed on Hugging Face; it does not run the Python/Gradio backend.
 
@@ -129,7 +130,7 @@ See `docs/demo_script.md` for a five-minute presentation plan and `docs/demo_wal
 
 A [free browser demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is available, with source in [`deployment/huggingface-free`](../deployment/huggingface-free/). It is a Static Space with JavaScript demonstration logic. The following instructions concern hosting the full Python/Gradio app, which currently requires a qualifying paid plan on this account.
 
-Create a Gradio Space and upload the project contents with `app.py` and `requirements.txt` at the repository root. The metadata at the top of this README supplies the SDK settings. Add `OPENAI_API_KEY` as a Space secret and the desired `OPENAI_MODEL` as configuration. Set `PLOTTWIST_MODE=live`, `GRADIO_SERVER_NAME=0.0.0.0`, and `PORT=7860`. Standard hosted disk may be ephemeral, so local SQLite is a teaching store, not a durable production CRM. Do not upload `.env`, local databases, or real customer traces. Publication is optional and is a separate account action.
+Create a Gradio Space and upload the project contents with `app.py` and `requirements.txt` at the repository root. The metadata at the top of this README supplies the SDK settings. Add `GEMINI_API_KEY` as a Space secret and the desired `GEMINI_MODEL` as configuration. Set `PLOTTWIST_MODE=live`, `GRADIO_SERVER_NAME=0.0.0.0`, and `PORT=7860`. Standard hosted disk may be ephemeral, so local SQLite is a teaching store, not a durable production CRM. Do not upload `.env`, local databases, or real customer traces. Publication is optional and is a separate account action.
 
 ## Troubleshooting
 
@@ -146,5 +147,9 @@ Prepared for the supplied EECE 503P/798S C3 assignment. The supplied C3/C4 lectu
 
 ## Implementation references
 
-- [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling) describes the schema/request/execution/observation cycle used by the live backend.
+- [Gemini function calling](https://ai.google.dev/gemini-api/docs/function-calling) describes the schema/request/execution/observation cycle used by the live backend.
 - [Gradio ChatInterface](https://www.gradio.app/docs/gradio/chatinterface) documents the chat component used inside the custom interface. This project pins Gradio 5.50.0; newer online documentation may describe later releases.
+
+## Gemini access and remaining evidence (14 October 2026)
+
+Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful live answer or empirical LLM winner is claimed. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.

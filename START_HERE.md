@@ -31,16 +31,16 @@ C3 defaults to port **7860**; C4 defaults to **7861**. Demo mode needs no key an
 - Two self-contained notebooks, with readable main implementation cells.
 - Business PDFs, summaries, separate READMEs, requirement maps, and presentation scripts.
 - Local SQLite enquiry/feedback logging and visible action traces.
-- C4 comparison runner plus 224 saved **demo** runs, a raw trace file, metrics, and a human-rating sheet.
-- Offline validation: **15 C3 tests + 23 C4 tests passed**, and both notebooks' offline code cells executed through IPython. Each project's `docs/verification.md` records the scope and limits.
+- C4 comparison runner plus 238 saved **demo** runs, a raw trace file, metrics, and a human-rating sheet.
+- Offline validation: **20 C3 tests + 29 C4 tests passed**, and both notebooks' offline code cells executed through IPython. Each project's `docs/verification.md` records the scope and limits.
 
 ## Finish the account-dependent steps
 
-1. Copy `.env.example` to `.env` inside the chosen project and add your private OpenAI API key.
-2. Launch `python app.py --mode live`, check the reported mode, and demonstrate actual model tool use. No live API connection was verified during preparation.
+1. Copy `.env.example` to `.env` inside the chosen project and add your private Gemini API key.
+2. Launch `python app.py --mode live`, check the reported mode, and demonstrate actual model tool use. Real generation attempts failed with Google project access denial. Read each project's Gemini migration note before retrying.
 3. In C4, run `python experiments.py --mode live --repeats 2 --output experiments/live`. Complete the human-rating sheet and add measured findings to `docs/reflection.md`.
 4. Record your final walkthrough using the supplied script. The included MP4s are supplementary screenshot presentations, not continuous recordings of live API calls.
-5. This repository contains both project submissions. Add your final live video link and completed C4 findings, then submit the relevant project folder link through your instructor's submission channel. Keep `.env`, private traces, and customer databases out of Git.
-6. A [free PlotTwist Static Space](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is deployed. It is a browser-only scripted demo. The full Python/Gradio deployment remains separate; its instructions and metadata are included in each README.
+5. Review the files and create/push your GitHub submission. Keep `.env`, private traces, and customer databases out of the repository. The GitHub repository has been published; submit its assignment folder link and the requested notebook/demo evidence.
+6. Hugging Face Spaces deployment is optional; instructions and Space metadata are included in each README. A free Static demo is deployed; the updated Gradio package is prepared but its Python backend is not hosted.
 
 The business, prices, and example customer data are fictional. Enquiry tools save local records; they do not send email or confirm bookings. The demo experiments verify the workflow and cannot establish a best-performing LLM persona.

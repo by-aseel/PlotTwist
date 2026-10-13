@@ -43,19 +43,20 @@ On macOS/Linux, activate with `source .venv/bin/activate`. If PowerShell activat
 
 Demo mode uses a deterministic scenario simulator through the real graph. It proves that parsing, actions, observations, and termination can work together. Its scripted persona wording and unchanged sampling behavior cannot establish which LLM configuration is best.
 
-For live mode, copy `.env.example` to `.env`, insert your private OpenAI API key, then run:
+For live mode, copy `.env.example` to `.env`, insert your private Gemini API key, then run:
 
 ```powershell
 python app.py --mode live
 ```
 
-The initial model is `gpt-4.1-mini`. `--mode auto` selects live mode when a key is present, otherwise demo. The package includes no real API key. Live API use and model comparisons can incur account charges.
+The initial model is `gemini-2.5-flash-lite`. `--mode auto` selects live mode when a key is present, otherwise demo. The package includes no real API key. Live API use and model comparisons can incur account charges.
 
 ## What is included
 
 | File | Purpose |
 |---|---|
 | `react_agent.ipynb` | Main executable teaching notebook and comparison walkthrough |
+| `gemini_client.py` | Native Google Gen AI transport, safe errors and matching tool observations |
 | `plottwist_agent.py` | Manual ReAct nodes, state transitions, parser, model adapters, and prompt assembly |
 | `personas.py` | Three personas, matching generation defaults, rationale, and setting validation |
 | `business_tools.py` | Catalogue search, estimates, validated enquiry/feedback storage, tool registry |
@@ -108,7 +109,7 @@ The trace records actions, tool observations, parsing/loop events, and optional 
 
 These are design hypotheses. Low temperature can reduce variation but does not guarantee truth; higher temperature is not itself proof of creativity. Default top-p stays at 1.0 so temperature is the principal sampling change. The experiment runner changes individual controls to make comparisons more interpretable.
 
-`max_tokens` is the lab's output-budget control and is forwarded as `max_completion_tokens`. `top_k` is **not supported** by the selected OpenAI Chat Completions interface; the code rejects it explicitly instead of pretending to vary it. Model support for the other parameters must be checked when choosing a different model.
+`max_tokens` maps to native Gemini `max_output_tokens`. Top-k is validated and forwarded (persona defaults: 40; comparison: 20). The experimental matrix targets Gemini 2.5, if accessible. Google discourages changing sampling defaults on Gemini 3; current interactive setup uses Gemini 3.5 Flash-Lite with minimal thinking. Sampling controls remain explicit coursework experiments, with unsupported settings reported as errors.
 
 ## Prompt experiments
 
@@ -148,7 +149,7 @@ For a model-type comparison, add `--model MODEL_A --compare-model MODEL_B` using
 
 Read raw traces before interpreting aggregate scores. Complete the human-rating sheet for helpfulness, naturalness, and persona fit, then update `docs/reflection.md` with the actual results. Do not claim a best configuration from scripted demo outputs.
 
-Package validation passed 23 backend tests and executed the notebook's offline code cells through IPython. The included demo comparison contains 224 deterministic runs across 16 variants, 7 cases, and 2 repeats. These are workflow checks, not measured LLM performance. See `docs/verification.md` for the validation scope and limits.
+Package validation passed 29 backend/transport tests and executed the notebook's offline code cells through IPython. The included demo comparison contains 238 deterministic runs across 17 variants, 7 cases, and 2 repeats. These are workflow checks, not measured LLM performance. See `docs/verification.md` for the validation scope and limits.
 
 ## Notebook and presentation
 
@@ -176,5 +177,9 @@ Prepared for the supplied EECE 503P/798S C4 assignment and lecture material. See
 ## Implementation references
 
 - [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api) explains the states, custom nodes, and conditional edges used to build the loop.
-- [OpenAI Chat Completions API](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create) documents the live generation interface and parameters. C4 parses its own JSON action protocol instead of using a prebuilt executor.
+- [Gemini GenerateContent API](https://ai.google.dev/api/generate-content) documents the live native generation interface and parameters. C4 parses its own JSON action protocol instead of using a prebuilt executor.
 - [Gradio ChatInterface](https://www.gradio.app/docs/gradio/chatinterface) documents the chat component used in the lab. This project pins Gradio 5.50.0; newer documentation may describe later releases.
+
+## Gemini access and remaining evidence (14 October 2026)
+
+Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful live answer or empirical LLM winner is claimed. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.

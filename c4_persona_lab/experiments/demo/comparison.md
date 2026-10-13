@@ -8,21 +8,22 @@ Evidence mode: **DEMO**. Repeats requested: 2. Shuffle seed: 42.
 
 | Variant | Runs | Expected tools observed | Completed | Tool errors | Mean words | Mean ms |
 |---|---:|---:|---:|---:|---:|---:|
-| baseline | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
-| brief_plan | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.2 |
-| few_shot | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.3 |
-| in_message | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.3 |
-| compact_instructions | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.1 |
+| baseline | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
+| brief_plan | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.8 |
+| few_shot | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.6 |
+| in_message | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.7 |
+| compact_instructions | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
 | temperature_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
-| temperature_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.1 |
-| top_p_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.3 |
-| frequency_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.3 |
-| presence_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
-| short_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.2 |
+| temperature_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
+| top_p_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
+| top_k_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.2 |
+| frequency_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.9 |
+| presence_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
+| short_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
 | long_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
-| cipher_persona | 14 | 14/14 | 14/14 | 0 | 34.7 | 3.9 |
-| cipher_prompt_only | 14 | 14/14 | 14/14 | 0 | 34.7 | 4.9 |
-| muse_persona | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.9 |
+| cipher_persona | 14 | 14/14 | 14/14 | 0 | 34.7 | 3.1 |
+| cipher_prompt_only | 14 | 14/14 | 14/14 | 0 | 34.7 | 3.2 |
+| muse_persona | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.5 |
 | muse_prompt_only | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.6 |
 
 These checks measure tool execution and response size. They do not prove factual correctness, naturalness, creativity, or task completion. An extra valid tool call can lower exact-tool-set match without being a failure.
@@ -41,6 +42,7 @@ The same cases and repetition indices run under each variant. A seeded shuffle l
 | temperature_low | temperature | temperature: 0.45 -> 0.1 |
 | temperature_high | temperature | temperature: 0.45 -> 0.85 |
 | top_p_low | top_p | top_p: 1.0 -> 0.4 |
+| top_k_low | top_k | top_k: 40 -> 20 |
 | frequency_high | frequency_penalty | frequency_penalty: 0.15 -> 0.8 |
 | presence_high | presence_penalty | presence_penalty: 0.0 -> 0.8 |
 | short_output | max_tokens | max_tokens: 700 -> 180 |
@@ -56,8 +58,8 @@ The same cases and repetition indices run under each variant. A seeded shuffle l
 - Zero-shot means zero solved *task* demonstrations. Both arms keep one greeting/protocol format example because the assignment explicitly requires a worked example inside the instructions. Few-shot adds two complete tool-use demonstrations.
 - System vs in-message moves the same experimental instruction/persona/tool-description block. Fixed business facts and the JSON protocol boundary remain system-level in both arms.
 - The compact-instructions variant isolates the effect of the detailed instruction block while retaining the protocol, factual boundaries and enquiry permission rule.
-- `top_k` is unavailable in OpenAI Chat Completions and is reported as not applicable. It is never silently passed or ignored. The UI's `max_tokens` maps to the API's `max_completion_tokens`.
-- An alternate model is optional because access varies. Use `--compare-model gpt-4.1` for a supported non-reasoning Chat Completions comparison if your account has access. Unsupported parameter/model combinations remain errors in the logs.
+- Gemini 2.5 generation controls are explicitly forwarded, including top-k. The UI max_tokens maps to native max_output_tokens. Gemini 3 sampling changes are discouraged by Google; use 2.5 for this coursework matrix if your account has access.
+- An alternate model is optional because access varies. Use `--compare-model gemini-2.5-flash` for an alternate Gemini model comparison if your account has access. Unsupported parameter/model combinations remain errors in the logs.
 
 ## Human rubric and reflection
 

@@ -23,3 +23,7 @@ The earlier 32-second `demo_walkthrough.mp4` files remain supplementary previews
 Before claiming live-model performance in a final assignment, add an actual API demonstration and C4 live comparison results with human ratings. See the per-project assignment checklists.
 
 ![Video preview](media/PlotTwist-Video-Preview.jpg)
+
+## Gemini migration note
+
+The archived videos predate the Gemini migration. Their OpenAI narration and 224-check references describe the previous version; current source, notebooks and verification reports document native Gemini and 238 offline checks. No successful Gemini run is shown.

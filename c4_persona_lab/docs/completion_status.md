@@ -10,11 +10,11 @@
 - Direct/brief-plan, zero/few-shot, instruction-role/detail and generation variants.
 - Experiment logging and comparison reports.
 - Five-question reflection included in the executable notebook.
-- 23 behavioral tests and a 224-run deterministic demonstration matrix.
+- 29 behavioral/transport tests and a 238-run deterministic demonstration matrix.
 
 ## Live evidence still required
 
-Live API access is not yet available at this preparation step. No live experiment or model-quality finding is claimed. The agent supports OpenAI live mode, but an offline simulation cannot establish prompt/configuration performance.
+Live API access is not yet available at this preparation step. No live experiment or model-quality finding is claimed. The agent supports Gemini live mode, but an offline simulation cannot establish prompt/configuration performance.
 
 After a private key is configured:
 
@@ -25,6 +25,10 @@ After a private key is configured:
 5. Summarize per-task results and update reflection questions 1-4 with measured findings.
 6. Re-execute the notebook and add a short live demonstration clip.
 
-`top_k` is rejected by the selected adapter and documented as not applicable. Brief-plan is a concise, observable action rationale rather than hidden chain-of-thought. Alternate-model comparisons are supported but need actual accessible models and runs.
+`top_k` is validated and forwarded; the matrix varies 40 versus 20. Brief-plan is a concise, observable action rationale rather than hidden chain-of-thought. Alternate-model comparisons are supported but need actual accessible models and runs.
 
 Never include `.env`, real credentials, runtime databases or real customer data in the submission.
+
+## Gemini access status (14 October 2026)
+
+Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.

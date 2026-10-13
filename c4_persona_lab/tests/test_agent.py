@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import csv
 import os
 from pathlib import Path
 import sys
@@ -14,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from business_tools import RecordStore, ToolRegistry, search_experiences, estimate_event
 from personas import normalize_settings
-from plottwist_agent import PlotTwistAgent, OpenAIModel, build_messages
+from plottwist_agent import PlotTwistAgent, GeminiModel, build_messages
 from experiments import CASES, experiment_variants, run_experiments
 
 class QueueModel:
@@ -160,8 +161,8 @@ class AgentTests(unittest.TestCase):
         self.assertNotIn("secret-looking", json.dumps(result))
 
     def test_missing_live_key_fails_explicitly(self):
-        with patch.dict(os.environ, {"OPENAI_API_KEY": ""}), patch("dotenv.load_dotenv"):
-            with self.assertRaisesRegex(ValueError, "requires OPENAI_API_KEY"):
+        with patch.dict(os.environ, {"GEMINI_API_KEY": ""}), patch("dotenv.load_dotenv"):
+            with self.assertRaisesRegex(ValueError, "requires GEMINI_API_KEY"):
                 PlotTwistAgent(mode="live", db_path=self.path)
 
     def test_plan_trace_is_short_user_visible_rationale(self):
@@ -178,8 +179,9 @@ class AgentTests(unittest.TestCase):
     def test_persona_default_sampling_and_explicit_overrides(self):
         self.assertEqual(normalize_settings({"persona": "muse"})["temperature"], 0.85)
         self.assertEqual(normalize_settings({"persona": "muse", "temperature": 0.2})["temperature"], 0.2)
-        with self.assertRaisesRegex(ValueError, "not supported"):
-            normalize_settings({"top_k": 40})
+        self.assertEqual(normalize_settings({"top_k": 20})["top_k"], 20)
+        with self.assertRaises(ValueError):
+            normalize_settings({"top_k": 2.5})
         with self.assertRaises(ValueError):
             normalize_settings({"temperature": float("nan")})
 
@@ -189,12 +191,12 @@ class AgentTests(unittest.TestCase):
             captured.update(kwargs)
             return SimpleNamespace(choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(content='{"final":"Done"}', refusal=None))])
         client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
-        settings = normalize_settings({"persona": "cipher", "temperature": 0.22, "top_p": 0.7, "frequency_penalty": 0.3, "presence_penalty": 0.4, "max_tokens": 999, "model": "gpt-4.1-mini"})
-        OpenAIModel(client).complete([{"role": "user", "content": "JSON hello"}], settings)
+        settings = normalize_settings({"persona": "cipher", "temperature": 0.22, "top_p": 0.7, "frequency_penalty": 0.3, "presence_penalty": 0.4, "max_tokens": 999, "model": "gemini-2.5-flash-lite"})
+        GeminiModel(client).complete([{"role": "user", "content": "JSON hello"}], settings)
         for key in ("model", "temperature", "top_p", "frequency_penalty", "presence_penalty"):
             self.assertEqual(captured[key], settings[key])
         self.assertEqual(captured["max_completion_tokens"], 999)
-        self.assertNotIn("top_k", captured)
+        self.assertEqual(captured["top_k"], 40)
 
     def test_capacity_boundaries_and_quote_only(self):
         self.assertTrue(estimate_event("birthday", 20)["fits_capacity"])
@@ -215,7 +217,7 @@ class AgentTests(unittest.TestCase):
         self.assertFalse(next(x for x in result["trace"] if x["type"]=="observation")["result"]["ok"])
 
     def test_experiment_matrix_has_required_comparisons_and_single_axes(self):
-        variants = experiment_variants(compare_model="gpt-4.1")
+        variants = experiment_variants(compare_model="gemini-2.5-flash")
         factors = {v["factor"] for v in variants}
         self.assertTrue({"reasoning", "examples", "instruction_role", "instruction_detail", "temperature", "top_p", "frequency_penalty", "presence_penalty", "max_tokens", "model", "persona_bundle", "persona"} <= factors)
         baseline = variants[0]["settings"]
@@ -234,6 +236,32 @@ class AgentTests(unittest.TestCase):
         self.assertIn("not LLM findings", (output / "comparison.md").read_text(encoding="utf-8"))
         self.assertTrue((output / "metrics.csv").exists())
         self.assertTrue((output / "human_ratings.csv").exists())
+
+    def test_live_checkpoint_stops_on_denial_and_resume_preserves_attempts_and_ratings(self):
+        from gemini_client import GeminiRequestError
+        from plottwist_agent import DemoModel
+        output = Path(self.temp.name) / "resume-check"
+        agent = self.agent(QueueModel(GeminiRequestError(403, "PERMISSION_DENIED")))
+        with patch("experiments.build_agent", return_value=agent):
+            first = run_experiments(mode="live", repeats=1, output=output, variant_ids=["baseline"])
+        self.assertEqual(len(first), 1)
+        self.assertFalse(first[0]["completed"])
+        ratings = output / "human_ratings.csv"
+        with ratings.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+        rows[0]["notes"] = "Access denied, preserved review note"
+        with ratings.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+        agent.model = DemoModel()
+        with patch("experiments.build_agent", return_value=agent), patch.object(agent, "respond", wraps=agent.respond) as respond:
+            resumed = run_experiments(mode="live", repeats=1, output=output, variant_ids=["baseline"], resume=True)
+        self.assertEqual(respond.call_count, len(CASES)-1)
+        self.assertEqual(len(resumed), len(CASES))
+        self.assertEqual(resumed[0], first[0])
+        self.assertEqual(len({r["run_id"] for r in resumed}), len(CASES))
+        self.assertIn("preserved review note", ratings.read_text(encoding="utf-8"))
+        with patch("experiments.build_agent", return_value=agent), self.assertRaises(ValueError):
+            run_experiments(mode="live", repeats=1, output=output, model="different-model", variant_ids=["baseline"], resume=True)
 
 if __name__ == "__main__":
     unittest.main()

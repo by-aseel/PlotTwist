@@ -10,3 +10,10 @@ data/
 *.db
 *.sqlite*
 experiments/live*/
+
+# Synthetic access-failure evidence is intentionally included.
+!experiments/live-access-check/
+!experiments/live-access-check/raw_traces.json
+!experiments/live-access-check/metrics.csv
+!experiments/live-access-check/human_ratings.csv
+!experiments/live-access-check/comparison.md

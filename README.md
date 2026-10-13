@@ -2,7 +2,7 @@
 
 **Make a memory. Leave a mystery.**
 
-**[Try the free hosted PlotTwist demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo)** — a browser-only Static Space. It uses scripted replies, browser-local enquiry/feedback records, and rule-based reflection. The full Python/OpenAI coursework projects are below.
+**[Try the free hosted PlotTwist demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo)** — a browser-only Static Space. It uses scripted replies, browser-local enquiry/feedback records, and rule-based reflection. The full Python/Gemini coursework projects are below.
 
 Two EECE 503P/798S coursework projects built around a fictional studio that creates personalized mystery experiences. The business team is **Aseel, Noah, Jiso, and Felix**; the names describe fictional business roles.
 
@@ -23,7 +23,7 @@ python -m venv .venv
 
 C3 uses port **7860** and C4 uses **7861**. Keep the terminal running and open its printed local URL. Demo mode works without an API key and is explicitly labeled as a scripted offline demonstration. Each notebook is self-contained and can be uploaded alone to Colab.
 
-For real model use, copy the project's `.env.example` to `.env`, configure your own `OPENAI_API_KEY`, and launch with `--mode live`. Keep real credentials local.
+For real model use, copy the project's `.env.example` to `.env`, configure your own `GEMINI_API_KEY`, and launch with `--mode live`. Keep real credentials local.
 
 ## Demonstrations and submission evidence
 
@@ -38,7 +38,7 @@ The detailed videos are narrated, edited walkthroughs of actual offline UI captu
 
 ## Verification
 
-**15 C3 tests and 23 C4 tests passed.** The 10 C3 and 14 C4 offline notebook code cells were executed in order through IPython. The C4 demo report contains **224 deterministic runs**; these test workflow mechanics and do not establish a best LLM configuration.
+**20 C3 tests and 29 C4 tests passed.** The 10 C3 and 14 C4 offline notebook code cells were executed in order through IPython. The C4 demo report contains **238 deterministic runs**; these test workflow mechanics and do not establish a best LLM configuration.
 
 From either installed project folder:
 
@@ -46,7 +46,7 @@ From either installed project folder:
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Live API calls were not verified during preparation. A free Static Space is now deployed; its source is in `deployment/huggingface-free/`. The Python/Gradio backend is not hosted by that Static demo.
+See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Real Gemini attempts on 14 October 2026 failed with 403 project access denied; no successful live answers or empirical model comparisons are claimed. Native SDK integration, local tests and notebooks are complete. A free Static Space is now deployed; its source is in `deployment/huggingface-free/`. The Python/Gradio backend is not hosted by that Static demo.
 
 ## Business dossiers
 
@@ -57,3 +57,7 @@ The business, starting prices, and example contact details are fictional. Enquir
 ![PlotTwist Persona Lab](c4_persona_lab/docs/screenshots/desktop.jpg)
 
 [Detailed start guide](START_HERE.md) · [MIT license](LICENSE)
+
+## Gemini migration status
+
+Both projects now use the official Google Gen AI SDK. The interactive default is Gemini 3.5 Flash-Lite; the configuration matrix targets accessible Gemini 2.5 models when available. Current Google generation access is denied, so the reflection honestly leaves empirical persona rankings pending. [Migration and exact rerun commands](c4_persona_lab/docs/gemini_migration.md) · [Failed real C3 attempt](c3_business_assistant/docs/live_access_attempt.json) · [Interrupted real C4 comparison](c4_persona_lab/experiments/live-access-check/comparison.md).

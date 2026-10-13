@@ -27,7 +27,7 @@ def render_trace(events):
 
 def brand(mode):
     tag = 'THE PERSONA LAB / CHAPTER 04' if IS_LAB else 'EXPERIENCES WITH A SECRET / CHAPTER 03'
-    runtime = 'LIVE AI · OPENAI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED'
+    runtime = 'LIVE AI · GEMINI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED'
     return f'<div class="brandbar"><div class="wordmark">plot<span>twist</span><i>®</i></div><span class="brand-note">{tag}</span><span class="runtime"><b></b>{runtime}</span></div>'
 
 def hero():
@@ -104,7 +104,7 @@ def create_app(mode=None):
                             if not sid:
                                 raise gr.Error('Your browser session expired. Refresh the page and try again.')
                             result=agent.respond(message,history=history,session_id=sid,settings=settings)
-                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Live OpenAI' if result.get('mode')=='live' else 'Scripted offline demo')
+                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Live Gemini' if result.get('mode')=='live' else 'Scripted offline demo')
                         if IS_LAB:
                             def respond(message,history,persona,reasoning,examples,instruction_role,temperature,top_p,frequency,presence,max_tokens,request:gr.Request):
                                 settings=dict(persona=persona,reasoning=reasoning,examples=examples,instruction_role=instruction_role,temperature=temperature,top_p=top_p,frequency_penalty=frequency,presence_penalty=presence,max_tokens=max_tokens)

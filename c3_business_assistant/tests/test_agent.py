@@ -46,7 +46,7 @@ class AgentTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.knowledge_patch = patch("plottwist_agent.load_knowledge", return_value=KNOWLEDGE)
         self.knowledge_patch.start()
-        self.env_patch = patch.dict(os.environ, {"OPENAI_API_KEY": ""})
+        self.env_patch = patch.dict(os.environ, {"GEMINI_API_KEY": ""})
         self.env_patch.start()
         self.dotenv_patch = patch("dotenv.load_dotenv")
         self.dotenv_patch.start()

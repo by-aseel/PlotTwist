@@ -1,0 +1,2 @@
+run_id,case,factual_grounding_1_5,task_usefulness_1_5,tool_judgment_1_5,persona_fit_1_5,naturalness_1_5,creativity_1_5,serious_failure,notes
+baseline--corporate_budget--r1,corporate_budget,,,,,,,,

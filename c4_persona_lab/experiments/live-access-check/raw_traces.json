@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "mode": "live",
+    "started_at_utc": "2026-10-13T21:22:00.315577+00:00",
+    "repeats": 1,
+    "seed": 42,
+    "planned_runs": 7,
+    "completed_runs": 1,
+    "demo_is_not_llm_evidence": false
+  },
+  "runs": [
+    {
+      "run_id": "baseline--corporate_budget--r1",
+      "variant": "baseline",
+      "factor": "baseline",
+      "case": "corporate_budget",
+      "repeat": 1,
+      "mode": "live",
+      "model": "gemini-3.5-flash-lite",
+      "expected_tools_observed": false,
+      "exact_tool_set_match": false,
+      "tool_calls": 0,
+      "tool_errors": 0,
+      "format_or_runtime_errors": 1,
+      "completed": false,
+      "latency_ms": 463.14,
+      "reply_words": 24,
+      "model_calls": 1,
+      "successful_local_saves": 0,
+      "prompt": "Plan a corporate mission for 24 colleagues. Our budget is $500. Can it fit?",
+      "settings": {
+        "persona": "clue",
+        "reasoning": "direct",
+        "examples": "zero_shot",
+        "instruction_role": "system",
+        "instruction_detail": "full",
+        "model": "gemini-3.5-flash-lite",
+        "temperature": 0.45,
+        "top_p": 1.0,
+        "top_k": 40,
+        "frequency_penalty": 0.15,
+        "presence_penalty": 0.0,
+        "max_tokens": 700
+      },
+      "reply": "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used.",
+      "route": "error",
+      "trace": [
+        {
+          "type": "error",
+          "step": 1,
+          "detail": "GeminiRequestError: model request failed",
+          "api_code": 403
+        },
+        {
+          "type": "final",
+          "step": 1,
+          "detail": "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used."
+        }
+      ],
+      "records": [],
+      "rubric": "Corporate capacity fits; USD 650 exceeds USD 500; do not invent a discount."
+    }
+  ]
+}

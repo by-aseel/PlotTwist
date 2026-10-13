@@ -11,12 +11,12 @@
 | Zero-shot vs. few-shot | No solved tasks vs. solved action/observation examples | Included; both retain a protocol-only example |
 | System vs. in-message instructions | `instruction_role=system` / `user` | Included; fixed factual boundaries remain system-level |
 | LLM configuration experiments and comparison (15) | `experiments.py`, result files, notebook | Runner included; live results require an API key |
-| Top-k coverage | Explicitly marked unsupported and rejected | Applicable API limitation documented |
+| Top-k coverage | Native Gemini top_k; UI slider; 40 vs 20 variant | Implemented; live effect pending access |
 | Different model comparison | CLI `--model` / `--compare-model` | Optional compatible models supplied at run time |
 | Clear, focused instructions and example (10) | `INSTRUCTIONS`, `COMPACT_INSTRUCTIONS`, `FEW_SHOT_EXAMPLES` | Included |
 | Reflection questions and creative presentation (15) | `docs/reflection.md`, notebook, designed app | Included; measured LLM conclusions require live runs |
 
-Validation completed during preparation: 23 backend tests passed, the self-contained notebook's offline code cells executed through IPython, and 224 deterministic comparison runs were saved under `experiments/demo/`. See `verification.md` for scope and limits. The supplementary `docs/demo_walkthrough.mp4` uses actual offline UI screenshots; it is not a continuous live API recording.
+Validation completed during preparation: 29 backend/transport tests passed, the self-contained notebook's offline code cells executed through IPython, and 238 deterministic comparison runs were saved under `experiments/demo/`. See `verification.md` for scope and limits. The supplementary `docs/demo_walkthrough.mp4` uses actual offline UI screenshots; it is not a continuous live API recording.
 
 ## Complete your empirical submission
 
@@ -28,3 +28,7 @@ Validation completed during preparation: 23 backend tests passed, the self-conta
 6. Review the files and publish/submit using the channel required by the instructor. No account publication is claimed in this package.
 
 The delivered demo evidence validates graph mechanics and exports. It cannot show an LLM's response quality, naturalness, temperature effect, or best model configuration.
+
+## Gemini access status (14 October 2026)
+
+Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.

@@ -1,8 +1,8 @@
 # C4 reflection / Design rationale and evidence boundaries
 
-This write-up separates design judgments from empirical findings. The project includes a deterministic demo model and a live OpenAI adapter. **No live-model performance finding is claimed in this document.** Demo responses are scripted and sampling controls do not change their generation. After running the live matrix, add the measured comparisons described below and preserve the original result files.
+This write-up separates design judgments from empirical findings. The project includes a deterministic demo model and a live Gemini adapter. **No live-model performance finding is claimed in this document.** Demo responses are scripted and sampling controls do not change their generation. After running the live matrix, add the measured comparisons described below and preserve the original result files.
 
-The saved demonstration covers 16 variants, 7 cases, and 2 repeats: 224 deterministic runs. Its report records completed responses and expected tool observations for all 224 runs, with no tool errors. These are mechanical checks of the scripted graph workflow, not scores for factual accuracy, naturalness, creativity, or real-model task completion. See `../experiments/demo/comparison.md` and its raw traces for the actual evidence.
+The saved demonstration covers 17 variants, 7 cases, and 2 repeats: 238 deterministic runs. Its report records completed responses and expected tool observations for all 238 runs, with no tool errors. These are mechanical checks of the scripted graph workflow, not scores for factual accuracy, naturalness, creativity, or real-model task completion. See `../experiments/demo/comparison.md` and its raw traces for the actual evidence.
 
 ## 1. Which persona gave the most helpful or natural results?
 
@@ -16,7 +16,7 @@ No empirical winner is established before live evaluation. A reasonable starting
 
 The experiment runner compares persona defaults, prompt conditions, and generation settings. Few-shot examples may improve action formatting, while additional instructions and plans can increase latency and output length. To identify a winner, first reject responses that invent facts or claim failed actions succeeded. Among the remaining responses, compare task usefulness, naturalness, tool success, and cost/latency. Report the model, settings, task set, repeats, and failures along with the result.
 
-The lab does not silently simulate top-k: the selected OpenAI API does not offer it. The setting is marked not applicable and rejected. A model-type comparison requires two compatible models and actual calls to both.
+Top-k is implemented and forwarded to the native Gemini configuration: 40 by default versus 20 in a single-factor comparison. A model-type comparison still requires two accessible models and successful calls to both. Google recommends default sampling on Gemini 3; use an accessible Gemini 2.5 model for the sampling study or disclose the Gemini 3 caveat.
 
 ## 3. How well did the agent reason and use tools?
 
@@ -60,3 +60,7 @@ Run the live comparison from the README, then record:
 | Limitations | Small sample, task coverage, model variation, metric blind spots, and untested deployment conditions |
 
 A defensible conclusion may identify different winners for logistics and creative tasks. If the differences are small or inconsistent, report that uncertainty rather than forcing an overall winner.
+
+## Gemini access status (14 October 2026)
+
+Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.

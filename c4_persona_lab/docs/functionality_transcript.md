@@ -75,3 +75,7 @@ C4 launches with the same environment setup, normally on port 7861. The behavior
 ### 00:08:00.128 — Everything needed to review both projects.
 
 The repository contains two separate project folders, executable notebooks, business sources, READMEs, requirements, tests, and experiment artifacts. C4 also includes its five-question reflection. Use the chapter videos to review functionality, and run the notebooks to inspect the implementation. This edited walkthrough documents actual offline actions; a live API run and measured C4 comparisons remain the final evidence to add.
+
+## October 2026 migration note
+
+This archived recording predates the native Gemini migration and the 238-check matrix. Its OpenAI source narration and 224-check references describe the earlier version. Use the current README, source, notebook and verification report for the submitted Gemini version. The recorded offline UI features still illustrate the workflow.

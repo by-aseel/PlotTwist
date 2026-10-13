@@ -113,18 +113,18 @@ def build_messages(message, history, settings):
     messages.append({"role": "user", "content": message})
     return messages
 
-class OpenAIModel:
+class GeminiModel:
     """Thin real API adapter; generation parameters are forwarded unchanged."""
     def __init__(self, client=None):
         if client is None:
-            from openai import OpenAI
-            client = OpenAI(timeout=45, max_retries=1)
+            from gemini_client import GeminiClient
+            client = GeminiClient()
         self.client = client
 
     def complete(self, messages, settings):
         response = self.client.chat.completions.create(
             model=settings["model"], messages=messages,
-            temperature=settings["temperature"], top_p=settings["top_p"],
+            temperature=settings["temperature"], top_p=settings["top_p"], top_k=settings["top_k"],
             frequency_penalty=settings["frequency_penalty"], presence_penalty=settings["presence_penalty"],
             max_completion_tokens=settings["max_tokens"], response_format={"type": "json_object"},
         )
@@ -266,10 +266,10 @@ class PlotTwistAgent:
             raise ValueError("mode must be auto, demo, or live")
         if not isinstance(max_steps, int) or not 1 <= max_steps <= 20:
             raise ValueError("max_steps must be between 1 and 20")
-        if mode == "live" and model is None and not os.getenv("OPENAI_API_KEY", "").strip():
-            raise ValueError("Live mode requires OPENAI_API_KEY. Use demo mode to run the clearly labeled offline simulator.")
-        self.mode = ("live" if os.getenv("OPENAI_API_KEY", "").strip() else "demo") if mode == "auto" else mode
-        self.model = model if model is not None else (OpenAIModel() if self.mode == "live" else DemoModel())
+        if mode == "live" and model is None and not os.getenv("GEMINI_API_KEY", "").strip():
+            raise ValueError("Live mode requires GEMINI_API_KEY. Use demo mode to run the clearly labeled offline simulator.")
+        self.mode = ("live" if os.getenv("GEMINI_API_KEY", "").strip() else "demo") if mode == "auto" else mode
+        self.model = model if model is not None else (GeminiModel() if self.mode == "live" else DemoModel())
         self.store = RecordStore(db_path)
         self.tools = ToolRegistry(self.store)
         self.max_steps = max_steps
@@ -299,7 +299,7 @@ class PlotTwistAgent:
             return {"raw": raw, "step": step, "trace": state["trace"] + [{"type": "model", "step": step, "detail": "Offline deterministic simulator" if self.mode == "demo" else state["settings"]["model"], "raw_output": raw}]}
         except Exception as exc:
             # Expose the error class without accidentally exposing an API key/request headers.
-            return {"raw": json.dumps({"final": "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used."}), "step": step, "route": "error", "trace": state["trace"] + [{"type": "error", "step": step, "detail": type(exc).__name__ + ": model request failed"}]}
+            return {"raw": json.dumps({"final": "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used."}), "step": step, "route": "error", "trace": state["trace"] + [{"type": "error", "step": step, "detail": type(exc).__name__ + ": model request failed", "api_code": getattr(exc, "code", None)}]}
 
     def _parse_node(self, state):
         trace = list(state["trace"])

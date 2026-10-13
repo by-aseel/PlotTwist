@@ -16,10 +16,10 @@ This map distinguishes included implementation from account-dependent submission
 | History and model-selected tool calls | Live backend model loop | Implemented; run with your API key |
 | Gradio ChatInterface | `app.py` | Included |
 | API key in local `.env`, not uploaded | `.env.example` and `.gitignore` | User supplies private key |
-| Working installation | `requirements.txt`, tests, README commands | 15 backend tests passed; rerun in your environment |
+| Working installation | `requirements.txt`, tests, README commands | 20 backend/transport tests passed; rerun in your environment |
 | Reflection bonus | Reflection implementation and trace | Included; inspect a draft/revision pair |
 | GitHub repository and video | `docs/demo_script.md`, supplementary `docs/demo_walkthrough.mp4` | Screenshot walkthrough included; final live recording and GitHub publication remain user steps |
-| Hugging Face hosting | [Free Static demonstration](https://huggingface.co/spaces/by-aseel/plottwist-free-demo); README deployment instructions | Browser-only demo deployed; full Python/Gradio backend is not hosted there |
+| Hugging Face bonus | README deployment instructions | Optional; not deployed by this package |
 
 ## Before recording
 
@@ -31,3 +31,7 @@ This map distinguishes included implementation from account-dependent submission
 6. Review the final files, omit secrets and runtime customer records, then publish the repository and submit your video according to the course instructions.
 
 Demo mode is useful for rehearsals and plumbing checks. Its canned responses must not be described as measured LLM behavior or model-generated tool choices.
+
+## Gemini access status (14 October 2026)
+
+Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.

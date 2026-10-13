@@ -1,0 +1,2 @@
+run_id,variant,factor,case,repeat,mode,model,expected_tools_observed,exact_tool_set_match,tool_calls,tool_errors,format_or_runtime_errors,completed,latency_ms,reply_words,model_calls,successful_local_saves
+baseline--corporate_budget--r1,baseline,baseline,corporate_budget,1,live,gemini-3.5-flash-lite,False,False,0,0,1,False,463.14,24,1,0

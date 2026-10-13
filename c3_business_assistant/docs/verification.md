@@ -1,40 +1,26 @@
-# C3 verification record
+# C3 verification / Gemini migration
 
-Validation date: **10 October 2026**. This record covers the delivered source, offline behavior, notebook execution, and business document. It does not claim a successful live API call or a hosted deployment.
+Validated on **14 October 2026**.
 
-## Completed checks
-
-| Check | Observed result | What it establishes |
+| Check | Result | Scope |
 |---|---|---|
-| Backend suite | **15 tests passed** | The tested routing, tool, storage, memory, error, and reflection paths behave as asserted |
-| Notebook | **10 offline code cells executed through IPython** in an isolated workspace | Embedded support files reconstruct and the code executes in order in the local validation environment |
-| Business knowledge | Summary and PDF loading exercised by the backend suite | Both requested source formats can be read |
-| PDF | Four pages rendered to PNG and visually inspected | Page layout, readable text, footer spacing, and the requested team names were checked |
-| Submission files | Assignment checklist compared with supplied C3 requirements | Required local artifacts are mapped to their implementations; account-dependent steps remain identified |
+| Backend and native SDK transport | **20 tests passed** | Routing/tools/history/reflection or ReAct graph, privacy, errors, Gemini settings, IDs and signatures |
+| Dependency check | `pip check` passed | Installed pinned dependencies are compatible |
+| Notebook | **10 offline cells executed through IPython** | Embedded modules/assets reconstruct and execute; no live quality evidence |
+| Generation access | **Failed** | Actual Gemini API generation returned 403; no demo fallback |
+| Live attempt log | `docs/live_access_attempt.json` | Actual request, safe error code and skipped reflection after failure |
 
-The tests cover all three routes, multi-turn lead collection, session separation, durable/deduplicated storage, cancellation, scoped export, unknown-question logging, malformed tool arguments, storage errors, and bounded tool loops. Fake API responses exercise history forwarding, action/observation round-trips, live-error handling, and reflection draft/revision logging without making network requests.
-
-The notebook check uses IPython to execute the code cells, including the readable `%%writefile` implementation. It is not evidence of a completed interactive Google Colab session or a real model run. The notebook remains self-contained and reconstructs assets in its own `c3_business_assistant_notebook/` directory.
-
-## Reproduce the backend check
-
-From the project folder, using the environment in which requirements are installed:
+## Reproduce
 
 ```powershell
 python -m unittest discover -s tests -v
+python app.py --mode demo
 ```
 
-For a notebook review, open `business_agent.ipynb` in Jupyter or upload that file to Colab. Leave `RUN_LIVE = False` for offline execution, run cells in order, and inspect the returned route/tool/reflection evidence. A local notebook editor may require installing the development dependencies from `requirements-dev.txt`.
+The five native transport tests use fake SDK responses to validate native function observation matching, preserved signatures, history/system conversion, JSON mode, output controls, truncation and sanitized remote errors. They do not establish service access. Existing tests validate real local tools and persistence, including deduplication and session isolation.
 
-## Not verified by these checks
+The notebook runs locally through IPython in a separate workspace; this does not claim an interactive Colab session. Business PDFs and the archived offline UI footage were reviewed during earlier preparation. Video source narration predates the Gemini migration; its scope note identifies that limitation.
 
-- No real OpenAI request was run with a user's API key. Tests named "live" use fake client responses where applicable.
-- No empirical claim is made about the model's factual accuracy, naturalness, or reliability across arbitrary user inputs.
-- No public GitHub repository or Hugging Face Space was created or verified.
-- The supplementary walkthrough is a captioned presentation of offline UI screenshots, not continuous live model footage.
+The public Hugging Face Space is the free Static edition. The updated Python/Gradio deployment bundle is prepared and locally validated, but the full backend hosting bonus is pending hosting access. C3's model reflection bonus is implemented and tested with controlled responses; a successful live recording still needs restored Gemini access.
 
-To complete the live evidence, supply a key locally, launch with `--mode live`, exercise the three routes, inspect actual tool observations and reflection, and record the successful run. Do not infer live readiness from the demo mode label or from a passing mocked-client test alone.
-
-## Tool-evidence update — 13 October 2026
-
-Successful tool saves now print record metadata explicitly, and the notebook trace cell includes the actual `tool` event category with arguments and results. `tool_schemas.md` documents the required inputs and expected success/error output fields. The offline notebook was re-executed and its 15 backend tests rerun after this update. No live API request is claimed.
+See [Gemini migration and rerun instructions](gemini_migration.md) for status and exact commands. No empirical persona winner or sampled configuration effect is claimed from scripted output or failed generation calls.

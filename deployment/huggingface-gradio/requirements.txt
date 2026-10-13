@@ -1,0 +1,5 @@
+gradio==5.50.0
+google-genai==1.66.0
+pydantic==2.12.3
+python-dotenv==1.2.4
+pypdf==6.20.0

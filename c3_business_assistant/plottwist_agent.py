@@ -1,8 +1,8 @@
 """PlotTwist C3 business agent: routing, memory, actual tools, and reflection.
 
-Live: OpenAI Chat Completions function-calling loop. Demo: deterministic rehearsal
+Live: native Gemini function-calling loop. Demo: deterministic rehearsal
 with real local SQLite writes, explicitly identified in every response object.
-Official reference: https://developers.openai.com/api/docs/guides/function-calling
+Official reference: https://ai.google.dev/gemini-api/docs/function-calling
 """
 from __future__ import annotations
 
@@ -212,20 +212,20 @@ class PlotTwistAgent:
             load_dotenv(ROOT / ".env", override=False)
         except ImportError:
             pass  # Environment variables also work without python-dotenv.
-        key = os.getenv("OPENAI_API_KEY", "").strip()
-        if key.lower() in {"your_api_key_here", "your-openai-api-key", "sk-your-key-here", "replace_me"}:
+        key = os.getenv("GEMINI_API_KEY", "").strip()
+        if key.lower() in {"your_api_key_here", "your-gemini-api-key", "sk-your-key-here", "replace_me"}:
             key = ""
         self.mode = "live" if mode == "auto" and (key or client is not None) else ("demo" if mode == "auto" else mode)
         if self.mode == "live" and not key and client is None:
-            raise ConfigurationError("Live mode requires OPENAI_API_KEY in your local .env or environment. Select demo for offline rehearsal.")
-        self.model = model or os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+            raise ConfigurationError("Live mode requires GEMINI_API_KEY in your local .env or environment. Select demo for offline rehearsal.")
+        self.model = model or os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
         self.client = client
         if self.mode == "live" and self.client is None:
             try:
-                from openai import OpenAI
+                from gemini_client import GeminiClient
             except ImportError as exc:
                 raise ConfigurationError("Install requirements.txt to use live mode.") from exc
-            self.client = OpenAI(api_key=key, timeout=45, max_retries=1)
+            self.client = GeminiClient(api_key=key)
         self.knowledge = load_knowledge(Path(knowledge_dir) if knowledge_dir else ROOT / "me")
         self.system_prompt = f"PERSONA\n{PERSONA}\n\nINSTRUCTIONS\n{INSTRUCTIONS}\n\nBUSINESS KNOWLEDGE\n" + "\n\n".join(
             f"SOURCE: {name}\n<source_data>\n{content}\n</source_data>" for name, content in self.knowledge.items())
@@ -274,7 +274,7 @@ class PlotTwistAgent:
 
     def respond(self, message: str, history: list[dict] | None = None, session_id: str = "demo", settings: dict | None = None) -> dict:
         """Return text plus a factual audit trace; never silently switch live to demo."""
-        trace: list[dict] = [{"stage": "mode", "mode": self.mode, "label": "Live OpenAI" if self.mode == "live" else "Offline deterministic demo — no model call"}]
+        trace: list[dict] = [{"stage": "mode", "mode": self.mode, "label": "Live Gemini" if self.mode == "live" else "Offline deterministic demo — no model call"}]
         try:
             message = _clean_text(message, "message", 4000)
             session_id = _clean_text(session_id, "session_id", 200)
@@ -386,7 +386,7 @@ class PlotTwistAgent:
                     if observations and not any(item.get("ok") for item in observations):
                         return "I couldn't save this record. " + observations[-1].get("error", "Please try again.") + "\n\n" + (reply.content or "Please check the details and try again.")
                     return reply.content or "I couldn't form a complete reply. Please try rephrasing your question."
-                messages.append({"role": "assistant", "content": reply.content, "tool_calls": [
+                messages.append({"role": "assistant", "content": reply.content, "_native_content": getattr(reply, "native_content", None), "tool_calls": [
                     {"id": call.id, "type": "function", "function": {"name": call.function.name, "arguments": call.function.arguments}} for call in calls]})
                 for call in calls:
                     result = self._call_tool(call.function.name, call.function.arguments, session_id, trace, user_text)
@@ -395,7 +395,7 @@ class PlotTwistAgent:
                     messages.append({"role": "tool", "tool_call_id": call.id, "content": json.dumps(result)})
             except Exception as exc:
                 # Avoid exposing API keys, endpoint details, or raw remote exceptions.
-                trace.append({"stage": "error", "kind": "model_error", "exception_type": type(exc).__name__})
+                trace.append({"stage": "error", "kind": "model_error", "exception_type": type(exc).__name__, "api_code": getattr(exc, "code", None)})
                 saved = any(x.get("stage") == "tool" and x["result"].get("ok") for x in trace)
                 suffix = " A tool record was already saved locally; its reference is in the activity trace." if saved else ""
                 return "The live model request failed. Check your API key, model access, network, and quota, then retry. No offline answer was substituted." + suffix
@@ -432,7 +432,7 @@ class PlotTwistAgent:
             trace.append({"stage": "reflection", "status": "checked", "method": "model_review", "draft": draft, "revised": revised, "changed": revised != draft, "checks": audit["checks"]})
             return revised
         except Exception as exc:
-            trace.append({"stage": "reflection", "status": "failed_draft_retained", "draft": draft, "revised": draft, "exception_type": type(exc).__name__})
+            trace.append({"stage": "reflection", "status": "failed_draft_retained", "draft": draft, "revised": draft, "exception_type": type(exc).__name__, "api_code": getattr(exc, "code", None)})
             return draft
 
 

@@ -71,3 +71,7 @@ To try C3 locally, create a virtual environment, install the requirements, and l
 ### 00:06:52.347 — C3 submission: repository plus a functionality video.
 
 C3 is submitted as a GitHub repository and a functionality video. Include the notebook, business sources, requirements, README, and working code. This walkthrough documents the offline functionality and explains the implemented live path. Before presenting real model behavior as tested, configure the key and record a live run. The Static Space supplements the project; it does not replace the full agent.
+
+## October 2026 migration note
+
+This archived recording predates the native Gemini migration and the 238-check matrix. Its OpenAI source narration and 224-check references describe the earlier version. Use the current README, source, notebook and verification report for the submitted Gemini version. The recorded offline UI features still illustrate the workflow.
