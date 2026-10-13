@@ -19,7 +19,7 @@ This map distinguishes included implementation from account-dependent submission
 | Working installation | `requirements.txt`, tests, README commands | 15 backend tests passed; rerun in your environment |
 | Reflection bonus | Reflection implementation and trace | Included; inspect a draft/revision pair |
 | GitHub repository and video | `docs/demo_script.md`, supplementary `docs/demo_walkthrough.mp4` | Screenshot walkthrough included; final live recording and GitHub publication remain user steps |
-| Hugging Face bonus | README deployment instructions | Optional; not deployed by this package |
+| Hugging Face hosting | [Free Static demonstration](https://huggingface.co/spaces/by-aseel/plottwist-free-demo); README deployment instructions | Browser-only demo deployed; full Python/Gradio backend is not hosted there |
 
 ## Before recording
 

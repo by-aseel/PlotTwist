@@ -41,6 +41,6 @@ C3 defaults to port **7860**; C4 defaults to **7861**. Demo mode needs no key an
 3. In C4, run `python experiments.py --mode live --repeats 2 --output experiments/live`. Complete the human-rating sheet and add measured findings to `docs/reflection.md`.
 4. Record your final walkthrough using the supplied script. The included MP4s are supplementary screenshot presentations, not continuous recordings of live API calls.
 5. This repository contains both project submissions. Add your final live video link and completed C4 findings, then submit the relevant project folder link through your instructor's submission channel. Keep `.env`, private traces, and customer databases out of Git.
-6. Hugging Face Spaces deployment is optional; instructions and Space metadata are included in each README. No Space was deployed.
+6. A [free PlotTwist Static Space](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is deployed. It is a browser-only scripted demo. The full Python/Gradio deployment remains separate; its instructions and metadata are included in each README.
 
 The business, prices, and example customer data are fictional. Enquiry tools save local records; they do not send email or confirm bookings. The demo experiments verify the workflow and cannot establish a best-performing LLM persona.

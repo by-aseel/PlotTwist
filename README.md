@@ -2,6 +2,8 @@
 
 **Make a memory. Leave a mystery.**
 
+**[Try the free hosted PlotTwist demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo)** — a browser-only Static Space. It uses scripted replies, browser-local enquiry/feedback records, and rule-based reflection. The full Python/OpenAI coursework projects are below.
+
 Two EECE 503P/798S coursework projects built around a fictional studio that creates personalized mystery experiences. The business team is **Aseel, Noah, Jiso, and Felix**; the names describe fictional business roles.
 
 | Project | Implementation | Open |
@@ -40,7 +42,7 @@ From either installed project folder:
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Live API calls and hosted deployment have not been verified during preparation.
+See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Live API calls were not verified during preparation. A free Static Space is now deployed; its source is in `deployment/huggingface-free/`. The Python/Gradio backend is not hosted by that Static demo.
 
 ## Business dossiers
 

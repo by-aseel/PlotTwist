@@ -115,9 +115,11 @@ python -m unittest discover -s tests -v
 
 The 15 included backend tests passed during package validation; the notebook's offline code cells were also executed through IPython. Those checks use offline or fake API responses and do not establish a successful connection to a real OpenAI account. See `docs/verification.md` for the validation scope and limits.
 
-See `docs/demo_script.md` for a five-minute presentation plan and `docs/demo_walkthrough.mp4` for a supplementary captioned video made from actual offline UI screenshots. The video is not a continuous live API screen recording. Final coursework still needs your live API run and a recording that meets your instructor's expectations. Both project folders are published in this repository. No Hugging Face deployment has been made.
+See `docs/demo_script.md` for a five-minute presentation plan and `docs/demo_walkthrough.mp4` for a supplementary captioned video made from actual offline UI screenshots. The video is not a continuous live API screen recording. Final coursework still needs your live API run and a recording that meets your instructor's expectations. Both project folders are published in this repository. A [free Static demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is deployed on Hugging Face; it does not run the Python/Gradio backend.
 
 ## Optional Hugging Face Spaces deployment
+
+A [free browser demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is available, with source in [`deployment/huggingface-free`](../deployment/huggingface-free/). It is a Static Space with JavaScript demonstration logic. The following instructions concern hosting the full Python/Gradio app, which currently requires a qualifying paid plan on this account.
 
 Create a Gradio Space and upload the project contents with `app.py` and `requirements.txt` at the repository root. The metadata at the top of this README supplies the SDK settings. Add `OPENAI_API_KEY` as a Space secret and the desired `OPENAI_MODEL` as configuration. Set `PLOTTWIST_MODE=live`, `GRADIO_SERVER_NAME=0.0.0.0`, and `PORT=7860`. Standard hosted disk may be ephemeral, so local SQLite is a teaching store, not a durable production CRM. Do not upload `.env`, local databases, or real customer traces. Publication is optional and is a separate account action.
 
