@@ -138,3 +138,24 @@ footer:not(.plot-footer) { display:none!important; }
 .experience-card { background:#1a2117; }
 .trace-step pre { color:#b9c6ad; }
 .gradio-container :is(button,a,input,textarea):focus-visible { outline-color:#d1ff78!important; }
+
+/* Keep radio choices readable against their own light backgrounds. */
+.gradio-container label:has(> input[type="radio"]) {
+  background:#f4f1e9!important;
+  color:#243127!important;
+  border:1px solid #9da890!important;
+  font-weight:600;
+}
+.gradio-container label:has(> input[type="radio"]) span {
+  color:#243127!important;
+}
+.gradio-container label:has(> input[type="radio"]:checked) {
+  background:#d1ff78!important;
+  border-color:#d1ff78!important;
+}
+.gradio-container label:has(> input[type="radio"]):hover {
+  border-color:#d1ff78!important;
+}
+.gradio-container input[type="radio"] {
+  accent-color:#446321;
+}
