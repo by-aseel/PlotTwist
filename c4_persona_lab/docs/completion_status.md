@@ -14,7 +14,7 @@
 
 ## Live evidence still required
 
-There is no configured local API key at this preparation step. No live experiment or model-quality finding is claimed. The agent supports OpenAI live mode, but an offline simulation cannot establish prompt/configuration performance.
+Live API access is not yet available at this preparation step. No live experiment or model-quality finding is claimed. The agent supports OpenAI live mode, but an offline simulation cannot establish prompt/configuration performance.
 
 After a private key is configured:
 
