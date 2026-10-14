@@ -8,23 +8,23 @@ Evidence mode: **DEMO**. Repeats requested: 2. Shuffle seed: 42.
 
 | Variant | Runs | Expected tools observed | Completed | Tool errors | Mean words | Mean ms |
 |---|---:|---:|---:|---:|---:|---:|
-| baseline | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
-| brief_plan | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.8 |
-| few_shot | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.6 |
-| in_message | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.7 |
+| baseline | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.4 |
+| brief_plan | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
+| few_shot | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.3 |
+| in_message | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
 | compact_instructions | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
-| temperature_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
-| temperature_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
-| top_p_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
-| top_k_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.2 |
-| frequency_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.9 |
-| presence_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
-| short_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.9 |
-| long_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
-| cipher_persona | 14 | 14/14 | 14/14 | 0 | 34.7 | 3.1 |
-| cipher_prompt_only | 14 | 14/14 | 14/14 | 0 | 34.7 | 3.2 |
-| muse_persona | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.5 |
-| muse_prompt_only | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.6 |
+| temperature_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.8 |
+| temperature_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.0 |
+| top_p_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 4.3 |
+| top_k_low | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.1 |
+| frequency_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.7 |
+| presence_high | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.6 |
+| short_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.6 |
+| long_output | 14 | 14/14 | 14/14 | 0 | 38.7 | 3.5 |
+| cipher_persona | 14 | 14/14 | 14/14 | 0 | 34.7 | 4.1 |
+| cipher_prompt_only | 14 | 14/14 | 14/14 | 0 | 34.7 | 4.1 |
+| muse_persona | 14 | 14/14 | 14/14 | 0 | 48.9 | 3.7 |
+| muse_prompt_only | 14 | 14/14 | 14/14 | 0 | 48.9 | 4.1 |
 
 These checks measure tool execution and response size. They do not prove factual correctness, naturalness, creativity, or task completion. An extra valid tool call can lower exact-tool-set match without being a failure.
 

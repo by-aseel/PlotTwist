@@ -1,7 +1,7 @@
 {
   "metadata": {
     "mode": "demo",
-    "started_at_utc": "2026-10-13T21:21:20.681589+00:00",
+    "started_at_utc": "2026-10-14T04:11:14.697413+00:00",
     "repeats": 2,
     "seed": 42,
     "planned_runs": 238,
@@ -23,7 +23,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 20.85,
+      "latency_ms": 8.54,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -66,13 +66,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 65,
+            "record_id": 133,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 65, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 133, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -88,13 +88,13 @@
       ],
       "records": [
         {
-          "id": 65,
+          "id": 133,
           "session_id": "presence_high--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:20.698568+00:00"
+          "created_at": "2026-10-14T04:11:14.708651+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -113,7 +113,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.52,
+      "latency_ms": 1.43,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -164,7 +164,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 9.69,
+      "latency_ms": 3.14,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -286,7 +286,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.19,
+      "latency_ms": 3.07,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -408,7 +408,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.35,
+      "latency_ms": 1.37,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -459,7 +459,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.5,
+      "latency_ms": 3.17,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -578,7 +578,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.2,
+      "latency_ms": 1.12,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -629,7 +629,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.54,
+      "latency_ms": 4.73,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -679,13 +679,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 66,
+            "record_id": 134,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 66, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 134, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -701,7 +701,7 @@
       ],
       "records": [
         {
-          "id": 66,
+          "id": 134,
           "session_id": "brief_plan--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -709,7 +709,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.768631+00:00"
+          "created_at": "2026-10-14T04:11:14.742868+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -728,7 +728,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.19,
+      "latency_ms": 1.66,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -807,7 +807,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.21,
+      "latency_ms": 1.03,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -858,7 +858,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.45,
+      "latency_ms": 4.76,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -903,13 +903,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 67,
+            "record_id": 135,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 67, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 135, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -925,7 +925,7 @@
       ],
       "records": [
         {
-          "id": 67,
+          "id": 135,
           "session_id": "compact_instructions--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -933,7 +933,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.786122+00:00"
+          "created_at": "2026-10-14T04:11:14.754075+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -952,7 +952,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.32,
+      "latency_ms": 3.38,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1071,7 +1071,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.28,
+      "latency_ms": 2.37,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1193,7 +1193,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.27,
+      "latency_ms": 2.45,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1315,7 +1315,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.13,
+      "latency_ms": 1.54,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -1366,7 +1366,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.74,
+      "latency_ms": 2.63,
       "reply_words": 21,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -1445,7 +1445,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.3,
+      "latency_ms": 2.97,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1567,7 +1567,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.29,
+      "latency_ms": 4.57,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1686,7 +1686,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.12,
+      "latency_ms": 1.38,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -1737,7 +1737,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.29,
+      "latency_ms": 3.61,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -1859,7 +1859,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.99,
+      "latency_ms": 6.3,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -1904,13 +1904,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 68,
+            "record_id": 136,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 68, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 136, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -1926,7 +1926,7 @@
       ],
       "records": [
         {
-          "id": 68,
+          "id": 136,
           "session_id": "muse_prompt_only--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -1934,7 +1934,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.830314+00:00"
+          "created_at": "2026-10-14T04:11:14.820176+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -1953,7 +1953,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.96,
+      "latency_ms": 9.45,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -1998,13 +1998,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 69,
+            "record_id": 137,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 69, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 137, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -2020,7 +2020,7 @@
       ],
       "records": [
         {
-          "id": 69,
+          "id": 137,
           "session_id": "muse_persona--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -2028,7 +2028,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.838356+00:00"
+          "created_at": "2026-10-14T04:11:14.831800+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -2047,7 +2047,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.29,
+      "latency_ms": 3.47,
       "reply_words": 35,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -2166,7 +2166,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.2,
+      "latency_ms": 1.46,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -2217,7 +2217,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.38,
+      "latency_ms": 7.1,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -2262,13 +2262,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 70,
+            "record_id": 138,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 70, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 138, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -2284,7 +2284,7 @@
       ],
       "records": [
         {
-          "id": 70,
+          "id": 138,
           "session_id": "temperature_low--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -2292,7 +2292,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.856575+00:00"
+          "created_at": "2026-10-14T04:11:14.856793+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -2311,7 +2311,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.4,
+      "latency_ms": 4.0,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -2430,7 +2430,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.77,
+      "latency_ms": 2.11,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -2509,7 +2509,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.7,
+      "latency_ms": 1.76,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -2588,7 +2588,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.29,
+      "latency_ms": 2.44,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -2707,7 +2707,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.08,
+      "latency_ms": 1.07,
       "reply_words": 21,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -2758,7 +2758,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.29,
+      "latency_ms": 4.48,
       "reply_words": 90,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -2877,7 +2877,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.04,
+      "latency_ms": 6.28,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -2922,13 +2922,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 71,
+            "record_id": 139,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 71, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 139, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -2944,7 +2944,7 @@
       ],
       "records": [
         {
-          "id": 71,
+          "id": 139,
           "session_id": "frequency_high--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -2952,7 +2952,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.894134+00:00"
+          "created_at": "2026-10-14T04:11:14.905070+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -2971,7 +2971,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.2,
+      "latency_ms": 3.32,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3093,7 +3093,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.61,
+      "latency_ms": 4.62,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -3138,13 +3138,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 72,
+            "record_id": 140,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 72, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 140, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -3160,7 +3160,7 @@
       ],
       "records": [
         {
-          "id": 72,
+          "id": 140,
           "session_id": "presence_high--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -3168,7 +3168,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.914008+00:00"
+          "created_at": "2026-10-14T04:11:14.912761+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -3187,7 +3187,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.48,
+      "latency_ms": 4.0,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3309,7 +3309,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.79,
+      "latency_ms": 1.89,
       "reply_words": 21,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -3388,7 +3388,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.35,
+      "latency_ms": 2.69,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3510,7 +3510,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.33,
+      "latency_ms": 2.69,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3632,7 +3632,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.34,
+      "latency_ms": 2.4,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3751,7 +3751,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.1,
+      "latency_ms": 4.14,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -3796,13 +3796,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 73,
+            "record_id": 141,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 73, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 141, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -3818,7 +3818,7 @@
       ],
       "records": [
         {
-          "id": 73,
+          "id": 141,
           "session_id": "long_output--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -3826,7 +3826,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:20.952683+00:00"
+          "created_at": "2026-10-14T04:11:14.971632+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -3845,7 +3845,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.33,
+      "latency_ms": 2.55,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -3967,7 +3967,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.36,
+      "latency_ms": 3.4,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -4089,7 +4089,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.37,
+      "latency_ms": 5.76,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -4211,7 +4211,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.31,
+      "latency_ms": 4.48,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -4254,13 +4254,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 74,
+            "record_id": 142,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 74, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 142, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -4276,13 +4276,13 @@
       ],
       "records": [
         {
-          "id": 74,
+          "id": 142,
           "session_id": "top_k_low--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:20.980340+00:00"
+          "created_at": "2026-10-14T04:11:15.011917+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -4301,7 +4301,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.96,
+      "latency_ms": 4.54,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -4344,13 +4344,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 75,
+            "record_id": 143,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 75, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 143, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -4366,13 +4366,13 @@
       ],
       "records": [
         {
-          "id": 75,
+          "id": 143,
           "session_id": "short_output--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:20.990560+00:00"
+          "created_at": "2026-10-14T04:11:15.022261+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -4391,7 +4391,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.8,
+      "latency_ms": 1.96,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -4470,7 +4470,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.78,
+      "latency_ms": 2.59,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -4549,7 +4549,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.42,
+      "latency_ms": 2.98,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -4671,7 +4671,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.88,
+      "latency_ms": 9.57,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -4716,13 +4716,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 76,
+            "record_id": 144,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 76, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 144, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -4738,7 +4738,7 @@
       ],
       "records": [
         {
-          "id": 76,
+          "id": 144,
           "session_id": "short_output--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -4746,7 +4746,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.022042+00:00"
+          "created_at": "2026-10-14T04:11:15.051627+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -4765,7 +4765,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.23,
+      "latency_ms": 4.36,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -4808,13 +4808,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 77,
+            "record_id": 145,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 77, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 145, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -4830,13 +4830,13 @@
       ],
       "records": [
         {
-          "id": 77,
+          "id": 145,
           "session_id": "top_k_low--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.032179+00:00"
+          "created_at": "2026-10-14T04:11:15.076468+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -4855,7 +4855,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.22,
+      "latency_ms": 1.12,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -4906,7 +4906,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.6,
+      "latency_ms": 2.33,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5028,7 +5028,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.07,
+      "latency_ms": 2.71,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5150,7 +5150,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.51,
+      "latency_ms": 3.26,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5269,7 +5269,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.65,
+      "latency_ms": 3.06,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5391,7 +5391,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.67,
+      "latency_ms": 3.22,
       "reply_words": 63,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5513,7 +5513,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 9.2,
+      "latency_ms": 5.17,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -5558,13 +5558,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 78,
+            "record_id": 146,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 78, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 146, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -5580,7 +5580,7 @@
       ],
       "records": [
         {
-          "id": 78,
+          "id": 146,
           "session_id": "temperature_high--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -5588,7 +5588,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.141341+00:00"
+          "created_at": "2026-10-14T04:11:15.141251+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -5607,7 +5607,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.49,
+      "latency_ms": 2.45,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5729,7 +5729,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 12.34,
+      "latency_ms": 6.15,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -5772,13 +5772,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 79,
+            "record_id": 147,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 79, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 147, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -5794,13 +5794,13 @@
       ],
       "records": [
         {
-          "id": 79,
+          "id": 147,
           "session_id": "in_message--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.190900+00:00"
+          "created_at": "2026-10-14T04:11:15.150760+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -5819,7 +5819,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 8.15,
+      "latency_ms": 2.58,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -5941,7 +5941,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 7.7,
+      "latency_ms": 2.66,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -6060,7 +6060,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.07,
+      "latency_ms": 1.25,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -6111,7 +6111,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.28,
+      "latency_ms": 2.31,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -6190,7 +6190,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.09,
+      "latency_ms": 2.74,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -6312,7 +6312,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.61,
+      "latency_ms": 1.26,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -6363,7 +6363,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.59,
+      "latency_ms": 2.09,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -6442,7 +6442,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.48,
+      "latency_ms": 2.71,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -6561,7 +6561,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 10.17,
+      "latency_ms": 3.25,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -6683,7 +6683,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.53,
+      "latency_ms": 2.4,
       "reply_words": 35,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -6802,7 +6802,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 7.34,
+      "latency_ms": 5.95,
       "reply_words": 32,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -6845,13 +6845,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 80,
+            "record_id": 148,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 80, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 148, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -6867,13 +6867,13 @@
       ],
       "records": [
         {
-          "id": 80,
+          "id": 148,
           "session_id": "cipher_persona--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.414386+00:00"
+          "created_at": "2026-10-14T04:11:15.270955+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -6892,7 +6892,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.22,
+      "latency_ms": 1.78,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -6971,7 +6971,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 10.85,
+      "latency_ms": 4.82,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -7014,13 +7014,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 81,
+            "record_id": 149,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 81, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 149, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -7036,13 +7036,13 @@
       ],
       "records": [
         {
-          "id": 81,
+          "id": 149,
           "session_id": "short_output--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.450469+00:00"
+          "created_at": "2026-10-14T04:11:15.290173+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -7061,7 +7061,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 7.11,
+      "latency_ms": 4.87,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -7106,13 +7106,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 82,
+            "record_id": 150,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 82, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 150, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -7128,7 +7128,7 @@
       ],
       "records": [
         {
-          "id": 82,
+          "id": 150,
           "session_id": "top_p_low--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -7136,7 +7136,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.477239+00:00"
+          "created_at": "2026-10-14T04:11:15.308596+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -7155,7 +7155,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.03,
+      "latency_ms": 4.72,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -7198,13 +7198,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 83,
+            "record_id": 151,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 83, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 151, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -7220,13 +7220,13 @@
       ],
       "records": [
         {
-          "id": 83,
+          "id": 151,
           "session_id": "compact_instructions--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.494561+00:00"
+          "created_at": "2026-10-14T04:11:15.315466+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -7245,7 +7245,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.58,
+      "latency_ms": 4.32,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -7367,7 +7367,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.39,
+      "latency_ms": 2.41,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -7486,7 +7486,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.34,
+      "latency_ms": 1.55,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -7537,7 +7537,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.16,
+      "latency_ms": 9.63,
       "reply_words": 30,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -7582,13 +7582,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 84,
+            "record_id": 152,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 84, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 152, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -7604,7 +7604,7 @@
       ],
       "records": [
         {
-          "id": 84,
+          "id": 152,
           "session_id": "cipher_persona--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -7612,7 +7612,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.531989+00:00"
+          "created_at": "2026-10-14T04:11:15.372205+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -7631,7 +7631,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.43,
+      "latency_ms": 3.06,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -7753,7 +7753,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.44,
+      "latency_ms": 4.37,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -7875,7 +7875,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.6,
+      "latency_ms": 2.53,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -7997,7 +7997,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.23,
+      "latency_ms": 1.45,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -8048,7 +8048,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.51,
+      "latency_ms": 5.98,
       "reply_words": 35,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -8167,7 +8167,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.42,
+      "latency_ms": 4.61,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -8210,13 +8210,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 85,
+            "record_id": 153,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 85, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 153, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -8232,13 +8232,13 @@
       ],
       "records": [
         {
-          "id": 85,
+          "id": 153,
           "session_id": "in_message--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.593764+00:00"
+          "created_at": "2026-10-14T04:11:15.447267+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -8257,7 +8257,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.8,
+      "latency_ms": 8.9,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -8300,13 +8300,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 86,
+            "record_id": 154,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 86, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 154, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -8322,13 +8322,13 @@
       ],
       "records": [
         {
-          "id": 86,
+          "id": 154,
           "session_id": "compact_instructions--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.607036+00:00"
+          "created_at": "2026-10-14T04:11:15.452880+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -8347,7 +8347,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.11,
+      "latency_ms": 4.74,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -8390,13 +8390,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 87,
+            "record_id": 155,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 87, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 155, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -8412,13 +8412,13 @@
       ],
       "records": [
         {
-          "id": 87,
+          "id": 155,
           "session_id": "baseline--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.619212+00:00"
+          "created_at": "2026-10-14T04:11:15.480999+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -8437,7 +8437,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.42,
+      "latency_ms": 2.97,
       "reply_words": 35,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -8556,7 +8556,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.35,
+      "latency_ms": 5.13,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -8599,13 +8599,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 88,
+            "record_id": 156,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 88, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 156, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -8621,13 +8621,13 @@
       ],
       "records": [
         {
-          "id": 88,
+          "id": 156,
           "session_id": "baseline--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.641524+00:00"
+          "created_at": "2026-10-14T04:11:15.513354+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -8646,7 +8646,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.44,
+      "latency_ms": 2.73,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -8768,7 +8768,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.3,
+      "latency_ms": 1.27,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -8819,7 +8819,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.38,
+      "latency_ms": 3.38,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -8938,7 +8938,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.24,
+      "latency_ms": 1.77,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -8989,7 +8989,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.57,
+      "latency_ms": 3.01,
       "reply_words": 90,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -9108,7 +9108,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.24,
+      "latency_ms": 1.71,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -9159,7 +9159,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.82,
+      "latency_ms": 3.55,
       "reply_words": 69,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -9281,7 +9281,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.83,
+      "latency_ms": 1.82,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -9360,7 +9360,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.03,
+      "latency_ms": 7.05,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -9403,13 +9403,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 89,
+            "record_id": 157,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 89, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 157, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -9425,13 +9425,13 @@
       ],
       "records": [
         {
-          "id": 89,
+          "id": 157,
           "session_id": "long_output--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.734836+00:00"
+          "created_at": "2026-10-14T04:11:15.614043+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -9450,7 +9450,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.26,
+      "latency_ms": 1.28,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -9501,7 +9501,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.99,
+      "latency_ms": 4.35,
       "reply_words": 32,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -9544,13 +9544,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 90,
+            "record_id": 158,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 90, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 158, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -9566,13 +9566,13 @@
       ],
       "records": [
         {
-          "id": 90,
+          "id": 158,
           "session_id": "cipher_prompt_only--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.757392+00:00"
+          "created_at": "2026-10-14T04:11:15.648791+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -9591,7 +9591,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.25,
+      "latency_ms": 4.77,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -9636,13 +9636,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 91,
+            "record_id": 159,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 91, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 159, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -9658,7 +9658,7 @@
       ],
       "records": [
         {
-          "id": 91,
+          "id": 159,
           "session_id": "few_shot--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -9666,7 +9666,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.771597+00:00"
+          "created_at": "2026-10-14T04:11:15.674734+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -9685,7 +9685,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.4,
+      "latency_ms": 5.08,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -9804,7 +9804,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.39,
+      "latency_ms": 3.08,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -9923,7 +9923,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.46,
+      "latency_ms": 2.69,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -10055,7 +10055,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.32,
+      "latency_ms": 4.41,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -10174,7 +10174,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.4,
+      "latency_ms": 2.88,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -10296,7 +10296,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.8,
+      "latency_ms": 2.05,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -10375,7 +10375,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.39,
+      "latency_ms": 2.47,
       "reply_words": 63,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -10497,7 +10497,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.49,
+      "latency_ms": 2.48,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -10619,7 +10619,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.8,
+      "latency_ms": 1.89,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -10698,7 +10698,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.83,
+      "latency_ms": 2.05,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -10777,7 +10777,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.24,
+      "latency_ms": 9.32,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -10822,13 +10822,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 92,
+            "record_id": 160,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 92, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 160, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -10844,7 +10844,7 @@
       ],
       "records": [
         {
-          "id": 92,
+          "id": 160,
           "session_id": "presence_high--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -10852,7 +10852,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.891670+00:00"
+          "created_at": "2026-10-14T04:11:15.837456+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -10871,7 +10871,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.04,
+      "latency_ms": 5.98,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -10916,13 +10916,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 93,
+            "record_id": 161,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 93, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 161, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -10938,7 +10938,7 @@
       ],
       "records": [
         {
-          "id": 93,
+          "id": 161,
           "session_id": "baseline--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -10946,7 +10946,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.906095+00:00"
+          "created_at": "2026-10-14T04:11:15.850180+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -10965,7 +10965,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.43,
+      "latency_ms": 2.81,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -11087,7 +11087,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.11,
+      "latency_ms": 6.83,
       "reply_words": 30,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -11132,13 +11132,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 94,
+            "record_id": 162,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 94, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 162, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -11154,7 +11154,7 @@
       ],
       "records": [
         {
-          "id": 94,
+          "id": 162,
           "session_id": "cipher_prompt_only--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -11162,7 +11162,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.932868+00:00"
+          "created_at": "2026-10-14T04:11:15.889395+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -11181,7 +11181,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.36,
+      "latency_ms": 6.17,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -11231,13 +11231,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 95,
+            "record_id": 163,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 95, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 163, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -11253,7 +11253,7 @@
       ],
       "records": [
         {
-          "id": 95,
+          "id": 163,
           "session_id": "brief_plan--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -11261,7 +11261,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.948220+00:00"
+          "created_at": "2026-10-14T04:11:15.910805+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -11280,7 +11280,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.24,
+      "latency_ms": 1.46,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -11331,7 +11331,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.93,
+      "latency_ms": 4.03,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -11374,13 +11374,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 96,
+            "record_id": 164,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 96, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 164, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -11396,13 +11396,13 @@
       ],
       "records": [
         {
-          "id": 96,
+          "id": 164,
           "session_id": "long_output--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:21.974656+00:00"
+          "created_at": "2026-10-14T04:11:15.942292+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -11421,7 +11421,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.07,
+      "latency_ms": 3.97,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -11466,13 +11466,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 97,
+            "record_id": 165,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 97, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 165, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -11488,7 +11488,7 @@
       ],
       "records": [
         {
-          "id": 97,
+          "id": 165,
           "session_id": "baseline--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -11496,7 +11496,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:21.989990+00:00"
+          "created_at": "2026-10-14T04:11:15.947290+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -11515,7 +11515,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.56,
+      "latency_ms": 3.0,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -11637,7 +11637,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.06,
+      "latency_ms": 1.83,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -11721,7 +11721,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.26,
+      "latency_ms": 3.49,
       "reply_words": 63,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -11843,7 +11843,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 11.33,
+      "latency_ms": 4.43,
       "reply_words": 32,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -11886,13 +11886,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 98,
+            "record_id": 166,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 98, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 166, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -11908,13 +11908,13 @@
       ],
       "records": [
         {
-          "id": 98,
+          "id": 166,
           "session_id": "cipher_prompt_only--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.067879+00:00"
+          "created_at": "2026-10-14T04:11:16.016896+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -11933,7 +11933,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.14,
+      "latency_ms": 2.81,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -12055,7 +12055,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.33,
+      "latency_ms": 3.56,
       "reply_words": 69,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -12177,7 +12177,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 7.44,
+      "latency_ms": 2.59,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -12299,7 +12299,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 12.5,
+      "latency_ms": 10.24,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -12342,13 +12342,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 99,
+            "record_id": 167,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 99, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 167, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -12364,13 +12364,13 @@
       ],
       "records": [
         {
-          "id": 99,
+          "id": 167,
           "session_id": "frequency_high--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.194588+00:00"
+          "created_at": "2026-10-14T04:11:16.094804+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -12389,7 +12389,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.39,
+      "latency_ms": 1.77,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -12468,7 +12468,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 14.78,
+      "latency_ms": 7.42,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -12513,13 +12513,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 100,
+            "record_id": 168,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 100, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 168, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -12535,7 +12535,7 @@
       ],
       "records": [
         {
-          "id": 100,
+          "id": 168,
           "session_id": "long_output--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -12543,7 +12543,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:22.256594+00:00"
+          "created_at": "2026-10-14T04:11:16.135535+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -12562,7 +12562,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.16,
+      "latency_ms": 1.72,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -12613,7 +12613,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.93,
+      "latency_ms": 5.28,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -12658,13 +12658,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 101,
+            "record_id": 169,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 101, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 169, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -12680,7 +12680,7 @@
       ],
       "records": [
         {
-          "id": 101,
+          "id": 169,
           "session_id": "muse_persona--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -12688,7 +12688,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:22.310256+00:00"
+          "created_at": "2026-10-14T04:11:16.177196+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -12707,7 +12707,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 10.04,
+      "latency_ms": 6.03,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -12750,13 +12750,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 102,
+            "record_id": 170,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 102, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 170, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -12772,13 +12772,13 @@
       ],
       "records": [
         {
-          "id": 102,
+          "id": 170,
           "session_id": "few_shot--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.333271+00:00"
+          "created_at": "2026-10-14T04:11:16.183540+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -12797,7 +12797,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.88,
+      "latency_ms": 3.06,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -12876,7 +12876,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.77,
+      "latency_ms": 2.52,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -12955,7 +12955,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.75,
+      "latency_ms": 3.97,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -13077,7 +13077,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.1,
+      "latency_ms": 2.58,
       "reply_words": 69,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -13199,7 +13199,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.46,
+      "latency_ms": 2.58,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -13321,7 +13321,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 9.54,
+      "latency_ms": 4.98,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -13366,13 +13366,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 103,
+            "record_id": 171,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 103, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 171, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -13388,7 +13388,7 @@
       ],
       "records": [
         {
-          "id": 103,
+          "id": 171,
           "session_id": "in_message--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -13396,7 +13396,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:22.525275+00:00"
+          "created_at": "2026-10-14T04:11:16.310413+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -13415,7 +13415,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.05,
+      "latency_ms": 2.57,
       "reply_words": 63,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -13537,7 +13537,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.07,
+      "latency_ms": 4.8,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -13580,13 +13580,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 104,
+            "record_id": 172,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 104, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 172, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -13602,13 +13602,13 @@
       ],
       "records": [
         {
-          "id": 104,
+          "id": 172,
           "session_id": "few_shot--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.573160+00:00"
+          "created_at": "2026-10-14T04:11:16.345956+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -13627,7 +13627,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.37,
+      "latency_ms": 1.21,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -13678,7 +13678,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.63,
+      "latency_ms": 2.8,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -13797,7 +13797,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.31,
+      "latency_ms": 1.9,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -13848,7 +13848,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.53,
+      "latency_ms": 4.62,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -13891,13 +13891,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 105,
+            "record_id": 173,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 105, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 173, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -13913,13 +13913,13 @@
       ],
       "records": [
         {
-          "id": 105,
+          "id": 173,
           "session_id": "muse_persona--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.651155+00:00"
+          "created_at": "2026-10-14T04:11:16.413541+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -13938,7 +13938,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.73,
+      "latency_ms": 8.72,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -14060,7 +14060,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.15,
+      "latency_ms": 2.51,
       "reply_words": 90,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -14179,7 +14179,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.93,
+      "latency_ms": 2.51,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -14258,7 +14258,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.98,
+      "latency_ms": 2.79,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -14380,7 +14380,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.96,
+      "latency_ms": 2.94,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -14509,7 +14509,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.8,
+      "latency_ms": 1.27,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -14560,7 +14560,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.64,
+      "latency_ms": 1.34,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -14611,7 +14611,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 8.06,
+      "latency_ms": 11.23,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -14654,13 +14654,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 106,
+            "record_id": 174,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 106, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 174, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -14676,13 +14676,13 @@
       ],
       "records": [
         {
-          "id": 106,
+          "id": 174,
           "session_id": "temperature_high--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.901908+00:00"
+          "created_at": "2026-10-14T04:11:16.559238+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -14701,7 +14701,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.44,
+      "latency_ms": 1.58,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -14752,7 +14752,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.98,
+      "latency_ms": 2.76,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -14874,7 +14874,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 12.42,
+      "latency_ms": 4.31,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -14917,13 +14917,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 107,
+            "record_id": 175,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 107, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 175, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -14939,13 +14939,13 @@
       ],
       "records": [
         {
-          "id": 107,
+          "id": 175,
           "session_id": "frequency_high--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:22.994908+00:00"
+          "created_at": "2026-10-14T04:11:16.614360+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -14964,7 +14964,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 9.77,
+      "latency_ms": 2.7,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -15096,7 +15096,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 7.8,
+      "latency_ms": 2.54,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -15215,7 +15215,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 10.41,
+      "latency_ms": 4.79,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -15260,13 +15260,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 108,
+            "record_id": 176,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 108, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 176, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -15282,7 +15282,7 @@
       ],
       "records": [
         {
-          "id": 108,
+          "id": 176,
           "session_id": "few_shot--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -15290,7 +15290,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:23.118795+00:00"
+          "created_at": "2026-10-14T04:11:16.679102+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -15309,7 +15309,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.92,
+      "latency_ms": 1.86,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -15388,7 +15388,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.98,
+      "latency_ms": 2.02,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -15467,7 +15467,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.81,
+      "latency_ms": 5.31,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -15510,13 +15510,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 109,
+            "record_id": 177,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 109, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 177, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -15532,13 +15532,13 @@
       ],
       "records": [
         {
-          "id": 109,
+          "id": 177,
           "session_id": "top_p_low--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.188809+00:00"
+          "created_at": "2026-10-14T04:11:16.737986+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -15557,7 +15557,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.96,
+      "latency_ms": 2.07,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -15636,7 +15636,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.28,
+      "latency_ms": 1.55,
       "reply_words": 21,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -15687,7 +15687,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.22,
+      "latency_ms": 2.46,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -15806,7 +15806,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.45,
+      "latency_ms": 2.81,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -15925,7 +15925,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.55,
+      "latency_ms": 2.5,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -16047,7 +16047,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.2,
+      "latency_ms": 2.48,
       "reply_words": 21,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -16126,7 +16126,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.93,
+      "latency_ms": 1.83,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -16205,7 +16205,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.48,
+      "latency_ms": 2.67,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -16324,7 +16324,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.34,
+      "latency_ms": 5.44,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -16369,13 +16369,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 110,
+            "record_id": 178,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 110, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 178, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -16391,7 +16391,7 @@
       ],
       "records": [
         {
-          "id": 110,
+          "id": 178,
           "session_id": "top_p_low--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -16399,7 +16399,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:23.337899+00:00"
+          "created_at": "2026-10-14T04:11:16.901432+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -16418,7 +16418,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.07,
+      "latency_ms": 8.92,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -16461,13 +16461,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 111,
+            "record_id": 179,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 111, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 179, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -16483,13 +16483,13 @@
       ],
       "records": [
         {
-          "id": 111,
+          "id": 179,
           "session_id": "muse_prompt_only--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.356821+00:00"
+          "created_at": "2026-10-14T04:11:16.925425+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -16508,7 +16508,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.3,
+      "latency_ms": 6.05,
       "reply_words": 30,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -16553,13 +16553,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 112,
+            "record_id": 180,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 112, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 180, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -16575,7 +16575,7 @@
       ],
       "records": [
         {
-          "id": 112,
+          "id": 180,
           "session_id": "cipher_prompt_only--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -16583,7 +16583,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:23.376808+00:00"
+          "created_at": "2026-10-14T04:11:16.955494+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -16602,7 +16602,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.47,
+      "latency_ms": 2.96,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -16724,7 +16724,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.51,
+      "latency_ms": 5.54,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -16767,13 +16767,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 113,
+            "record_id": 181,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 113, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 181, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -16789,13 +16789,13 @@
       ],
       "records": [
         {
-          "id": 113,
+          "id": 181,
           "session_id": "muse_persona--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.414815+00:00"
+          "created_at": "2026-10-14T04:11:17.006816+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -16814,7 +16814,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.69,
+      "latency_ms": 4.38,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -16936,7 +16936,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.14,
+      "latency_ms": 3.95,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -17015,7 +17015,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.23,
+      "latency_ms": 5.45,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -17058,13 +17058,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 114,
+            "record_id": 182,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 114, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 182, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -17080,13 +17080,13 @@
       ],
       "records": [
         {
-          "id": 114,
+          "id": 182,
           "session_id": "temperature_low--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.469810+00:00"
+          "created_at": "2026-10-14T04:11:17.088582+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -17105,7 +17105,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.41,
+      "latency_ms": 14.2,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -17148,13 +17148,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 115,
+            "record_id": 183,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 115, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 183, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -17170,13 +17170,13 @@
       ],
       "records": [
         {
-          "id": 115,
+          "id": 183,
           "session_id": "top_p_low--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.489809+00:00"
+          "created_at": "2026-10-14T04:11:17.117507+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -17195,7 +17195,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.4,
+      "latency_ms": 2.9,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -17314,7 +17314,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.65,
+      "latency_ms": 3.16,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -17436,7 +17436,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.4,
+      "latency_ms": 2.62,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -17558,7 +17558,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.21,
+      "latency_ms": 2.86,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -17637,7 +17637,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.45,
+      "latency_ms": 3.96,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -17759,7 +17759,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.57,
+      "latency_ms": 5.12,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -17891,7 +17891,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.3,
+      "latency_ms": 1.38,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -17942,7 +17942,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.49,
+      "latency_ms": 2.87,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -18064,7 +18064,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.18,
+      "latency_ms": 6.04,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -18109,13 +18109,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 116,
+            "record_id": 184,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 116, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 184, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -18131,7 +18131,7 @@
       ],
       "records": [
         {
-          "id": 116,
+          "id": 184,
           "session_id": "muse_prompt_only--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -18139,7 +18139,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:23.649821+00:00"
+          "created_at": "2026-10-14T04:11:17.353049+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -18158,7 +18158,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.83,
+      "latency_ms": 2.26,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18237,7 +18237,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.61,
+      "latency_ms": 3.84,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18316,7 +18316,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.84,
+      "latency_ms": 1.96,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18395,7 +18395,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.46,
+      "latency_ms": 2.53,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -18517,7 +18517,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.82,
+      "latency_ms": 2.28,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18596,7 +18596,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.89,
+      "latency_ms": 1.98,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18675,7 +18675,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.24,
+      "latency_ms": 1.47,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -18726,7 +18726,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.89,
+      "latency_ms": 2.34,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18810,7 +18810,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.02,
+      "latency_ms": 2.47,
       "reply_words": 21,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -18889,7 +18889,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 6.56,
+      "latency_ms": 5.54,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -18932,13 +18932,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 117,
+            "record_id": 185,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 117, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 185, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -18954,13 +18954,13 @@
       ],
       "records": [
         {
-          "id": 117,
+          "id": 185,
           "session_id": "temperature_low--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.832898+00:00"
+          "created_at": "2026-10-14T04:11:17.571807+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -18979,7 +18979,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.94,
+      "latency_ms": 7.3,
       "reply_words": 90,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -19098,7 +19098,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.89,
+      "latency_ms": 2.36,
       "reply_words": 25,
       "model_calls": 2,
       "successful_local_saves": 0,
@@ -19177,7 +19177,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.27,
+      "latency_ms": 2.25,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -19228,7 +19228,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.45,
+      "latency_ms": 5.23,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -19273,13 +19273,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 118,
+            "record_id": 186,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 118, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 186, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -19295,7 +19295,7 @@
       ],
       "records": [
         {
-          "id": 118,
+          "id": 186,
           "session_id": "top_k_low--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -19303,7 +19303,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:23.909899+00:00"
+          "created_at": "2026-10-14T04:11:17.672707+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -19322,7 +19322,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.46,
+      "latency_ms": 5.24,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -19365,13 +19365,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 119,
+            "record_id": 187,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 119, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 187, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -19387,13 +19387,13 @@
       ],
       "records": [
         {
-          "id": 119,
+          "id": 187,
           "session_id": "temperature_high--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:23.930793+00:00"
+          "created_at": "2026-10-14T04:11:17.683804+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -19412,7 +19412,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.41,
+      "latency_ms": 2.57,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -19531,7 +19531,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.42,
+      "latency_ms": 2.52,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -19663,7 +19663,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.41,
+      "latency_ms": 5.43,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -19782,7 +19782,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.72,
+      "latency_ms": 2.8,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -19904,7 +19904,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.23,
+      "latency_ms": 1.91,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -19955,7 +19955,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 10.42,
+      "latency_ms": 9.78,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20000,13 +20000,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 120,
+            "record_id": 188,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 120, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 188, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -20022,7 +20022,7 @@
       ],
       "records": [
         {
-          "id": 120,
+          "id": 188,
           "session_id": "temperature_low--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -20030,7 +20030,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.040808+00:00"
+          "created_at": "2026-10-14T04:11:17.830895+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -20049,7 +20049,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.4,
+      "latency_ms": 1.25,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -20100,7 +20100,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.27,
+      "latency_ms": 1.54,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -20151,7 +20151,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.59,
+      "latency_ms": 7.07,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20196,13 +20196,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 121,
+            "record_id": 189,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 121, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 189, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -20218,7 +20218,7 @@
       ],
       "records": [
         {
-          "id": 121,
+          "id": 189,
           "session_id": "frequency_high--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -20226,7 +20226,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.105804+00:00"
+          "created_at": "2026-10-14T04:11:17.902619+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -20245,7 +20245,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 5.05,
+      "latency_ms": 8.06,
       "reply_words": 32,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20288,13 +20288,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 122,
+            "record_id": 190,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 122, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 190, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -20310,13 +20310,13 @@
       ],
       "records": [
         {
-          "id": 122,
+          "id": 190,
           "session_id": "cipher_persona--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:24.129792+00:00"
+          "created_at": "2026-10-14T04:11:17.921268+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -20335,7 +20335,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.2,
+      "latency_ms": 4.99,
       "reply_words": 30,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20380,13 +20380,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 123,
+            "record_id": 191,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 123, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 191, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -20402,7 +20402,7 @@
       ],
       "records": [
         {
-          "id": 123,
+          "id": 191,
           "session_id": "cipher_persona--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -20410,7 +20410,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.153809+00:00"
+          "created_at": "2026-10-14T04:11:17.952828+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -20429,7 +20429,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.16,
+      "latency_ms": 5.29,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20472,13 +20472,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 124,
+            "record_id": 192,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 124, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 192, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -20494,13 +20494,13 @@
       ],
       "records": [
         {
-          "id": 124,
+          "id": 192,
           "session_id": "muse_prompt_only--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:24.174904+00:00"
+          "created_at": "2026-10-14T04:11:17.980449+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -20519,7 +20519,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.49,
+      "latency_ms": 4.03,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -20641,7 +20641,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.3,
+      "latency_ms": 3.03,
       "reply_words": 21,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -20692,7 +20692,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.24,
+      "latency_ms": 6.99,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20740,13 +20740,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 125,
+            "record_id": 193,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 125, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 193, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -20762,13 +20762,13 @@
       ],
       "records": [
         {
-          "id": 125,
+          "id": 193,
           "session_id": "brief_plan--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:24.231893+00:00"
+          "created_at": "2026-10-14T04:11:18.069464+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -20787,7 +20787,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.49,
+      "latency_ms": 2.55,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -20909,7 +20909,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.55,
+      "latency_ms": 5.2,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -20954,13 +20954,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 126,
+            "record_id": 194,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 126, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 194, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -20976,7 +20976,7 @@
       ],
       "records": [
         {
-          "id": 126,
+          "id": 194,
           "session_id": "top_k_low--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -20984,7 +20984,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.268888+00:00"
+          "created_at": "2026-10-14T04:11:18.114149+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -21003,7 +21003,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.22,
+      "latency_ms": 5.09,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -21048,13 +21048,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 127,
+            "record_id": 195,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 127, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 195, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -21070,7 +21070,7 @@
       ],
       "records": [
         {
-          "id": 127,
+          "id": 195,
           "session_id": "compact_instructions--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -21078,7 +21078,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.291896+00:00"
+          "created_at": "2026-10-14T04:11:18.144409+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -21097,7 +21097,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.48,
+      "latency_ms": 4.4,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21219,7 +21219,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.44,
+      "latency_ms": 5.2,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21341,7 +21341,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.66,
+      "latency_ms": 2.83,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21463,7 +21463,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.25,
+      "latency_ms": 2.54,
       "reply_words": 25,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -21514,7 +21514,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.44,
+      "latency_ms": 4.86,
       "reply_words": 69,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21636,7 +21636,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.52,
+      "latency_ms": 3.64,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21758,7 +21758,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.47,
+      "latency_ms": 5.62,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -21880,7 +21880,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 1.3,
+      "latency_ms": 1.29,
       "reply_words": 21,
       "model_calls": 1,
       "successful_local_saves": 0,
@@ -21931,7 +21931,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.39,
+      "latency_ms": 5.23,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -21976,13 +21976,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 128,
+            "record_id": 196,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 128, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 196, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -21998,7 +21998,7 @@
       ],
       "records": [
         {
-          "id": 128,
+          "id": 196,
           "session_id": "in_message--save_enquiry--r2",
           "kind": "customer_interest",
           "payload": {
@@ -22006,7 +22006,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.462808+00:00"
+          "created_at": "2026-10-14T04:11:18.383231+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -22025,7 +22025,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.53,
+      "latency_ms": 2.57,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -22147,7 +22147,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.52,
+      "latency_ms": 5.48,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -22276,7 +22276,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.78,
+      "latency_ms": 4.33,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -22324,13 +22324,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 129,
+            "record_id": 197,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 129, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 197, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -22346,13 +22346,13 @@
       ],
       "records": [
         {
-          "id": 129,
+          "id": 197,
           "session_id": "brief_plan--unknown_access--r1",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:24.524821+00:00"
+          "created_at": "2026-10-14T04:11:18.453324+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."
@@ -22371,7 +22371,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 3.91,
+      "latency_ms": 5.04,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -22416,13 +22416,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 130,
+            "record_id": 198,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 130, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 198, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -22438,7 +22438,7 @@
       ],
       "records": [
         {
-          "id": 130,
+          "id": 198,
           "session_id": "temperature_high--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -22446,7 +22446,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.549191+00:00"
+          "created_at": "2026-10-14T04:11:18.484310+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -22465,7 +22465,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.17,
+      "latency_ms": 5.66,
       "reply_words": 34,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -22510,13 +22510,13 @@
           "tool": "record_customer_interest",
           "result": {
             "ok": true,
-            "record_id": 131,
+            "record_id": 199,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "customer_interest"
           },
-          "detail": "{\"ok\": true, \"record_id\": 131, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
+          "detail": "{\"ok\": true, \"record_id\": 199, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"customer_interest\"}"
         },
         {
           "type": "model",
@@ -22532,7 +22532,7 @@
       ],
       "records": [
         {
-          "id": 131,
+          "id": 199,
           "session_id": "short_output--save_enquiry--r1",
           "kind": "customer_interest",
           "payload": {
@@ -22540,7 +22540,7 @@
             "message": "My name is Aseel, my email is aseel@example.com. Please save my enquiry for a birthday mystery for 10 guests.",
             "name": "Aseel"
           },
-          "created_at": "2026-10-13T21:21:24.572518+00:00"
+          "created_at": "2026-10-14T04:11:18.516891+00:00"
         }
       ],
       "rubric": "Valid local enquiry; exact supplied name/email; no claim of email or booking."
@@ -22559,7 +22559,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.5,
+      "latency_ms": 2.82,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -22678,7 +22678,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.5,
+      "latency_ms": 4.76,
       "reply_words": 47,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -22797,7 +22797,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.76,
+      "latency_ms": 5.48,
       "reply_words": 49,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -22919,7 +22919,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 2.55,
+      "latency_ms": 2.57,
       "reply_words": 55,
       "model_calls": 3,
       "successful_local_saves": 0,
@@ -23041,7 +23041,7 @@
       "tool_errors": 0,
       "format_or_runtime_errors": 0,
       "completed": true,
-      "latency_ms": 4.16,
+      "latency_ms": 5.01,
       "reply_words": 36,
       "model_calls": 2,
       "successful_local_saves": 1,
@@ -23084,13 +23084,13 @@
           "tool": "record_feedback",
           "result": {
             "ok": true,
-            "record_id": 132,
+            "record_id": 200,
             "duplicate": false,
             "saved_locally": true,
             "message_sent": false,
             "kind": "feedback"
           },
-          "detail": "{\"ok\": true, \"record_id\": 132, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
+          "detail": "{\"ok\": true, \"record_id\": 200, \"duplicate\": false, \"saved_locally\": true, \"message_sent\": false, \"kind\": \"feedback\"}"
         },
         {
           "type": "model",
@@ -23106,13 +23106,13 @@
       ],
       "records": [
         {
-          "id": 132,
+          "id": 200,
           "session_id": "presence_high--unknown_access--r2",
           "kind": "feedback",
           "payload": {
             "question": "Do you offer wheelchair access at a confirmed venue next Friday?"
           },
-          "created_at": "2026-10-13T21:21:24.676421+00:00"
+          "created_at": "2026-10-14T04:11:18.648823+00:00"
         }
       ],
       "rubric": "Does not invent access/venue/availability; records question; identifies need for team confirmation."

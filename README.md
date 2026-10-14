@@ -61,3 +61,7 @@ The business, starting prices, and example contact details are fictional. Enquir
 ## Gemini migration status
 
 Both projects now use the official Google Gen AI SDK. The interactive default is Gemini 3.5 Flash-Lite; the configuration matrix targets accessible Gemini 2.5 models when available. Current Google generation access is denied, so the reflection honestly leaves empirical persona rankings pending. [Migration and exact rerun commands](c4_persona_lab/docs/gemini_migration.md) · [Failed real C3 attempt](c3_business_assistant/docs/live_access_attempt.json) · [Interrupted real C4 comparison](c4_persona_lab/experiments/live-access-check/comparison.md).
+
+## Completed offline evaluation
+
+[Read the C4 evaluation report](c4_persona_lab/docs/evaluation_report.md) · [Five reflection answers](c4_persona_lab/docs/reflection.md) · [Reviewed persona outputs](c4_persona_lab/experiments/offline_review/reviewed_outputs.csv). The report uses actual results from 238 offline workflow runs and 49 tests, with a clearly identified assistant review. No paid API is needed to reproduce it; model-quality effects remain unmeasured.

@@ -32,3 +32,7 @@ The delivered demo evidence validates graph mechanics and exports. It cannot sho
 ## Gemini access status (14 October 2026)
 
 Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.
+
+## Completed no-cost comparison
+
+The 14 October 2026 evaluation reran 238 offline cases and all 49 C3/C4 tests. The [evaluation report](evaluation_report.md) compares actual tool behavior and persona replies; 21 reviewed outputs and their assistant assessment notes are saved in `experiments/offline_review/`. The notebook displays both this report and the completed five-question reflection. Model sampling effects remain hypotheses because no successful Gemini generation was available.

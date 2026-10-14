@@ -1,66 +1,47 @@
-# C4 reflection / Design rationale and evidence boundaries
+# C4 reflection / PlotTwist evaluation
 
-This write-up separates design judgments from empirical findings. The project includes a deterministic demo model and a live Gemini adapter. **No live-model performance finding is claimed in this document.** Demo responses are scripted and sampling controls do not change their generation. After running the live matrix, add the measured comparisons described below and preserve the original result files.
-
-The saved demonstration covers 17 variants, 7 cases, and 2 repeats: 238 deterministic runs. Its report records completed responses and expected tool observations for all 238 runs, with no tool errors. These are mechanical checks of the scripted graph workflow, not scores for factual accuracy, naturalness, creativity, or real-model task completion. See `../experiments/demo/comparison.md` and its raw traces for the actual evidence.
+This reflection draws on the 14 October 2026 offline evaluation: 238 runs over seven fictional scenarios and 17 conditions, plus 29 C4 behavior/transport tests. The deterministic model exercised the real LangGraph and local tools. An assistant reviewed 21 distinct persona/case replies. Gemini generation was blocked by project access denial, so the findings below describe implemented workflow behavior and reviewed demonstration styles. [Full evaluation report](evaluation_report.md).
 
 ## 1. Which persona gave the most helpful or natural results?
 
-The intended match is Clue for first-time guest advice, Cipher for logistics, and Muse for original story concepts. Clue uses accessible language and a welcoming follow-up; Cipher foregrounds numbers and missing constraints; Muse adds a narrative hook while labeling invented ideas as concepts. These are deliberate prompt and task differences, not observations of live model quality.
+**Clue was my preferred general concierge design.** In the eight-guest birthday example, it gave the correct USD 240 starting price and two-hour duration, then asked for the date and atmosphere. This was a useful, approachable next step. Its repeated branded opening still made some replies sound formulaic.
 
-The most helpful persona is likely task-dependent. A birthday host exploring possibilities may value Clue's conversational style; an organizer comparing group capacity may value Cipher's precision. That is a hypothesis to test. For a measured answer, rate each live response for correctness, helpfulness, naturalness, and persona fit, then compare by task instead of collapsing every task into one winner.
+**Cipher was more useful for operational planning.** In the corporate-budget case, it preserved the USD 650 starting price, identified that USD 500 was insufficient, and asked about the final budget, venue, date and access needs. Its constraint checklist suited the task better than a story hook.
+
+**Muse was strongest for the creative demonstration.** For 14 time-travel fans, it offered The Tomorrow Heist, a timeline puzzle and a shared finale, while clearly labeling the concept and keeping custom scope quote-only. Its story-title prefix was awkward for enquiry confirmation and accessibility questions. The most helpful persona therefore depended on the task. These judgments concern the inspected offline replies, rather than sampled Gemini performance.
 
 ## 2. Which prompt and configuration combination performed best?
 
-No empirical winner is established before live evaluation. A reasonable starting configuration is Clue at temperature 0.45 with full instructions in the system role, direct output, and top-p 1.0. Cipher's 0.10 temperature is intended to reduce variation for planning; Muse's 0.85 temperature and presence penalty are intended to diversify story ideas. None guarantees factuality.
+All 17 conditions completed all 14 assigned runs with the expected tools and zero tool failures. The deterministic policy produced identical final replies when temperature, top-p, top-k, penalties, output cap, examples, role or instruction detail changed. There was therefore **no measured generation-configuration winner**.
 
-The experiment runner compares persona defaults, prompt conditions, and generation settings. Few-shot examples may improve action formatting, while additional instructions and plans can increase latency and output length. To identify a winner, first reject responses that invent facts or claim failed actions succeeded. Among the remaining responses, compare task usefulness, naturalness, tool success, and cost/latency. Report the model, settings, task set, repeats, and failures along with the result.
+For a course demonstration, I selected **Clue with full system instructions, few-shot task examples and a brief visible plan**. This is a presentation and inspectability choice: full instructions state the boundaries, examples make the action format understandable, and the brief-plan condition added 18 verifiable next-action notes across its two repeats. The extra notes did not improve the final answers in this matrix.
 
-Top-k is implemented and forwarded to the native Gemini configuration: 40 by default versus 20 in a single-factor comparison. A model-type comparison still requires two accessible models and successful calls to both. Google recommends default sampling on Gemini 3; use an accessible Gemini 2.5 model for the sampling study or disclose the Gemini 3 caveat.
+The intended persona defaults remain Clue temperature 0.45/output cap 700, Cipher 0.10/850 and Muse 0.85/1000. Top-p 1 and top-k 40 are held steady; the separate top-k variant uses 20. These controls are validated and their native Gemini forwarding is tested. Their intended effect on model variation remains a hypothesis, and Google recommends default sampling for Gemini 3.
 
 ## 3. How well did the agent reason and use tools?
 
-The implementation makes the action cycle observable. A custom LangGraph node requests a model response; another path parses one JSON action or final answer; the registry validates and executes the action; the observation returns to the model. An explicit step bound prevents an endless loop. A failed tool result remains a failure observation, so the answer can explain or repair the problem.
+The agent completed 238 bounded action cycles and executed 306 local tool calls: 136 searches, 102 estimates, 34 enquiry saves and 34 feedback records. Birthday, corporate and custom-story requests used search -> estimate -> final. Unknown access/venue questions logged feedback and kept the answer unverified. Enquiry confirmations followed successful storage observations and made no email or booking promise.
 
-A demo path such as catalogue search -> estimate -> final answer demonstrates that observations move through the graph. It cannot prove the quality of a real model's reasoning. Live evaluation should inspect whether the chosen tool was appropriate, whether the next action used the observation, and whether the answer stayed within known facts. A valid JSON response alone is not enough.
+The controlled-response tests also demonstrated malformed-action recovery, rejected fabricated contacts, cancellation, session isolation and explicit failures. This provides good evidence for the implemented action/observation pipeline. It does not measure an LLM's internal reasoning or reliability on new requests. Brief-plan notes explain the next action without exposing private chain-of-thought.
 
-The "brief plan" condition is a concise user-facing plan, used as a CoT-style prompt proxy. It does not expose hidden chain-of-thought. Its effect should be evaluated through observable answer and tool quality. The trace displays verifiable actions and observations rather than an invented account of internal thought.
+## 4. Did the instructions block change behavior noticeably? How?
 
-## 4. Did the instructions block change behavior? How?
+The full and compact variants produced the same final replies and tool paths in this run. I cannot attribute a behavioral improvement to the longer prompt because the deterministic model uses its coded policy. What changed was the message content: the full block makes each input, output, grounding, contact, unknown-question and error-handling rule explicit, with a worked protocol example.
 
-The full block separates responsibilities: read inputs, follow the persona, use catalogue tools, ground facts, collect missing fields, obtain customer authorization, log unknowns, handle errors, treat observations as data, and follow the response protocol. A minimal protocol example is included inside the instructions. The compact condition reduces detail while retaining essential boundaries.
+Application validation made the boundaries observable in tests. A fabricated email was rejected before storage; explicit refusal to save prevented an enquiry write; and an error observation could return to the next step. These are enforcement-layer effects, rather than proof that prompt wording alone caused safer behavior.
 
-These instructions create testable expectations. For example, "Please save my enquiry" without a name and email should lead to a clarification; an unavailable venue fact should lead to an honest gap and feedback record. Whether the detailed block improves live adherence is an empirical question. Compare full and compact results on exactly those cases and report both successes and failures.
-
-The zero-shot condition omits solved customer-task demonstrations; it still includes the fixed protocol example used in every condition. Few-shot adds solved action/observation demonstrations. The role experiment moves the persona and experimental instructions between system and user-message positions, while fixed business boundaries stay in a system message. Thus it measures the placement of that block, not removal of all system instructions.
+Zero-shot omitted solved task demonstrations while keeping the common protocol example. Few-shot added two solved tasks. The placement comparison moved the persona and instructions as a unit and retained fixed business facts in the system context. This kept the comparisons well defined.
 
 ## 5. What were the biggest implementation challenges?
 
-**Action reliability.** The model must return a recognizable action, the arguments must match a real schema, and the observation must be returned before requesting another step. Explicit parsing and validation make those failure points visible.
+**Reliable actions:** distinguishing action from final, validating tool names and arguments, returning observations and bounding recovery required explicit graph nodes rather than a prebuilt executor.
 
-**A fair comparison.** Changing persona wording and every generation control at once obscures the cause of a difference. Persona-default comparisons show overall behavior; narrower one-control comparisons help interpret individual settings. Repeats are still needed because live outputs vary.
+**Factual creativity:** Muse needed room for story concepts while prices, availability, accessibility and reservations remained grounded. The reviewed time-travel answer achieved this separation, although its title was overused on unrelated requests.
 
-**Factual creativity.** Muse must be free to invent a story premise without inventing a venue, confirmed date, accessibility capability, or price. The source catalogue and instructions distinguish creative proposals from business facts.
+**Fair comparisons:** persona bundles change wording, task and defaults together. Prompt-only persona arms isolate wording from configuration; single-factor arms isolate each setting. The deterministic outputs demonstrated wiring but could not reveal sampling effects.
 
-**Honest evidence.** A polished demo can look persuasive even when it uses scripted responses. The UI, notebook, and experiment exports retain run mode, and this reflection avoids treating deterministic output as a live LLM finding.
+**Metrics that miss quality:** every tool check passed, yet the oversized birthday reply omitted the exact 6-20 capacity. Reviewing actual replies exposed limitations that a completion percentage would hide.
 
-**Useful persistence.** The local tools save enquiries and feedback without pretending to send messages. Records are useful for a classroom demonstration; they do not provide a production booking or customer-service system.
+**Service access and packaging:** Gemini returned 403 project access denial, so no live model findings were available. The project still provides a working no-cost offline demonstration, executed notebook, test suite, raw evidence and reproducible comparison. Credentials, databases and private account-support records remain outside the submitted repository.
 
-## Add measured findings after the live run
-
-Run the live comparison from the README, then record:
-
-| Evidence to report | Where to find it |
-|---|---|
-| Model, settings, condition, task, repeat, mode | Experiment row and raw trace |
-| Action sequence and successful/failed observations | `raw_traces.json` |
-| Automatic comparison measures | `metrics.csv` and `comparison.md` |
-| Human usefulness, naturalness, and persona-fit judgments | Completed `human_ratings.csv` |
-| Best condition for each task and why | Your synthesis of the preceding evidence |
-| Limitations | Small sample, task coverage, model variation, metric blind spots, and untested deployment conditions |
-
-A defensible conclusion may identify different winners for logistics and creative tasks. If the differences are small or inconsistent, report that uncertainty rather than forcing an overall winner.
-
-## Gemini access status (14 October 2026)
-
-Native Gemini integration is implemented. Generation is blocked by Google project access denial (403); Gemini 2.5 Flash-Lite also rejects new users (404). See [migration and rerun instructions](gemini_migration.md). Saved deterministic comparisons verify mechanics only. Live persona rankings, configuration effects and actual model reflection remain unmeasured.
+The resulting design uses Clue for discovery, Cipher for logistics and Muse for requested story concepts. Future model-quality conclusions require successful generated replies and ratings under the same benchmark.

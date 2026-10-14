@@ -1,0 +1,45 @@
+{
+  "evaluation_mode": "offline deterministic workflow",
+  "scenario_source": "fictional customer benchmark",
+  "reviewer": "assistant",
+  "runs": 238,
+  "unique_cases": 7,
+  "variants": 17,
+  "repeats": 2,
+  "completed": 238,
+  "expected_tools_observed": 238,
+  "tool_errors": 0,
+  "format_or_runtime_errors": 0,
+  "tool_calls": {
+    "record_feedback": 34,
+    "search_experiences": 136,
+    "estimate_event": 102,
+    "record_customer_interest": 34
+  },
+  "visible_plan_events": 18,
+  "reply_changes_from_baseline_by_variant": {
+    "presence_high": 0,
+    "top_p_low": 0,
+    "frequency_high": 0,
+    "top_k_low": 0,
+    "compact_instructions": 0,
+    "temperature_low": 0,
+    "temperature_high": 0,
+    "brief_plan": 0,
+    "short_output": 0,
+    "long_output": 0,
+    "cipher_persona": 7,
+    "baseline": 0,
+    "muse_prompt_only": 7,
+    "muse_persona": 7,
+    "cipher_prompt_only": 7,
+    "in_message": 0,
+    "few_shot": 0
+  },
+  "successful_live_generations": 0,
+  "backend_contract_tests": {
+    "C3": 20,
+    "C4": 29
+  },
+  "qualitative_outputs_reviewed": 21
+}

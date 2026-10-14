@@ -183,3 +183,7 @@ Prepared for the supplied EECE 503P/798S C4 assignment and lecture material. See
 ## Gemini access and remaining evidence (14 October 2026)
 
 Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful live answer or empirical LLM winner is claimed. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.
+
+## Completed no-cost comparison
+
+The 14 October 2026 evaluation reran 238 offline cases and all 49 C3/C4 tests. The [evaluation report](docs/evaluation_report.md) compares actual tool behavior and persona replies; 21 reviewed outputs and their assistant assessment notes are saved in `experiments/offline_review/`. The notebook displays both this report and the completed five-question reflection. Model sampling effects remain hypotheses because no successful Gemini generation was available.

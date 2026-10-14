@@ -25,3 +25,7 @@ The notebook runs locally through IPython in a separate workspace; this does not
 The public Hugging Face Space is the free Static edition. The updated Python/Gradio deployment bundle is prepared and locally validated, but the full backend hosting bonus is pending hosting access. C3's model reflection bonus is implemented and tested with controlled responses; a successful live recording still needs restored Gemini access.
 
 See [Gemini migration and rerun instructions](gemini_migration.md) for status and exact commands. No empirical persona winner or sampled configuration effect is claimed from scripted output or failed generation calls.
+
+## Completed no-cost comparison
+
+The 14 October 2026 evaluation reran 238 offline cases and all 49 C3/C4 tests. The [evaluation report](evaluation_report.md) compares actual tool behavior and persona replies; 21 reviewed outputs and their assistant assessment notes are saved in `experiments/offline_review/`. The notebook displays both this report and the completed five-question reflection. Model sampling effects remain hypotheses because no successful Gemini generation was available.

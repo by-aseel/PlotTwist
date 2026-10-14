@@ -11,3 +11,5 @@
 - Submission ZIPs and notebook bundles exclude `.env`, real credentials, runtime databases, caches and virtual environments.
 
 See each project's `docs/gemini_migration.md` for the remaining Google access action and exact rerun commands.
+
+- The completed C4 evaluation report and five reflection answers use 238 fresh offline results and 21 assistant-reviewed outputs. They are included in the notebook; model-performance predictions remain explicitly identified.
