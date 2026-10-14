@@ -6,3 +6,5 @@
 *.jpeg binary
 *.png binary
 *.zip binary
+# This CSV preserves the actual generated reply whitespace inside quoted fields.
+c4_persona_lab/experiments/local/assistant_ratings.csv whitespace=-blank-at-eol

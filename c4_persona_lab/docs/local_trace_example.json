@@ -1,0 +1,162 @@
+{
+  "run_id": "temperature_high--birthday_fit--r1",
+  "variant": "temperature_high",
+  "factor": "temperature",
+  "case": "birthday_fit",
+  "repeat": 1,
+  "mode": "local",
+  "model": "qwen2.5:3b",
+  "expected_tools_observed": true,
+  "exact_tool_set_match": true,
+  "tool_calls": 2,
+  "tool_errors": 0,
+  "format_or_runtime_errors": 0,
+  "completed": true,
+  "latency_ms": 6346.98,
+  "reply_words": 111,
+  "model_calls": 3,
+  "successful_local_saves": 0,
+  "prompt": "Recommend a birthday mystery for 8 guests with a $300 budget.",
+  "settings": {
+    "persona": "clue",
+    "reasoning": "direct",
+    "examples": "zero_shot",
+    "instruction_role": "system",
+    "instruction_detail": "full",
+    "model": "qwen2.5:3b",
+    "temperature": 0.85,
+    "top_p": 1.0,
+    "top_k": 40,
+    "frequency_penalty": 0.15,
+    "presence_penalty": 0.0,
+    "max_tokens": 700,
+    "generation_seed": 43
+  },
+  "reply": "We found a birthday mystery adventure that fits your group size and budget. Here it is:\n\n**Birthday Mystery Nights**: 8 guests, 2 hours, from $240 per group.\n\nSince this adventure fits your guests, we can go ahead and estimate the price for your group. It would come out to around $30 per guest. \n\nDoes this adventure sound like something your group might enjoy? Would you like to learn more or proceed to book? Please let us know how you would like to proceed, and we can save your details for a potential booking.\n\nWould you like to proceed with booking or do you have any other questions you would like answered?",
+  "route": "search_experiences → estimate_event",
+  "trace": [
+    {
+      "type": "model",
+      "step": 1,
+      "detail": "qwen2.5:3b",
+      "raw_output": "{\"action\": {\"tool\": \"search_experiences\", \"arguments\": {\"guests\": 8, \"query\": \"birthday mystery 8\"}}}",
+      "generation": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-10-14T13:45:22.1858947Z",
+        "done_reason": "stop",
+        "total_duration": 821908800,
+        "load_duration": 3994500,
+        "prompt_eval_count": 1584,
+        "prompt_eval_duration": 227162000,
+        "eval_count": 31,
+        "eval_duration": 579242000,
+        "request_elapsed_ms": 832.35,
+        "generation_seed": 43
+      }
+    },
+    {
+      "type": "action",
+      "step": 1,
+      "tool": "search_experiences",
+      "arguments": {
+        "guests": 8,
+        "query": "birthday mystery 8"
+      },
+      "detail": "search_experiences"
+    },
+    {
+      "type": "observation",
+      "step": 1,
+      "tool": "search_experiences",
+      "result": {
+        "ok": true,
+        "matches": [
+          {
+            "id": "birthday",
+            "name": "Birthday Mystery Nights",
+            "min_guests": 6,
+            "max_guests": 20,
+            "duration_minutes": 120,
+            "starting_price_usd": 240,
+            "description": "A hosted mystery celebration where friends become the suspects, sleuths and stars."
+          }
+        ],
+        "note": "Fictional indicative USD starting prices per group; final scope and quote require the team. This is not a booking or availability check.",
+        "no_match_help": ""
+      },
+      "detail": "{\"ok\": true, \"matches\": [{\"id\": \"birthday\", \"name\": \"Birthday Mystery Nights\", \"min_guests\": 6, \"max_guests\": 20, \"duration_minutes\": 120, \"starting_price_usd\": 240, \"description\": \"A hosted mystery celebration where friends become the suspects, sleuths and stars.\"}], \"note\": \"Fictional indicative USD starting prices per group; final scope and quote require the team. This is not a booking or availability check.\", \"no_match_help\": \"\"}"
+    },
+    {
+      "type": "model",
+      "step": 2,
+      "detail": "qwen2.5:3b",
+      "raw_output": "{\"action\": {\"tool\": \"estimate_event\", \"arguments\": {\"experience_id\": \"birthday\", \"guests\": 8}}}",
+      "generation": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-10-14T13:45:25.0269768Z",
+        "done_reason": "stop",
+        "total_duration": 2817372500,
+        "load_duration": 9705500,
+        "prompt_eval_count": 1746,
+        "prompt_eval_duration": 84723000,
+        "eval_count": 143,
+        "eval_duration": 2693275000,
+        "request_elapsed_ms": 2839.76,
+        "generation_seed": 43
+      }
+    },
+    {
+      "type": "action",
+      "step": 2,
+      "tool": "estimate_event",
+      "arguments": {
+        "experience_id": "birthday",
+        "guests": 8
+      },
+      "detail": "estimate_event"
+    },
+    {
+      "type": "observation",
+      "step": 2,
+      "tool": "estimate_event",
+      "result": {
+        "ok": true,
+        "experience": "Birthday Mystery Nights",
+        "guests": 8,
+        "fits_capacity": true,
+        "capacity": "6-20",
+        "duration_minutes": 120,
+        "starting_price_usd": 240,
+        "indicative_floor_per_guest_usd": 30.0,
+        "note": "Fictional indicative USD starting prices per group; final scope and quote require the team. This is not a booking or availability check."
+      },
+      "detail": "{\"ok\": true, \"experience\": \"Birthday Mystery Nights\", \"guests\": 8, \"fits_capacity\": true, \"capacity\": \"6-20\", \"duration_minutes\": 120, \"starting_price_usd\": 240, \"indicative_floor_per_guest_usd\": 30.0, \"note\": \"Fictional indicative USD starting prices per group; final scope and quote require the team. This is not a booking or availability check.\"}"
+    },
+    {
+      "type": "model",
+      "step": 3,
+      "detail": "qwen2.5:3b",
+      "raw_output": "{\"final\": \"We found a birthday mystery adventure that fits your group size and budget. Here it is:\\n\\n**Birthday Mystery Nights**: 8 guests, 2 hours, from $240 per group.\\n\\nSince this adventure fits your guests, we can go ahead and estimate the price for your group. It would come out to around $30 per guest. \\n\\nDoes this adventure sound like something your group might enjoy? Would you like to learn more or proceed to book? Please let us know how you would like to proceed, and we can save your details for a potential booking.\\n\\nWould you like to proceed with booking or do you have any other questions you would like answered?\"}",
+      "generation": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-10-14T13:45:27.6980355Z",
+        "done_reason": "stop",
+        "total_duration": 2647644700,
+        "load_duration": 6623200,
+        "prompt_eval_count": 1890,
+        "prompt_eval_duration": 82737000,
+        "eval_count": 135,
+        "eval_duration": 2530945000,
+        "request_elapsed_ms": 2669.9,
+        "generation_seed": 43
+      }
+    },
+    {
+      "type": "final",
+      "step": 3,
+      "detail": "We found a birthday mystery adventure that fits your group size and budget. Here it is:\n\n**Birthday Mystery Nights**: 8 guests, 2 hours, from $240 per group.\n\nSince this adventure fits your guests, we can go ahead and estimate the price for your group. It would come out to around $30 per guest. \n\nDoes this adventure sound like something your group might enjoy? Would you like to learn more or proceed to book? Please let us know how you would like to proceed, and we can save your details for a potential booking.\n\nWould you like to proceed with booking or do you have any other questions you would like answered?"
+    }
+  ],
+  "records": [],
+  "rubric": "Fits 8; USD 240 group starting price; 2 hours; indicative quote; useful next question."
+}

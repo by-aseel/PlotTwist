@@ -38,7 +38,7 @@ The detailed videos are narrated, edited walkthroughs of actual offline UI captu
 
 ## Verification
 
-**20 C3 tests and 29 C4 tests passed.** The 10 C3 and 14 C4 offline notebook code cells were executed in order through IPython. The C4 demo report contains **238 deterministic runs**; these test workflow mechanics and do not establish a best LLM configuration.
+**20 C3 tests and 36 C4 tests passed.** The 10 C3 and 14 C4 offline notebook code cells were executed in order through IPython. The C4 demo report contains **238 deterministic runs**; these test workflow mechanics and do not establish a best LLM configuration.
 
 From either installed project folder:
 
@@ -46,7 +46,7 @@ From either installed project folder:
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Real Gemini attempts on 14 October 2026 failed with 403 project access denied; no successful live answers or empirical model comparisons are claimed. Native SDK integration, local tests and notebooks are complete. A free Static Space is now deployed; its source is in `deployment/huggingface-free/`. The Python/Gradio backend is not hosted by that Static demo.
+See [final preparation checks](FINAL_CHECKS.md), [C3 verification](c3_business_assistant/docs/verification.md), and [C4 verification](c4_persona_lab/docs/verification.md) for the scope and limits. Real Gemini attempts on 14 October 2026 failed with 403 project access denied; no successful Gemini answers are claimed; actual free local model comparisons are now included in C4. Native SDK integration, local tests and notebooks are complete. A free Static Space is now deployed; its source is in `deployment/huggingface-free/`. The Python/Gradio backend is not hosted by that Static demo.
 
 ## Business dossiers
 
@@ -60,8 +60,10 @@ The business, starting prices, and example contact details are fictional. Enquir
 
 ## Gemini migration status
 
-Both projects now use the official Google Gen AI SDK. The interactive default is Gemini 3.5 Flash-Lite; the configuration matrix targets accessible Gemini 2.5 models when available. Current Google generation access is denied, so the reflection honestly leaves empirical persona rankings pending. [Migration and exact rerun commands](c4_persona_lab/docs/gemini_migration.md) · [Failed real C3 attempt](c3_business_assistant/docs/live_access_attempt.json) · [Interrupted real C4 comparison](c4_persona_lab/experiments/live-access-check/comparison.md).
+Both projects now use the official Google Gen AI SDK. The interactive default is Gemini 3.5 Flash-Lite; the configuration matrix targets accessible Gemini 2.5 models when available. Current Google generation access is denied. C4 now has actual free local Qwen comparisons and a measured reflection; the native Gemini path remains available when access is restored. [Migration and exact rerun commands](c4_persona_lab/docs/gemini_migration.md) · [Failed real C3 attempt](c3_business_assistant/docs/live_access_attempt.json) · [Interrupted real C4 comparison](c4_persona_lab/experiments/live-access-check/comparison.md).
 
-## Completed offline evaluation
+## Actual free local C4 evaluation
 
-[Read the C4 evaluation report](c4_persona_lab/docs/evaluation_report.md) · [Five reflection answers](c4_persona_lab/docs/reflection.md) · [Reviewed persona outputs](c4_persona_lab/experiments/offline_review/reviewed_outputs.csv). The report uses actual results from 238 offline workflow runs and 49 tests, with a clearly identified assistant review. No paid API is needed to reproduce it; model-quality effects remain unmeasured.
+**252 initial model attempts + 14 parser-validation reruns**, using Qwen2.5 3B and 1.5B through the existing manual LangGraph graph. [Measured report](c4_persona_lab/docs/evaluation_report.md) · [Five reflection answers](c4_persona_lab/docs/reflection.md) · [Actual assistant-reviewed outputs](c4_persona_lab/experiments/local/assistant_ratings.csv) · [Install and run locally](c4_persona_lab/docs/local_models.md).
+
+The study varies personas, prompt style/placement, examples, temperature, top-p, top-k, penalties, token limits and model size. It separates returned replies, tool success and factual quality, and retains failures. The subjective assistant review is clearly labeled. Earlier offline checks and videos remain distinct historical evidence; the free Static Space does not host these local models.

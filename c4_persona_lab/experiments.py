@@ -84,6 +84,8 @@ def write_report(path, records, variants, mode, repeats, seed):
     lines = ["# PlotTwist C4 experiment comparison", "", f"Evidence mode: **{mode.upper()}**. Repeats requested: {repeats}. Shuffle seed: {seed}.", ""]
     if mode == "demo":
         lines += ["**These are deterministic simulator checks, not LLM findings.** The offline policy scripts persona wording and ignores sampling values. Repeated outputs and low latency cannot establish which prompt, persona or generation settings work best on a language model. Run the live command and complete the human ratings before making that claim.", ""]
+    elif mode == "local":
+        lines += ["These rows contain real local model-generated answers and failures from Ollama, running through the same LangGraph ReAct loop. No cloud generation fee or Gemini access is required. Sampling seeds are paired by repetition; API token and duration metadata are retained in model traces. Review responses as well as mechanical metrics before selecting a configuration.", ""]
     else:
         lines += ["These rows contain actual API attempts, including any failures. Configuration comparisons are descriptive; review all raw outputs and fill the human rubric before choosing a winner. Model aliases can change, so use a dated model snapshot for stronger reproducibility.", ""]
     lines += ["## Observed mechanical metrics", "", "| Variant | Runs | Expected tools observed | Completed | Tool errors | Mean words | Mean ms |", "|---|---:|---:|---:|---:|---:|---:|"]
@@ -96,13 +98,19 @@ def write_report(path, records, variants, mode, repeats, seed):
     for variant in variants:
         lines.append(f"| {variant['id']} | {variant['factor']} | {variant['change']} |")
     lines += ["", "## What the course comparisons mean here", "", "- Direct vs brief-plan is a CoT-style prompting comparison using a short, user-facing action rationale. It does not request, expose, or measure private chain-of-thought.", "- Zero-shot means zero solved *task* demonstrations. Both arms keep one greeting/protocol format example because the assignment explicitly requires a worked example inside the instructions. Few-shot adds two complete tool-use demonstrations.", "- System vs in-message moves the same experimental instruction/persona/tool-description block. Fixed business facts and the JSON protocol boundary remain system-level in both arms.", "- The compact-instructions variant isolates the effect of the detailed instruction block while retaining the protocol, factual boundaries and enquiry permission rule.", "- Gemini 2.5 generation controls are explicitly forwarded, including top-k. The UI max_tokens maps to native max_output_tokens. Gemini 3 sampling changes are discouraged by Google; use 2.5 for this coursework matrix if your account has access.", "- An alternate model is optional because access varies. Use `--compare-model gemini-2.5-flash` for an alternate Gemini model comparison if your account has access. Unsupported parameter/model combinations remain errors in the logs.", "", "## Human rubric and reflection", "", "Use `human_ratings.csv`. Blind the variant labels when possible and rate each criterion from 1 (poor) to 5 (excellent). Review the case-specific rubric, the reply and observations together.", "", "1. Factual grounding: correct catalogue facts; no invented prices, availability or promises.", "2. Task usefulness: the recommendation answers the actual request and identifies missing inputs.", "3. Tool judgment: appropriate selection, sequence, validation and recovery.", "4. Persona fit: vocabulary, structure and task emphasis match Clue, Cipher or Muse.", "5. Naturalness: clear, respectful wording with appropriate length.", "6. Creativity: coherent original story ideas where requested, marked as concepts.", "", "Suggested decision rule: first reject variants with serious factual or privacy failures. Compare mean usefulness and naturalness on the same cases, then use latency and verbosity as secondary criteria. Report per-case variation and sample size; do not treat a small mean difference as proof.", "", "Reflection prompts: Which persona was most useful for which task? Which single-axis prompt/configuration choice helped? Did tool observations change the next action? How did the full instruction block differ from compact instructions? What failures or implementation challenges remain?", "", "**Current conclusion:** " + ("The saved demo run establishes a working experiment harness and action-observation-final pipeline. A best LLM persona/configuration has not been established because no live LLM evidence was collected in this run." if mode == "demo" else "Inspect failures and complete human ratings before stating which configuration worked best."), ""]
+    if mode == "local":
+        lines = [
+            "- Local generation forwards all six sampling/output controls to Ollama. max_tokens maps to num_predict; native function schemas are supplied in both prompt-placement arms." if line.startswith("- Gemini 2.5 generation") else
+            "- The alternate model changes only model from the same baseline. Separate batch files preserve initial results and post-fix validation; consult docs/evaluation_report.md for the combined findings." if line.startswith("- An alternate model is optional") else line
+            for line in lines]
     path.write_text("\n".join(lines), encoding="utf-8")
 
-def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="gemini-2.5-flash-lite", compare_model=None, variant_ids=None, seed=42, resume=False):
-    if mode not in ("demo", "live"):
-        raise ValueError("Experiments require explicit demo or live mode")
+def run_experiments(mode="demo", repeats=2, output="experiments/demo", model=None, compare_model=None, variant_ids=None, seed=42, resume=False):
+    if mode not in ("demo", "live", "local"):
+        raise ValueError("Experiments require explicit demo, live or local mode")
     if not isinstance(repeats, int) or repeats < 1:
         raise ValueError("repeats must be a positive integer")
+    model = model or ("qwen2.5:3b" if mode == "local" else "gemini-2.5-flash-lite")
     variants = experiment_variants(model, compare_model)
     if variant_ids:
         wanted = set(variant_ids)
@@ -125,7 +133,7 @@ def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="ge
         raw = previous["runs"]
         for saved in raw:
             matching = next((v for v in variants if v["id"] == saved["variant"]), None)
-            if not matching or saved["settings"] != normalize_settings(matching["settings"]):
+            if not matching or saved["settings"] != {**normalize_settings(matching["settings"]), **({"generation_seed": seed + saved["repeat"]} if mode == "local" else {})}:
                 raise ValueError("Resume settings differ from checkpoint")
         fields = ["run_id", "variant", "factor", "case", "repeat", "mode", "model", "expected_tools_observed", "exact_tool_set_match", "tool_calls", "tool_errors", "format_or_runtime_errors", "completed", "latency_ms", "reply_words", "model_calls", "successful_local_saves"]
         records = [{k: row[k] for k in fields} for row in raw]
@@ -137,18 +145,21 @@ def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="ge
             continue
         agent.store.clear_session(run_id)
         settings = normalize_settings(variant["settings"])
+        if mode == "local":
+            settings["generation_seed"] = seed + repeat
         started = time.perf_counter()
         result = agent.respond(case["prompt"], session_id=run_id, settings=settings)
         metric = evaluate_result(result, case, (time.perf_counter() - started) * 1000)
-        row = {"run_id": run_id, "variant": variant["id"], "factor": variant["factor"], "case": case["id"], "repeat": repeat, "mode": mode, "model": settings["model"] if mode == "live" else "deterministic-demo", **metric}
+        row = {"run_id": run_id, "variant": variant["id"], "factor": variant["factor"], "case": case["id"], "repeat": repeat, "mode": mode, "model": settings["model"] if mode != "demo" else "deterministic-demo", **metric}
         records.append(row)
         raw.append({**row, "prompt": case["prompt"], "settings": settings, "reply": result["reply"], "route": result["route"], "trace": result["trace"], "records": agent.store.records(run_id), "rubric": case["rubric"]})
-        if mode == "live":
+        if mode != "demo":
             print(f"[{index}/{len(jobs)}] {run_id}: {result['route'].replace(chr(8594), '->')}", flush=True)
         # Save a checkpoint after every attempt so paid live runs survive interruption.
         (destination / "raw_traces.json").write_text(json.dumps({"metadata": {"mode": mode, "started_at_utc": started_at, "repeats": repeats, "seed": seed, "planned_runs": len(jobs), "completed_runs": len(raw), "demo_is_not_llm_evidence": mode == "demo"}, "runs": raw}, indent=2, ensure_ascii=False), encoding="utf-8")
-        if mode == "live" and result["route"] == "error" and any(x.get("api_code") in (403, 429, 401, 404) for x in result["trace"]):
-            print("Stopped on account/model/quota error; checkpoint saved. Resolve access before resuming.", flush=True)
+        if result["route"] == "error" and (mode == "local" or (mode == "live" and any(x.get("api_code") in (403, 429, 401, 404) for x in result["trace"]))):
+            issue = "local runtime/model" if mode == "local" else "account/model/quota"
+            print(f"Stopped on {issue} error; checkpoint saved. Resolve the error before resuming.", flush=True)
             break
     with (destination / "metrics.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(records[0]))
@@ -168,10 +179,10 @@ def run_experiments(mode="demo", repeats=2, output="experiments/demo", model="ge
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=("demo", "live"), default="demo")
+    parser.add_argument("--mode", choices=("demo", "live", "local"), default="demo")
     parser.add_argument("--repeats", type=int, default=2)
     parser.add_argument("--output", default=None)
-    parser.add_argument("--model", default="gemini-2.5-flash-lite")
+    parser.add_argument("--model", default=None, help="Defaults to qwen2.5:3b for local mode; Gemini 2.5 Flash-Lite otherwise")
     parser.add_argument("--compare-model", default=None)
     parser.add_argument("--variants", default=None, help="Comma-separated variant IDs; omit for the full matrix")
     parser.add_argument("--resume", action="store_true", help="Skip existing attempts in a matching checkpoint")

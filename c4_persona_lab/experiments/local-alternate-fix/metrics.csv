@@ -1,0 +1,15 @@
+run_id,variant,factor,case,repeat,mode,model,expected_tools_observed,exact_tool_set_match,tool_calls,tool_errors,format_or_runtime_errors,completed,latency_ms,reply_words,model_calls,successful_local_saves
+alternate_model--corporate_budget--r2,alternate_model,model,corporate_budget,2,local,qwen2.5:1.5b,False,False,0,0,0,True,1074.18,22,1,0
+alternate_model--oversized_group--r2,alternate_model,model,oversized_group,2,local,qwen2.5:1.5b,False,False,0,0,0,True,745.58,43,1,0
+alternate_model--birthday_fit--r2,alternate_model,model,birthday_fit,2,local,qwen2.5:1.5b,False,False,0,0,0,True,829.86,44,1,0
+alternate_model--team_facts--r1,alternate_model,model,team_facts,1,local,qwen2.5:1.5b,True,True,0,0,0,True,507.31,25,1,0
+alternate_model--team_facts--r2,alternate_model,model,team_facts,2,local,qwen2.5:1.5b,True,True,0,0,0,True,934.99,54,1,0
+alternate_model--story_concept--r2,alternate_model,model,story_concept,2,local,qwen2.5:1.5b,False,False,0,0,0,True,3340.48,216,1,0
+alternate_model--oversized_group--r1,alternate_model,model,oversized_group,1,local,qwen2.5:1.5b,False,False,0,0,0,True,577.17,31,1,0
+alternate_model--unknown_access--r1,alternate_model,model,unknown_access,1,local,qwen2.5:1.5b,False,False,0,0,0,True,702.38,39,1,0
+alternate_model--unknown_access--r2,alternate_model,model,unknown_access,2,local,qwen2.5:1.5b,False,False,0,0,0,True,602.31,33,1,0
+alternate_model--save_enquiry--r1,alternate_model,model,save_enquiry,1,local,qwen2.5:1.5b,True,True,1,0,0,True,1463.83,15,2,1
+alternate_model--story_concept--r1,alternate_model,model,story_concept,1,local,qwen2.5:1.5b,False,False,1,0,6,False,46965.94,29,6,0
+alternate_model--birthday_fit--r1,alternate_model,model,birthday_fit,1,local,qwen2.5:1.5b,False,False,0,0,0,True,4158.82,246,1,0
+alternate_model--corporate_budget--r1,alternate_model,model,corporate_budget,1,local,qwen2.5:1.5b,False,False,0,0,0,True,1070.07,62,1,0
+alternate_model--save_enquiry--r2,alternate_model,model,save_enquiry,2,local,qwen2.5:1.5b,False,False,0,0,0,True,556.78,26,1,0

@@ -1,15 +1,12 @@
 # Final delivery checks / 14 October 2026
 
-- Native Gemini migration: C3 function calls and reflection; C4 custom LangGraph JSON action loop.
-- C3: 20 behavior/transport tests passed; 10 offline notebook cells executed.
-- C4: 29 behavior/transport tests passed; 14 offline notebook cells executed.
-- C4 matrix: 238 deterministic checks, 17 variants × 7 cases × 2 repeats; all expected tools observed, all completed, zero tool errors. This is workflow evidence only.
-- Native SDK tests cover settings, response IDs, signatures, truncation and safe errors. Dependency compatibility check passed.
-- Real Gemini generation attempts failed with project access denial. The legacy 2.5 Flash-Lite model rejects new users. Logs and an interrupted live checkpoint are included; no successful live comparison or best model claim is made.
-- Gradio apps and updated C3 Space package construct locally. Free Static Space exists; full Python backend hosting remains pending.
-- Earlier UI captures, PDFs and narrated videos remain included, with a migration scope note identifying archived OpenAI narration.
-- Submission ZIPs and notebook bundles exclude `.env`, real credentials, runtime databases, caches and virtual environments.
+- C3: 20 automated tests passed; 10 offline notebook cells executed. Native Gemini integration and reflection remain included; Google generation is denied.
+- C4: 36 automated tests passed; 14 notebook cells executed; custom manual LangGraph ReAct implementation retained.
+- Actual local C4 study: 252 initial Qwen2.5 3B/1.5B attempts across 18 configurations, seven cases and two paired seeds. Another 14 actual runs validate the printed-action parser correction.
+- Actual evidence includes replies, failed attempts, tool observations, native token/timing metadata, model digests, comparison tables and five measured reflection answers. A 21-output assistant review is explicitly distinguished from independent human scoring.
+- Reply termination, expected tools, rejected tool calls, successful local saves and factual quality are separate measures. The report preserves hallucinations and does not promise full marks or autonomous reliability.
+- Earlier 238 deterministic checks and archived offline videos remain labeled as workflow demonstrations.
+- Real local Gradio callbacks are exercised; the free Static Space remains a browser preview. Full Python backend hosting is still account-blocked.
+- Notebooks and ZIPs are checked for credentials, execution errors and integrity. Real .env files, databases, caches, runtime binaries and model weights are excluded from submission and Git.
 
-See each project's `docs/gemini_migration.md` for the remaining Google access action and exact rerun commands.
-
-- The completed C4 evaluation report and five reflection answers use 238 fresh offline results and 21 assistant-reviewed outputs. They are included in the notebook; model-performance predictions remain explicitly identified.
+Read the [C4 measured report](c4_persona_lab/docs/evaluation_report.md), [local setup](c4_persona_lab/docs/local_models.md), and each project's verification notes.

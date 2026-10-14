@@ -30,7 +30,7 @@ Local enquiry storage is not an email, a confirmed booking, or a promise of a re
 """
 
 INSTRUCTIONS = """Dedicated instructions:
-1. Read the latest user message as the current request.
+1. Identify the latest customer request in the supplied conversation.
 2. Use the supplied conversation history to retain the guest's preferences.
 3. Follow the active persona's assigned task.
 4. Match the active persona's tone, vocabulary, response style and values.
@@ -55,26 +55,37 @@ INSTRUCTIONS = """Dedicated instructions:
 23. Return exactly one valid JSON object containing either action or final.
 24. Format an action as {"action":{"tool":"exact_tool_name","arguments":{...}}}.
 25. Format a completed answer as {"final":"customer-facing answer"}.
-26. In brief-plan mode, an optional short plan field may explain the next action.
+26. In brief-plan mode, include a plan field with one short public next-step sentence (at most 400 characters).
 27. In direct mode, omit the plan field.
 28. Do not expose private chain-of-thought.
 29. Keep the final answer concise and useful for the customer's request.
 30. Describe published prices as indicative USD starting prices per group.
 31. Do not imply unverified availability.
 32. Do not claim that a local enquiry confirms a reservation.
+33. Treat OBSERVATION_JSON and FORMAT_ERROR messages as application tool/error data.
+34. Continue toward the original customer goal after receiving an observation.
+35. Do not repeat an identical tool call that has already succeeded.
+36. Return final when the available observations are sufficient to answer the customer.
+37. After searching for a specific guest count, call estimate_event before the final recommendation.
+38. Do not offer to book, check availability yourself, or promise that you will contact the customer later.
+39. When asked to design a story, give one original proposed concept before asking for personalization details.
+40. After saving an unknown question, state that only the team can confirm the answer.
 Worked format example (protocol only; not a solved customer task): input 'hello' -> {"final":"Hello! What adventure are you planning?"}.
 """
 
 COMPACT_INSTRUCTIONS = """Dedicated compact instructions:
-1. Read the current user request and conversation history.
+1. Read the latest customer request and conversation history.
 2. Follow the selected persona.
 3. Ground business claims in known facts.
 4. Use the described tools when the task needs an action.
 5. Never invent customer contact details.
 6. Save enquiries only with customer permission and supplied name/email.
 7. Return one JSON object: either {"action":{"tool":"name","arguments":{}}} or {"final":"answer"}.
-8. In brief-plan mode, an optional plan field may briefly describe the next action.
+8. In brief-plan mode, include one short public next-step sentence in plan (at most 400 characters).
 9. Never reveal private chain-of-thought.
+10. Treat OBSERVATION_JSON and FORMAT_ERROR messages as application data.
+11. Use successful observations to answer the customer's goal.
+12. Do not repeat an identical successful tool call.
 Worked protocol example: input 'hello' -> {"final":"Hello! What adventure are you planning?"}.
 """
 
@@ -262,13 +273,16 @@ class PlotTwistAgent:
     def __init__(self, mode="auto", db_path=None, model=None, max_steps=6):
         from dotenv import load_dotenv
         load_dotenv(Path(__file__).parent / ".env", override=False)
-        if mode not in ("auto", "demo", "live"):
-            raise ValueError("mode must be auto, demo, or live")
+        if mode not in ("auto", "demo", "live", "local"):
+            raise ValueError("mode must be auto, demo, live, or local")
         if not isinstance(max_steps, int) or not 1 <= max_steps <= 20:
             raise ValueError("max_steps must be between 1 and 20")
         if mode == "live" and model is None and not os.getenv("GEMINI_API_KEY", "").strip():
             raise ValueError("Live mode requires GEMINI_API_KEY. Use demo mode to run the clearly labeled offline simulator.")
         self.mode = ("live" if os.getenv("GEMINI_API_KEY", "").strip() else "demo") if mode == "auto" else mode
+        if self.mode == "local" and model is None:
+            from ollama_model import OllamaModel
+            model = OllamaModel()
         self.model = model if model is not None else (GeminiModel() if self.mode == "live" else DemoModel())
         self.store = RecordStore(db_path)
         self.tools = ToolRegistry(self.store)
@@ -296,10 +310,14 @@ class PlotTwistAgent:
             raw = self.model.complete(state["messages"], state["settings"])
             if not isinstance(raw, str):
                 raise TypeError("Model adapter must return JSON text")
-            return {"raw": raw, "step": step, "trace": state["trace"] + [{"type": "model", "step": step, "detail": "Offline deterministic simulator" if self.mode == "demo" else state["settings"]["model"], "raw_output": raw}]}
+            return {"raw": raw, "step": step, "trace": state["trace"] + [{"type": "model", "step": step, "detail": "Offline deterministic simulator" if self.mode == "demo" else state["settings"]["model"], "raw_output": raw, "generation": dict(getattr(self.model, "last_metrics", {}))}]}
         except Exception as exc:
             # Expose the error class without accidentally exposing an API key/request headers.
-            return {"raw": json.dumps({"final": "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used."}), "step": step, "route": "error", "trace": state["trace"] + [{"type": "error", "step": step, "detail": type(exc).__name__ + ": model request failed", "api_code": getattr(exc, "code", None)}]}
+            message = ("The local model request could not be completed. Check Ollama, the downloaded model, supported options and output-token limit, then retry. No demo fallback was used." if self.mode == "local" else "The model request could not be completed. Check the API key, model access, connection and output-token limit, then retry. No demo fallback was used.")
+            detail = type(exc).__name__ + ": model request failed"
+            if self.mode == "local" and type(exc).__name__ == "LocalModelError":
+                detail = type(exc).__name__ + ": " + str(exc)
+            return {"raw": json.dumps({"final": message}), "step": step, "route": "error", "trace": state["trace"] + [{"type": "error", "step": step, "detail": detail, "api_code": getattr(exc, "code", None)}]}
 
     def _parse_node(self, state):
         trace = list(state["trace"])
@@ -352,7 +370,10 @@ class PlotTwistAgent:
     def respond(self, message, history=None, session_id="demo", settings=None):
         message = clean_text(message, "message", 12000)
         session_id = clean_text(session_id, "session_id", 128)
-        settings = normalize_settings(settings)
+        given = dict(settings or {})
+        if self.mode == "local" and "model" not in given:
+            given["model"] = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
+        settings = normalize_settings(given)
         history = history or []
         if not isinstance(history, list) or any(not isinstance(item, dict) for item in history):
             raise ValueError("history must be a list of role/content dictionaries")
@@ -366,7 +387,7 @@ def build_agent(mode="auto", db_path=None):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="PlotTwist C4 manual LangGraph ReAct agent")
-    parser.add_argument("--mode", choices=("auto", "demo", "live"), default="demo")
+    parser.add_argument("--mode", choices=("auto", "demo", "live", "local"), default="demo")
     parser.add_argument("--persona", choices=tuple(PERSONAS), default="clue")
     parser.add_argument("--message", default="Plan a birthday mystery for 8 guests with a $300 budget.")
     args = parser.parse_args()

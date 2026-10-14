@@ -1,0 +1,91 @@
+run_id,case,variant,reviewer,factual_grounding_1_5,task_usefulness_1_5,tool_judgment_1_5,persona_fit_1_5,naturalness_1_5,creativity_1_5,serious_failure,notes,reply
+cipher_persona--oversized_group--r1,oversized_group,cipher_persona,Codex assistant; not independent human review,4,3,4,4,3,,False,No false fit; offers Custom Story Adventures; exact birthday capacity is missing.,"I couldn't find any matches for 90 guests interested in Birthday Mystery Nights. This is a fictional catalogue, and the indicative starting prices per group are USD 240. For a specific group size, a final quote and availability would need to be confirmed by the team. Would you like to proceed with a different group size or ask the team for a Custom Story Adventures quote?
+
+If you decide to proceed, please let me know if you have any preferences or details for the team to consider."
+muse_persona--save_enquiry--r1,save_enquiry,muse_persona,Codex assistant; not independent human review,4,1,2,2,3,,False,Rejects an empty-name write and asks again; no false save acknowledgement.,It seems there was an issue saving your contact details. Please provide a name so I can save your enquiry properly. Your email is aseel@example.com.
+baseline--oversized_group--r1,oversized_group,baseline,Codex assistant; not independent human review,4,3,4,4,4,,False,Rejects the 90-person standard match and offers custom scoping; omits the precise 6-20 capacity.,We don't have a specific match for 90 guests for Birthday Mystery Nights in our catalogue. Let's see if we can find something closer to that size or let the team create a custom adventure for you. Would you like to proceed with a smaller group size or request a quote for a Custom Story Adventures event?
+cipher_persona--team_facts--r1,team_facts,cipher_persona,Codex assistant; not independent human review,5,4,3,3,3,,False,Correct four roles; unnecessary search and long corporate-package digression.,"On our team, we have Aseel who directs the stories, Noah who designs the puzzles, Jiso who produces the experiences, and Felix who leads the guest experience. Our team members work together to create unique and engaging events for our customers. For example, we offer Corporate Missions, which is a shared mission built around communication, puzzle solving, and team participation. This event is designed for 10 to 60 guests and lasts for 2.5 hours. The starting price for this event is USD 650 per group. However, the final quote and availability need to be confirmed by our team. Would you like to know more about this event?"
+cipher_persona--corporate_budget--r1,corporate_budget,cipher_persona,Codex assistant; not independent human review,4,2,3,3,3,,False,Correct USD 650 and capacity; does not explicitly tell customer that USD 500 is insufficient.,"We've looked into a corporate mission for 24 colleagues. The Corporate Missions experience fits your group size of 24. The indicative starting price for this group is $650. However, the final quote and availability need to be confirmed by the team. Would you like to proceed with this estimate or would you like to explore other options?"
+muse_persona--oversized_group--r1,oversized_group,muse_persona,Codex assistant; not independent human review,2,2,4,3,2,,True,Rejects standard match but suggests indicative pricing for 90 and an unrelated corporate theme.,"For 90 guests, Birthday Mystery Nights are not available in the current catalogue. We can only provide indicative USD starting prices of USD 240 per group. For your event, a quote from the team is required. Would you like to proceed with this information or request a Custom Story Adventures package which offers more flexibility?
+
+Would you prefer to proceed and I can give you indicative pricing for this group size? If so, here’s a proposed concept: a corporate-themed mystery night where guests solve puzzles related to company history or achievements. How does that sound?"
+muse_persona--birthday_fit--r1,birthday_fit,muse_persona,Codex assistant; not independent human review,2,2,3,2,2,,True,Calls the USD 30 starting-price share a required contribution per night; lacks clear indicative group framing.,"I found a birthday mystery adventure that fits your group size. It’s called Birthday Mystery Nights, where friends become suspects, sleuths, and stars. Each of your guests would need to contribute at least $30 per night to make the experience happen.
+
+Would you like to proceed with this birthday mystery night for 8 guests, or are you interested in something different? 
+
+Would you like more details on the birthday mystery night, or a different group size and cost?"
+cipher_persona--story_concept--r1,story_concept,cipher_persona,Codex assistant; not independent human review,4,2,1,3,4,1,False,Asks useful time-period/device questions but creates no concept and logs feedback rather than searching.,"I've noted your request. To help create a custom story adventure, could you please provide more details on the time period and the specific time travel device or method the guests will encounter? This will help us design a more tailored experience."
+cipher_persona--unknown_access--r1,unknown_access,cipher_persona,Codex assistant; not independent human review,4,1,1,2,3,,False,Lists unrelated catalogue packages instead of addressing access or logging the question.,"Based on our catalogue, we offer several mystery-adventure experiences. Here are some options:
+
+- **Birthday Mystery Nights**: For 6-20 guests, it's a 2-hour mystery celebration where friends take on roles as suspects, sleuths, and stars.
+- **City Quests**: Ideal for 2-12 guests, it's a 90-minute exploratory adventure through the city with collaborative clues and playful discoveries.
+- **Corporate Missions**: Perfect for 10-60 guests, it's a 2.5-hour mission-based experience focused on communication, puzzle-solving, and team participation.
+- **Custom Story Adventures**: This is a bespoke experience designed around your specific group. The scope, capacity, duration, and price need to be quoted by the team.
+
+Would you like to know more about any of these options, or do you have a specific group size in mind?"
+cipher_persona--birthday_fit--r1,birthday_fit,cipher_persona,Codex assistant; not independent human review,5,3,3,4,2,,False,Clear numeric package facts; repeats proceed question and defers guest estimate.,"We found a suitable birthday mystery experience for your group. Here it is:
+
+- **Experience Name:** Birthday Mystery Nights
+- **Guest Capacity:** 6-20 guests
+- **Duration:** 2 hours
+- **Starting Price:** $240 per group
+
+This is a fictional indicative USD starting price per group. The final scope and quote require the team. 
+
+Would you like to proceed with this recommendation or explore other options? If you decide to go ahead, we can check the price for your group size. 
+
+If you need more information or have any preferences, please let me know. 
+
+Would you like to proceed with this recommendation?"
+cipher_persona--save_enquiry--r1,save_enquiry,cipher_persona,Codex assistant; not independent human review,4,1,2,3,3,,False,Empty name causes rejected save; exact name was already in the customer message.,It seems there was an issue with your name. Could you please provide your name so I can save your enquiry for a birthday mystery for 10 guests?
+baseline--birthday_fit--r1,birthday_fit,baseline,Codex assistant; not independent human review,5,4,3,4,3,,False,"Correct price, count and duration; one search without the requested estimate; repeated proceed questions.","We found a suitable birthday mystery experience for you! Here's what it includes:
+- **Name:** Birthday Mystery Nights
+- **Guests:** 8
+- **Duration:** 2 hours (120 minutes)
+- **Price:** $240 per group (indicative starting price)
+
+Would you like to proceed with this experience, or would you like to explore other options? 
+
+If you decide to move forward, I'll help you check the details and make a final decision. Let me know your preference."
+baseline--unknown_access--r1,unknown_access,baseline,Codex assistant; not independent human review,1,1,1,2,3,,True,Invents wheelchair access and does not record the unanswered question.,"We have a few options that include wheelchair access. Here are some suggestions:
+
+1. **Birthday Mystery Nights**: Friends celebrate birthdays with a mystery night where they become suspects, sleuths, and stars. It's suitable for 6-20 guests and lasts for 2 hours.
+2. **City Quests**: Participants explore the city with collaborative clues and playful discoveries. This activity is great for 2-12 guests and takes about 90 minutes.
+3. **Custom Story Adventures**: This is a bespoke story tailored to your group's needs. The scope, capacity, duration, and price need to be quoted by the team.
+
+Which one sounds like a good fit for your next Friday? Let me know if you need more details or help with a specific option."
+muse_persona--corporate_budget--r1,corporate_budget,muse_persona,Codex assistant; not independent human review,2,1,1,2,2,,True,Demands contact details instead of evaluating budget; suggests sending updates/confirmation.,"It seems we need to save your contact details to proceed. Please provide an email address so we can follow up.
+
+Would you like to proceed with the Corporate Missions package at USD $650 per group for 24 guests? We will need your email to save this interest and send any updates or confirmation.
+
+If you're ready to proceed, you can give me your email address now."
+baseline--save_enquiry--r1,save_enquiry,baseline,Codex assistant; not independent human review,4,1,2,3,3,,False,Model passed an empty name; validator rejected the write; asks again despite supplied Aseel.,It seems there was a small issue with your name. Could you please provide your full name so I can save your details?
+baseline--team_facts--r1,team_facts,baseline,Codex assistant; not independent human review,4,5,5,4,4,,False,Correct friendly role paraphrases for all four names; no tool needed.,"On my team, we have Aseel who helps create the mystery stories, Noah who designs the puzzles, Jiso who makes sure everything runs smoothly, and Felix who makes sure our guests have a great time. Each of us plays a different but important role in making PlotTwist Experiences the best it can be!"
+muse_persona--story_concept--r1,story_concept,muse_persona,Codex assistant; not independent human review,4,1,3,1,2,1,False,Lists generic packages and asks more questions; produces no time-travel story concept.,"I found some options that might interest your group of 14 guests who love time travel. Here are a couple of them:
+
+1. **Birthday Mystery Nights**: This is perfect for a hosted mystery celebration where friends can don multiple hats—being suspects, sleuths, and stars.
+   - Price: USD 240 per group
+   - Duration: 2 hours (120 minutes)
+
+2. **Corporate Missions**: These are shared missions built around communication, puzzle solving, and team participation. 
+
+Would you like to explore one of these options further or would you prefer a custom story adventure? If so, we will need some more details about your group's interests and preferences to design a bespoke experience.
+
+Are you interested in knowing more about one of these options or do you have any other questions?"
+baseline--story_concept--r1,story_concept,baseline,Codex assistant; not independent human review,3,4,3,4,4,3,False,Offers a coherent time-traveller mystery premise; omits explicit quote-only scope and estimate.,"We found some options for your group size. How about a custom story adventure for 14 guests who love time travel? This adventure is designed around your interests and preferences, making it unique and tailored to your group. Would you like to proceed with this concept, or do you have any specific ideas for the story?
+
+If you need help coming up with a concept, here's one: ""Imagine your group as time travelers from different eras, each with their own unique skills and knowledge. They must solve a mystery that threatens to alter the course of history. Can they work together to uncover the truth and prevent a catastrophic event?"""
+baseline--corporate_budget--r1,corporate_budget,baseline,Codex assistant; not independent human review,1,1,3,3,3,,True,Incorrectly says USD 650 fits a USD 500 budget and offers to finalize a booking.,"We found a Corporate Missions experience that fits your group size. It's designed for 10-60 guests and lasts 2.5 hours. The starting price is USD 650 per group. This fits within your budget of USD 500. 
+
+Would you like to proceed with this corporate mission or do you need more details? If you decide to move forward, we can check if the price fits your budget and finalize the booking.
+Would you like to continue with the Corporate Missions for 24 guests, or do you need more information?"
+muse_persona--unknown_access--r1,unknown_access,muse_persona,Codex assistant; not independent human review,1,1,1,1,2,,True,Invents wheelchair access and next-Friday availability; shifts to lead collection.,"We have a package for Birthday Mystery Nights that includes wheelchair access. This is for next Friday. Would you like to proceed with this option? The starting price is $240 per group.
+
+Could you please provide your email address and a preferred name so we can save this as an enquiry? This information helps us keep track of customer preferences, and it also ensures we respond promptly when confirming details for the event. 
+
+To save an enquiry without sending mail or making any booking, I can use the function `record_customer_interest`. Would you like to proceed with this? Please provide your email address and a name.
+
+Would you like to save this local enquiry for reference?"
+muse_persona--team_facts--r1,team_facts,muse_persona,Codex assistant; not independent human review,3,3,3,2,3,,False,Names all four roles but invents package-specific staff assignments and a latest-offer framing; long unrelated package pitch.,"On our team, we have Aseel who directs the stories for our birthday mystery nights, Noah who designs puzzles for our city quests, Jiso who produces the overall experience, and Felix who ensures guests have a great time by leading their experience. Our latest offer is the Corporate Missions package which includes all these aspects in a shared mission theme designed to work on communication and puzzle-solving as a team. It's suitable for groups from 10 to 60 people and lasts for about 2.5 hours. Each group starts at a USD 650 price, but the final quote and availability need to be confirmed by the team.
+
+Have any specific questions about this package? Would you like more details or ideas for another type of event we could recommend?"

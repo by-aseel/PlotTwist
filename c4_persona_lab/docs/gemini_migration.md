@@ -24,7 +24,7 @@ The interval is request pacing, not a claim about your quota. Check actual limit
 
 ## Live attempts and remaining work
 
-On 14 October 2026 model listing succeeded, but generation did not: Gemini 2.5 Flash-Lite returned 404 (unavailable to new users); the replacement Gemini 3.5 Flash-Lite and other tested Gemini 3 models returned 403 (project denied access). There is no successful live comparison evidence. Resolve the denial in Google AI Studio / Google support before further generation attempts. Waiting for quota reset does not fix a 403 access denial.
+On 14 October 2026 model listing succeeded, but generation did not: Gemini 2.5 Flash-Lite returned 404 (unavailable to new users); the replacement Gemini 3.5 Flash-Lite and other tested Gemini 3 models returned 403 (project denied access). There is no successful Gemini comparison evidence. C4 now includes actual free local Qwen comparisons; see `local_models.md` and `evaluation_report.md`. Resolve the denial in Google AI Studio / Google support before further generation attempts. Waiting for quota reset does not fix a 403 access denial.
 
 After access is restored:
 

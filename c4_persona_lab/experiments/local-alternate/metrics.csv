@@ -1,0 +1,15 @@
+run_id,variant,factor,case,repeat,mode,model,expected_tools_observed,exact_tool_set_match,tool_calls,tool_errors,format_or_runtime_errors,completed,latency_ms,reply_words,model_calls,successful_local_saves
+alternate_model--corporate_budget--r2,alternate_model,model,corporate_budget,2,local,qwen2.5:1.5b,False,False,0,0,0,True,11776.85,21,1,0
+alternate_model--oversized_group--r2,alternate_model,model,oversized_group,2,local,qwen2.5:1.5b,False,False,0,0,0,True,736.07,43,1,0
+alternate_model--birthday_fit--r2,alternate_model,model,birthday_fit,2,local,qwen2.5:1.5b,False,False,0,0,0,True,804.79,44,1,0
+alternate_model--team_facts--r1,alternate_model,model,team_facts,1,local,qwen2.5:1.5b,True,True,0,0,0,True,496.56,25,1,0
+alternate_model--team_facts--r2,alternate_model,model,team_facts,2,local,qwen2.5:1.5b,True,True,0,0,0,True,967.13,54,1,0
+alternate_model--story_concept--r2,alternate_model,model,story_concept,2,local,qwen2.5:1.5b,False,False,0,0,0,True,3330.81,216,1,0
+alternate_model--oversized_group--r1,alternate_model,model,oversized_group,1,local,qwen2.5:1.5b,False,False,0,0,0,True,590.29,31,1,0
+alternate_model--unknown_access--r1,alternate_model,model,unknown_access,1,local,qwen2.5:1.5b,False,False,0,0,0,True,667.48,39,1,0
+alternate_model--unknown_access--r2,alternate_model,model,unknown_access,2,local,qwen2.5:1.5b,False,False,0,0,0,True,570.53,33,1,0
+alternate_model--save_enquiry--r1,alternate_model,model,save_enquiry,1,local,qwen2.5:1.5b,False,False,0,0,0,True,1034.75,35,1,0
+alternate_model--story_concept--r1,alternate_model,model,story_concept,1,local,qwen2.5:1.5b,False,False,1,0,6,False,44621.94,29,6,0
+alternate_model--birthday_fit--r1,alternate_model,model,birthday_fit,1,local,qwen2.5:1.5b,False,False,0,0,0,True,4241.04,246,1,0
+alternate_model--corporate_budget--r1,alternate_model,model,corporate_budget,1,local,qwen2.5:1.5b,False,False,0,0,0,True,1039.97,62,1,0
+alternate_model--save_enquiry--r2,alternate_model,model,save_enquiry,2,local,qwen2.5:1.5b,False,False,0,0,0,True,561.18,26,1,0

@@ -28,6 +28,8 @@ The 8:31 video covers the working features, implementation, setup, and checks. I
 
 ## Run locally
 
+For **actual model generation without a paid API**, install Ollama, run `ollama pull qwen2.5:3b`, then launch `python app.py --mode local`. Set `OLLAMA_MODEL=qwen2.5:3b` in your private `.env`. The existing manual LangGraph loop executes all tools. [Local setup and reproducible comparison](docs/local_models.md).
+
 Use Python 3.11 or 3.12. Open a terminal inside this folder.
 
 On Windows, double-clicking `launch_demo.bat` also creates a local virtual environment, installs the requirements, and launches demo mode.
@@ -49,7 +51,7 @@ For live mode, copy `.env.example` to `.env`, insert your private Gemini API key
 python app.py --mode live
 ```
 
-The initial model is `gemini-2.5-flash-lite`. `--mode auto` selects live mode when a key is present, otherwise demo. The package includes no real API key. Live API use and model comparisons can incur account charges.
+`GEMINI_MODEL` controls the cloud model; `.env.example` selects `gemini-3.5-flash-lite`. The cloud sampling matrix targets Gemini 2.5 where accessible. `--mode auto` selects live mode when a key is present, otherwise demo. Choose `--mode local` explicitly for free Ollama generation. The package includes no real API key. Cloud API use can incur account charges.
 
 ## What is included
 
@@ -57,6 +59,7 @@ The initial model is `gemini-2.5-flash-lite`. `--mode auto` selects live mode wh
 |---|---|
 | `react_agent.ipynb` | Main executable teaching notebook and comparison walkthrough |
 | `gemini_client.py` | Native Google Gen AI transport, safe errors and matching tool observations |
+| `ollama_model.py` | Free local generation, native function schemas, observation conversion and token telemetry |
 | `plottwist_agent.py` | Manual ReAct nodes, state transitions, parser, model adapters, and prompt assembly |
 | `personas.py` | Three personas, matching generation defaults, rationale, and setting validation |
 | `business_tools.py` | Catalogue search, estimates, validated enquiry/feedback storage, tool registry |
@@ -65,7 +68,7 @@ The initial model is `gemini-2.5-flash-lite`. `--mode auto` selects live mode wh
 | `me/` | PDF business dossier and both summary filename variants |
 | `docs/reflection.md` | Answers to all five reflection questions, with evidence limitations |
 | `docs/assignment_checklist.md` / `docs/demo_script.md` | Submission map and walkthrough |
-| `docs/verification.md` | What was tested, how to reproduce it, and what still requires a live API run |
+| `docs/verification.md` | Local generation, automated checks, notebook execution and remaining hosting limits |
 | `docs/demo_walkthrough.mp4` | Supplementary captioned walkthrough made from actual offline UI screenshots |
 | `tests/` | Behavioral checks for the implementation |
 
@@ -166,13 +169,13 @@ For Hugging Face Spaces, create a Gradio Space and put this folder's contents at
 - A missing package usually means the notebook and terminal use different Python environments; install the requirements in the running interpreter.
 - A malformed action is handled by the graph's format/error path. Inspect the trace instead of treating it as a successful tool call.
 - A low output cap can truncate JSON; raise it and compare again, preserving the failed run in your evaluation.
-- A model may reject a sampling parameter. Use a compatible Chat Completions model; the app does not silently claim to apply unsupported settings.
+- A model may reject a sampling parameter. Use a compatible Gemini or Ollama model; the app does not silently claim to apply unsupported settings.
 - If the port is occupied, set `--port 7863`.
 - If notebook files are missing, rerun the setup cell and the relevant `%%writefile` cells; the notebook includes the required modules and assets.
 
 ## Course alignment
 
-Prepared for the supplied EECE 503P/798S C4 assignment and lecture material. See the checklist for the exact rubric mapping and the reflection for honest interpretation limits. Review and understand the code, run live experiments, and follow your course's attribution rules before submission.
+Prepared for the supplied EECE 503P/798S C4 assignment and lecture material. See the checklist for the exact rubric mapping and the reflection for honest interpretation limits. Review and understand the code and included actual local experiments, and follow your course's attribution rules before submission.
 
 ## Implementation references
 
@@ -182,8 +185,14 @@ Prepared for the supplied EECE 503P/798S C4 assignment and lecture material. See
 
 ## Gemini access and remaining evidence (14 October 2026)
 
-Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful live answer or empirical LLM winner is claimed. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.
+Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful Gemini answer is claimed. Actual local Qwen model comparisons are now included separately. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.
 
-## Completed no-cost comparison
+## Completed actual local comparison
 
-The 14 October 2026 evaluation reran 238 offline cases and all 49 C3/C4 tests. The [evaluation report](docs/evaluation_report.md) compares actual tool behavior and persona replies; 21 reviewed outputs and their assistant assessment notes are saved in `experiments/offline_review/`. The notebook displays both this report and the completed five-question reflection. Model sampling effects remain hypotheses because no successful Gemini generation was available.
+**252 actual model attempts + 14 parser-validation reruns** are saved in `experiments/local/`, `experiments/local-alternate/` and `experiments/local-alternate-fix/`. These use real Qwen2.5 3B/1.5B generations through the manual LangGraph loop, with paired seeds, native token/timing metadata and model digests. [Measured evaluation report](docs/evaluation_report.md) · [Five reflection answers](docs/reflection.md) · [21 assistant-reviewed replies](experiments/local/assistant_ratings.csv).
+
+[Actual local interface check and save observation](docs/local_ui_check.md) provides screenshot proof and the separate callback results.
+
+The report compares prompt placement, worked examples, public-plan prompting, persona bundles, temperature, top-p, top-k, penalties, output limits and model size. It preserves rejected tool attempts, hallucinations and the parser correction. Termination is measured separately from correctness; no full-mark or autonomous-reliability claim is made.
+
+The earlier **238 deterministic checks** and their [historical report](docs/offline_evaluation_report.md) remain separately labeled. The included videos show that earlier offline version. Current validation includes **36 C4 automated tests**, the executable notebook, and a local Gradio model callback check.
