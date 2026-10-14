@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:09,278
+This is PlotTwist Assignment Three, running Qwen two point five locally through Ollama. No paid API key is needed.
+
+2
+00:00:09,278 --> 00:00:21,296
+Clue answers a business question using the supplied summary and PDF. The application labels the model mode and adds the required fictional starting price qualification when needed.
+
+3
+00:00:21,296 --> 00:00:32,818
+The customer asks to save a birthday enquiry. The assistant asks for contact details. No write tool is available until the required fields are complete.
+
+4
+00:00:32,818 --> 00:00:45,275
+After the customer supplies Aseel as the name, Clue remembers it and asks only for the remaining email address. Short-term history and validated state carry the earlier event brief.
+
+5
+00:00:45,275 --> 00:00:56,368
+The fictional email completes the enquiry. The model requests the customer interest tool, and the application validates the arguments before writing the record.
+
+6
+00:00:56,368 --> 00:01:10,209
+The expanded activity shows the actual function name, arguments and successful local save. Its observation returns to the model. Saving an enquiry does not book an event or send email.
+
+7
+00:01:10,209 --> 00:01:24,027
+The business cannot confirm wheelchair access at a venue next Friday. The feedback tool logs the unknown question. Application boundary wording supplies explicit uncertainty if the model omits it.
+
+8
+00:01:24,027 --> 00:01:36,289
+A complaint about difficult puzzles uses the feedback route. The actual tool observation confirms a local feedback record, without collecting unnecessary contact information.
+
+9
+00:01:36,289 --> 00:01:50,151
+The casebook displays records belonging to this browser session. One lead, an unanswered access question and a feedback message are saved locally. Only fictional contact details are used.
+
+10
+00:01:50,151 --> 00:02:04,178
+The reflection trace preserves the actual draft, revised reply and model checks. An unchanged reply means the model reviewed it without revising. Application edits have a separate trace label.
+
+11
+00:02:04,178 --> 00:02:16,900
+This separate Reflection lab provides a deliberately flawed test draft. It invents a price, a venue booking and a sent email. The label makes the draft provenance explicit.
+
+12
+00:02:16,900 --> 00:02:29,162
+The actual model removes those claims and describes custom work as quote-only. Review summaries can still be inaccurate, so the raw output and limitations remain documented.

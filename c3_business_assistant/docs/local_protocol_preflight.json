@@ -1,0 +1,657 @@
+{
+  "mode": "actual_local_llm",
+  "model": {
+    "name": "qwen2.5:3b",
+    "model": "qwen2.5:3b",
+    "modified_at": "2026-10-14T08:40:43.3381725+03:00",
+    "size": 1929912432,
+    "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "3.1B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 2048,
+      "runner": "ggml"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "fictional_contact_inputs": true,
+  "runs": [
+    {
+      "case": "business",
+      "input": "What does Birthday Mystery Nights include, how long does it last, and what is its starting price?",
+      "history_before": [],
+      "elapsed_ms": 5240.29,
+      "reply": "Birthday Mystery Nights are a mystery experience designed around a birthday gathering. They typically include a mystery built around the occasion and the people involved. The experience lasts for 2 hours and the starting price for a group is from USD 240. Would you like to know more about this experience or proceed with your enquiry?",
+      "route": "general_question",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "general_question",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Birthday Mystery Nights are a mystery experience designed around a birthday gathering. They typically include a mystery built around the occasion and the people involved. The experience lasts for 2 hours and the starting price for a group is from USD 240. Would you like to know more about this experience or proceed with your enquiry?",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:11.4585021Z",
+            "done_reason": "stop",
+            "total_duration": 2635479500,
+            "load_duration": 35884800,
+            "prompt_eval_count": 2282,
+            "prompt_eval_duration": 1119110000,
+            "eval_count": 65,
+            "eval_duration": 1203683000,
+            "request_elapsed_ms": 2649.09,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Birthday Mystery Nights are a mystery experience designed around a birthday gathering. They typically include a mystery built around the occasion and the people involved. The experience lasts for 2 hours and the starting price for a group is from USD 240. Would you like to know more about this experience or proceed with your enquiry?",
+          "revised": "Birthday Mystery Nights are a mystery experience designed around a birthday gathering. They typically include a mystery built around the occasion and the people involved. The experience lasts for 2 hours and the starting price for a group is from USD 240. Would you like to know more about this experience or proceed with your enquiry?",
+          "changed": false,
+          "checks": [
+            "verified that Birthday Mystery Nights include a mystery built around the occasion and the people involved",
+            "verified that the duration is 2 hours",
+            "verified that the starting price is from USD 240 per group"
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:14.0497008Z",
+            "done_reason": "stop",
+            "total_duration": 2574860000,
+            "load_duration": 7950300,
+            "prompt_eval_count": 2470,
+            "prompt_eval_duration": 169954000,
+            "eval_count": 128,
+            "eval_duration": 2355634000,
+            "request_elapsed_ms": 2589.69,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": []
+    },
+    {
+      "case": "lead_start",
+      "input": "Please save an enquiry for a birthday mystery for 10 guests.",
+      "history_before": [],
+      "elapsed_ms": 1690.81,
+      "reply": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?",
+      "route": "lead_collection",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "lead_collection",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:14.6459122Z",
+            "done_reason": "stop",
+            "total_duration": 506095400,
+            "load_duration": 7357700,
+            "prompt_eval_count": 2208,
+            "prompt_eval_duration": 61253000,
+            "eval_count": 23,
+            "eval_duration": 411914000,
+            "request_elapsed_ms": 509.83,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?",
+          "revised": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?",
+          "changed": false,
+          "checks": [
+            "Saved local enquiry for a birthday mystery for 10 guests."
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:15.8252047Z",
+            "done_reason": "stop",
+            "total_duration": 1176366600,
+            "load_duration": 10700000,
+            "prompt_eval_count": 2440,
+            "prompt_eval_duration": 160513000,
+            "eval_count": 54,
+            "eval_duration": 983284000,
+            "request_elapsed_ms": 1179.12,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": []
+    },
+    {
+      "case": "lead_name",
+      "input": "My name is Aseel.",
+      "history_before": [
+        {
+          "role": "user",
+          "content": "Please save an enquiry for a birthday mystery for 10 guests."
+        },
+        {
+          "role": "assistant",
+          "content": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?"
+        }
+      ],
+      "elapsed_ms": 2020.37,
+      "reply": "Thank you, Aseel. For your email address, could you please provide it so we can save this enquiry?",
+      "route": "lead_collection",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "lead_collection",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Thank you, Aseel. For your email address, could you please provide it so we can save this enquiry?",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:16.4781707Z",
+            "done_reason": "stop",
+            "total_duration": 615653900,
+            "load_duration": 8412300,
+            "prompt_eval_count": 2252,
+            "prompt_eval_duration": 133763000,
+            "eval_count": 25,
+            "eval_duration": 447020000,
+            "request_elapsed_ms": 633.83,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Thank you, Aseel. For your email address, could you please provide it so we can save this enquiry?",
+          "revised": "Thank you, Aseel. For your email address, could you please provide it so we can save this enquiry?",
+          "changed": false,
+          "checks": [
+            "Aseel's name has been recorded.",
+            "Aseel's email address is missing."
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:17.8633418Z",
+            "done_reason": "stop",
+            "total_duration": 1383716100,
+            "load_duration": 6681300,
+            "prompt_eval_count": 2499,
+            "prompt_eval_duration": 194865000,
+            "eval_count": 63,
+            "eval_duration": 1158277000,
+            "request_elapsed_ms": 1385.18,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": []
+    },
+    {
+      "case": "lead_email",
+      "input": "My email is aseel@example.com.",
+      "history_before": [
+        {
+          "role": "user",
+          "content": "Please save an enquiry for a birthday mystery for 10 guests."
+        },
+        {
+          "role": "assistant",
+          "content": "Great! To save this enquiry, I need your name and email address. Could you please provide those details?"
+        },
+        {
+          "role": "user",
+          "content": "My name is Aseel."
+        },
+        {
+          "role": "assistant",
+          "content": "Thank you, Aseel. For your email address, could you please provide it so we can save this enquiry?"
+        }
+      ],
+      "elapsed_ms": 3681.18,
+      "reply": "Thank you, Aseel. Your enquiry has been saved locally. If you have any more questions or need further assistance, I'll be here to help.",
+      "route": "lead_collection",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "lead_collection",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 1,
+          "draft": "",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:19.0414076Z",
+            "done_reason": "stop",
+            "total_duration": 1126114700,
+            "load_duration": 5670900,
+            "prompt_eval_count": 2475,
+            "prompt_eval_duration": 174412000,
+            "eval_count": 50,
+            "eval_duration": 909032000,
+            "request_elapsed_ms": 1139.47,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "tool",
+          "tool": "record_customer_interest",
+          "arguments": {
+            "email": "aseel@example.com",
+            "message": "Please save an enquiry for a birthday mystery for 10 guests.",
+            "name": "Aseel"
+          },
+          "result": {
+            "ok": true,
+            "id": 1,
+            "kind": "lead",
+            "status": "saved"
+          },
+          "source": "model"
+        },
+        {
+          "stage": "model",
+          "round": 2,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Thank you, Aseel. Your enquiry has been saved locally. If you have any more questions or need further assistance, I'll be here to help.",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:19.7950516Z",
+            "done_reason": "stop",
+            "total_duration": 751474000,
+            "load_duration": 5290800,
+            "prompt_eval_count": 2385,
+            "prompt_eval_duration": 123396000,
+            "eval_count": 33,
+            "eval_duration": 597040000,
+            "request_elapsed_ms": 752.2,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Thank you, Aseel. Your enquiry has been saved locally. If you have any more questions or need further assistance, I'll be here to help.",
+          "revised": "Thank you, Aseel. Your enquiry has been saved locally. If you have any more questions or need further assistance, I'll be here to help.",
+          "changed": false,
+          "checks": [
+            "The customer's email address has been recorded.",
+            "The customer's name has been recorded.",
+            "The enquiry has been saved locally."
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:21.5823213Z",
+            "done_reason": "stop",
+            "total_duration": 1770842500,
+            "load_duration": 9311500,
+            "prompt_eval_count": 2621,
+            "prompt_eval_duration": 286923000,
+            "eval_count": 79,
+            "eval_duration": 1452155000,
+            "request_elapsed_ms": 1787.45,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": [
+        {
+          "id": 1,
+          "kind": "lead",
+          "data": {
+            "email": "aseel@example.com",
+            "message": "Please save an enquiry for a birthday mystery for 10 guests.",
+            "name": "Aseel"
+          },
+          "created_at": "2026-10-14T16:29:19.042497+00:00"
+        }
+      ]
+    },
+    {
+      "case": "unknown",
+      "input": "Do you have confirmed wheelchair access at a venue next Friday?",
+      "history_before": [],
+      "elapsed_ms": 1810.86,
+      "reply": "The local model request failed. Check Ollama, the downloaded model and connection. No offline answer was substituted.",
+      "route": "feedback_unanswered",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "feedback_unanswered",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "I cannot confirm venue accessibility as it needs to be reviewed by a human. Please provide your name and email so I can save this as an enquiry. How can I contact you after this conversation?",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:22.5321496Z",
+            "done_reason": "stop",
+            "total_duration": 888251300,
+            "load_duration": 6303200,
+            "prompt_eval_count": 2358,
+            "prompt_eval_duration": 126437000,
+            "eval_count": 40,
+            "eval_duration": 726626000,
+            "request_elapsed_ms": 903.51,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "error",
+          "kind": "model_error",
+          "exception_type": "LocalModelError",
+          "api_code": null
+        },
+        {
+          "stage": "reflection",
+          "status": "skipped_after_error",
+          "draft": "The local model request failed. Check Ollama, the downloaded model and connection. No offline answer was substituted.",
+          "revised": "The local model request failed. Check Ollama, the downloaded model and connection. No offline answer was substituted."
+        }
+      ],
+      "mode": "local",
+      "records": []
+    },
+    {
+      "case": "feedback",
+      "input": "The puzzles were too difficult. Please record my feedback.",
+      "history_before": [],
+      "elapsed_ms": 2469.71,
+      "reply": "Your feedback has been recorded. If you have any other questions or need further assistance, feel free to ask. Enjoy the rest of your day!",
+      "route": "feedback_unanswered",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "feedback_unanswered",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 1,
+          "draft": "",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:24.1589363Z",
+            "done_reason": "stop",
+            "total_duration": 590756200,
+            "load_duration": 11240900,
+            "prompt_eval_count": 2316,
+            "prompt_eval_duration": 107930000,
+            "eval_count": 25,
+            "eval_duration": 450506000,
+            "request_elapsed_ms": 603.83,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "tool",
+          "tool": "record_feedback",
+          "arguments": {
+            "question": "The puzzles were too difficult."
+          },
+          "result": {
+            "ok": true,
+            "id": 2,
+            "kind": "feedback",
+            "status": "saved"
+          },
+          "source": "model"
+        },
+        {
+          "stage": "model",
+          "round": 2,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Your feedback has been recorded. If you have any other questions or need further assistance, feel free to ask. Enjoy the rest of your day!",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:24.7908283Z",
+            "done_reason": "stop",
+            "total_duration": 629754000,
+            "load_duration": 3178000,
+            "prompt_eval_count": 2246,
+            "prompt_eval_duration": 67682000,
+            "eval_count": 30,
+            "eval_duration": 537582000,
+            "request_elapsed_ms": 631.08,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Your feedback has been recorded. If you have any other questions or need further assistance, feel free to ask. Enjoy the rest of your day!",
+          "revised": "Your feedback has been recorded. If you have any other questions or need further assistance, feel free to ask. Enjoy the rest of your day!",
+          "changed": false,
+          "checks": [
+            "The record was saved locally as feedback."
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:26.0233504Z",
+            "done_reason": "stop",
+            "total_duration": 1230273200,
+            "load_duration": 3753500,
+            "prompt_eval_count": 2486,
+            "prompt_eval_duration": 173574000,
+            "eval_count": 56,
+            "eval_duration": 1028708000,
+            "request_elapsed_ms": 1232.75,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": [
+        {
+          "id": 2,
+          "kind": "feedback",
+          "data": {
+            "question": "The puzzles were too difficult."
+          },
+          "created_at": "2026-10-14T16:29:24.159442+00:00"
+        }
+      ]
+    },
+    {
+      "case": "team",
+      "input": "Who are Aseel, Noah, Jiso and Felix on your team?",
+      "history_before": [],
+      "elapsed_ms": 3463.67,
+      "reply": "Aseel is the Story Director, shaping the narrative arcs and memorable reveals. Noah is the Puzzle Architect, designing clues and challenges. Jiso is the Experience Producer, coordinating event requirements and reviewing practical details with the customer. Felix is the Guest Experience Lead, handling enquiries, listening to feedback, and arranging human follow-up.",
+      "route": "general_question",
+      "trace": [
+        {
+          "stage": "mode",
+          "mode": "local",
+          "label": "Local Ollama LLM"
+        },
+        {
+          "stage": "router",
+          "route": "general_question",
+          "method": "three-way heuristic"
+        },
+        {
+          "stage": "knowledge",
+          "sources": [
+            "business_summary.txt",
+            "about_business.pdf"
+          ],
+          "loaded": true
+        },
+        {
+          "stage": "model",
+          "round": 1,
+          "model": "qwen2.5:3b",
+          "tool_calls": 0,
+          "draft": "Aseel is the Story Director, shaping the narrative arcs and memorable reveals. Noah is the Puzzle Architect, designing clues and challenges. Jiso is the Experience Producer, coordinating event requirements and reviewing practical details with the customer. Felix is the Guest Experience Lead, handling enquiries, listening to feedback, and arranging human follow-up.",
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:27.3856921Z",
+            "done_reason": "stop",
+            "total_duration": 1322183500,
+            "load_duration": 7055800,
+            "prompt_eval_count": 2278,
+            "prompt_eval_duration": 95739000,
+            "eval_count": 66,
+            "eval_duration": 1201239000,
+            "request_elapsed_ms": 1324.73,
+            "generation_seed": 43
+          }
+        },
+        {
+          "stage": "reflection",
+          "status": "checked",
+          "method": "model_review",
+          "draft": "Aseel is the Story Director, shaping the narrative arcs and memorable reveals. Noah is the Puzzle Architect, designing clues and challenges. Jiso is the Experience Producer, coordinating event requirements and reviewing practical details with the customer. Felix is the Guest Experience Lead, handling enquiries, listening to feedback, and arranging human follow-up.",
+          "revised": "Aseel is the Story Director, shaping the narrative arcs and memorable reveals. Noah is the Puzzle Architect, designing clues and challenges. Jiso is the Experience Producer, coordinating event requirements and reviewing practical details with the customer. Felix is the Guest Experience Lead, handling enquiries, listening to feedback, and arranging human follow-up.",
+          "changed": false,
+          "checks": [
+            "Aseel, Noah, Jiso, and Felix are identified as fictional roles on the team."
+          ],
+          "generation": {
+            "model": "qwen2.5:3b",
+            "created_at": "2026-10-14T16:29:29.5229142Z",
+            "done_reason": "stop",
+            "total_duration": 2121713600,
+            "load_duration": 8086800,
+            "prompt_eval_count": 2467,
+            "prompt_eval_duration": 172423000,
+            "eval_count": 104,
+            "eval_duration": 1917466000,
+            "request_elapsed_ms": 2137.39,
+            "generation_seed": 43
+          }
+        }
+      ],
+      "mode": "local",
+      "records": []
+    }
+  ]
+}

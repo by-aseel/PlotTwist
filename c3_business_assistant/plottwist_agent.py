@@ -1,6 +1,7 @@
 """PlotTwist C3 business agent: routing, memory, actual tools, and reflection.
 
-Live: native Gemini function-calling loop. Demo: deterministic rehearsal
+Live: native Gemini function-calling loop. Local: actual Ollama model loop.
+Demo: deterministic rehearsal
 with real local SQLite writes, explicitly identified in every response object.
 Official reference: https://ai.google.dev/gemini-api/docs/function-calling
 """
@@ -177,7 +178,7 @@ def _history_messages(history: list[dict] | None) -> list[dict]:
 
 
 def _extract_lead(message: str, history: list[dict], lead: dict) -> dict:
-    """Demo-only conservative field extraction. Live mode can extract with its model."""
+    """Conservatively retain contact fields the customer actually supplied."""
     lead = dict(lead)
     emails = EMAIL_RE.findall(message)
     if emails:
@@ -205,8 +206,8 @@ def _extract_lead(message: str, history: list[dict], lead: dict) -> dict:
 class PlotTwistAgent:
     def __init__(self, mode: str = "auto", db_path: str | Path | None = None, *, client: Any = None,
                  knowledge_dir: str | Path | None = None, model: str | None = None):
-        if mode not in {"auto", "demo", "live"}:
-            raise ConfigurationError("Mode must be auto, demo, or live.")
+        if mode not in {"auto", "demo", "live", "local"}:
+            raise ConfigurationError("Mode must be auto, demo, live, or local.")
         try:
             from dotenv import load_dotenv
             load_dotenv(ROOT / ".env", override=False)
@@ -218,8 +219,11 @@ class PlotTwistAgent:
         self.mode = "live" if mode == "auto" and (key or client is not None) else ("demo" if mode == "auto" else mode)
         if self.mode == "live" and not key and client is None:
             raise ConfigurationError("Live mode requires GEMINI_API_KEY in your local .env or environment. Select demo for offline rehearsal.")
-        self.model = model or os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
+        self.model = model or (os.getenv("OLLAMA_MODEL", "qwen2.5:3b") if self.mode == "local" else os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"))
         self.client = client
+        if self.mode == "local" and self.client is None:
+            from local_client import LocalClient
+            self.client = LocalClient()
         if self.mode == "live" and self.client is None:
             try:
                 from gemini_client import GeminiClient
@@ -235,6 +239,16 @@ class PlotTwistAgent:
     def tools_for(self, session_id: str) -> SessionTools:
         return SessionTools(self.store, _clean_text(session_id, "session_id", 200))
 
+    def review_draft(self, question: str, draft: str) -> dict:
+        """A clearly labeled test-draft review; main chat also reflects every reply."""
+        question = _clean_text(question, "question", 4000)
+        draft = _clean_text(draft, "draft", 8000)
+        route = route_message(question)
+        trace = [{"stage":"mode","mode":self.mode}, {"stage":"test_input","provenance":"User-supplied test draft; not a claim that the agent generated this draft","draft":draft}]
+        with self._respond_lock:
+            reply = self._reflect(draft,question,[],route,{"lead":{},"collecting_lead":False},trace)
+        return {"reply":reply,"draft":draft,"route":route,"mode":self.mode,"trace":trace}
+
     def records(self, session_id: str = "demo") -> list[dict]:
         return self.store.records(_clean_text(session_id, "session_id", 200))
 
@@ -248,7 +262,7 @@ class PlotTwistAgent:
         target.write_text(json.dumps({"session_id": session_id, "records": self.records(session_id)}, indent=2, ensure_ascii=False), encoding="utf-8")
         return str(target.resolve())
 
-    def _call_tool(self, name: str, arguments: str | dict, session_id: str, trace: list, user_text: str) -> dict:
+    def _call_tool(self, name: str, arguments: str | dict, session_id: str, trace: list, user_text: str, allowed_names: set | None = None) -> dict:
         args = None
         try:
             if isinstance(arguments, str):
@@ -258,6 +272,8 @@ class PlotTwistAgent:
             else:
                 args = arguments
             expected = {"record_customer_interest": {"email", "name", "message"}, "record_feedback": {"question"}}
+            if allowed_names is not None and name not in allowed_names:
+                raise ValueError("That tool is unavailable for the current route. Request the tool listed in the current application route instead.")
             if name not in expected:
                 raise ValueError("Unknown tool name.")
             if not isinstance(args, dict) or set(args) != expected[name] or not all(isinstance(v, str) for v in args.values()):
@@ -269,12 +285,12 @@ class PlotTwistAgent:
             result = getattr(self.tools_for(session_id), name)(**args)
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             result = {"ok": False, "kind": "validation_error", "error": str(exc)}
-        trace.append({"stage": "tool", "tool": name, "arguments": args if isinstance(args, dict) else None, "result": result, "source": "model" if self.mode == "live" else "deterministic_demo"})
+        trace.append({"stage": "tool", "tool": name, "arguments": args if isinstance(args, dict) else None, "result": result, "source": "model" if self.mode in {"live", "local"} else "deterministic_demo"})
         return result
 
     def respond(self, message: str, history: list[dict] | None = None, session_id: str = "demo", settings: dict | None = None) -> dict:
         """Return text plus a factual audit trace; never silently switch live to demo."""
-        trace: list[dict] = [{"stage": "mode", "mode": self.mode, "label": "Live Gemini" if self.mode == "live" else "Offline deterministic demo — no model call"}]
+        trace: list[dict] = [{"stage": "mode", "mode": self.mode, "label": "Local Ollama LLM" if self.mode == "local" else ("Live Gemini" if self.mode == "live" else "Offline deterministic demo — no model call")}]
         try:
             message = _clean_text(message, "message", 4000)
             session_id = _clean_text(session_id, "session_id", 200)
@@ -308,6 +324,17 @@ class PlotTwistAgent:
                 reply = draft
                 if settings.get("reflection", True):
                     reply = self._reflect(draft, message, history, route, state, trace)
+                if not any(e.get('stage')=='error' for e in trace):
+                    checked=reply
+                    constraints=[]
+                    if route=='feedback_unanswered' and not FEEDBACK_RE.search(message) and not re.search(r"cannot confirm|can't confirm|do not confirm|don't have|not confirmed|cannot provide|do not know|don't know|not established|not specified",reply,re.I):
+                        reply+='\n\nThe business sources do not confirm the requested details. Access, venue and availability need human review.'
+                        constraints.append('Added explicit uncertainty for an unanswered factual question.')
+                    if re.search(r'\bUSD\s*\d|\$\s*\d',reply,re.I) and not ('fictional' in reply.lower() and 'indicative' in reply.lower() and 'group' in reply.lower()):
+                        reply+='\n\nListed prices are fictional, indicative USD starting prices per group; final quotes need team review.'
+                        constraints.append('Added the mandatory classroom price qualification.')
+                    if constraints:
+                        trace.append({'stage':'application_guard','source':'application_guard','draft':checked,'revised':reply,'checks':constraints,'detail':'Boundary wording added by application code after the model review; not a claimed model correction.'})
                 self.store.save_state(session_id, state)
                 return {"reply": reply, "route": route, "trace": trace, "mode": self.mode}
             except (sqlite3.Error, OSError):
@@ -364,24 +391,35 @@ class PlotTwistAgent:
                 "All prices are indicative fictional USD. Which adventure should we explore?")
 
     def _live_reply(self, message: str, history: list[dict], session_id: str, route: str, state: dict, trace: list) -> str:
+        missing = [field for field in ("name", "email", "message") if not state.get("lead", {}).get(field)] if route == "lead_collection" else []
         messages = [{"role": "system", "content": self.system_prompt},
                     {"role": "system", "content": f"CURRENT ROUTE: {route}.\nValidated short-term lead fields: {json.dumps(state.get('lead', {}))}"},
                     *history, {"role": "user", "content": message}]
+        if missing:
+            messages.insert(2, {"role":"system","content":"This enquiry is not ready to save. Ask only for these missing fields: " + ", ".join(missing) + ". Keep the already supplied fields; do not request them again. No save tool is available until collection is complete."})
+        if route == "feedback_unanswered" and not FEEDBACK_RE.search(message):
+            messages.insert(2, {"role":"system","content":"This is an unanswered factual question. The business sources do not confirm this detail. After recording it, explicitly say you cannot confirm the requested information. Do not imply venue, access, date or availability guarantees."})
         user_text = "\n".join(x["content"] for x in history if x["role"] == "user") + "\n" + message
         user_text += "\n" + "\n".join(state.get("lead", {}).get(key, "") for key in ("name", "email"))
         for turn in range(6):
             try:
+                saved = any(e.get("stage")=="tool" and e["result"].get("ok") for e in trace)
+                required = "record_feedback" if route == "feedback_unanswered" else ("record_customer_interest" if route == "lead_collection" and not missing else None)
+                available_tools = [t for t in TOOL_SCHEMAS if t["function"]["name"] == (required or "record_feedback")]
                 tool_choice: str | dict = "auto"
-                if turn == 0 and route == "feedback_unanswered":
-                    tool_choice = {"type": "function", "function": {"name": "record_feedback"}}
-                elif turn == 0 and route == "lead_collection" and all(state.get("lead", {}).get(field) for field in ("email", "name", "message")):
-                    tool_choice = {"type": "function", "function": {"name": "record_customer_interest"}}
+                if missing or saved:
+                    available_tools, tool_choice = [], "none"
+                elif required:
+                    tool_choice = {"type":"function","function":{"name":required}}
                 response = self.client.chat.completions.create(model=self.model, messages=messages,
-                    tools=TOOL_SCHEMAS, tool_choice=tool_choice, parallel_tool_calls=False, temperature=0.35)
+                    tools=available_tools, tool_choice=tool_choice, parallel_tool_calls=False, temperature=0.35)
                 reply = response.choices[0].message
                 calls = reply.tool_calls or []
-                trace.append({"stage": "model", "round": turn + 1, "model": self.model, "tool_calls": len(calls)})
+                trace.append({"stage": "model", "round": turn + 1, "model": self.model, "tool_calls": len(calls), "draft": reply.content, "generation": dict(getattr(self.client, "last_metrics", {}))})
                 if not calls:
+                    if isinstance(tool_choice, dict):
+                        messages += [{"role":"assistant","content":reply.content or ""},{"role":"user","content":"Application correction: request the required native tool with the supplied customer details before producing the final answer."}]
+                        continue
                     observations = [item["result"] for item in trace if item.get("stage") == "tool"]
                     if observations and not any(item.get("ok") for item in observations):
                         return "I couldn't save this record. " + observations[-1].get("error", "Please try again.") + "\n\n" + (reply.content or "Please check the details and try again.")
@@ -389,7 +427,7 @@ class PlotTwistAgent:
                 messages.append({"role": "assistant", "content": reply.content, "_native_content": getattr(reply, "native_content", None), "tool_calls": [
                     {"id": call.id, "type": "function", "function": {"name": call.function.name, "arguments": call.function.arguments}} for call in calls]})
                 for call in calls:
-                    result = self._call_tool(call.function.name, call.function.arguments, session_id, trace, user_text)
+                    result = self._call_tool(call.function.name, call.function.arguments, session_id, trace, user_text, {t["function"]["name"] for t in available_tools})
                     if call.function.name == "record_customer_interest" and result["ok"]:
                         state.update(collecting_lead=False, lead={})
                     messages.append({"role": "tool", "tool_call_id": call.id, "content": json.dumps(result)})
@@ -398,7 +436,7 @@ class PlotTwistAgent:
                 trace.append({"stage": "error", "kind": "model_error", "exception_type": type(exc).__name__, "api_code": getattr(exc, "code", None)})
                 saved = any(x.get("stage") == "tool" and x["result"].get("ok") for x in trace)
                 suffix = " A tool record was already saved locally; its reference is in the activity trace." if saved else ""
-                return "The live model request failed. Check your API key, model access, network, and quota, then retry. No offline answer was substituted." + suffix
+                return ("The local model request failed. Check Ollama, the downloaded model and connection. No offline answer was substituted." if self.mode == "local" else "The live model request failed. Check your API key, model access, network, and quota, then retry. No offline answer was substituted.") + suffix
         trace.append({"stage": "error", "kind": "tool_loop_limit", "max_rounds": 6})
         return "I reached the tool-call limit for this turn. Please review the activity trace before retrying; successful tool records are already saved locally."
 
@@ -424,12 +462,12 @@ class PlotTwistAgent:
                 response_format={"type": "json_object"}, messages=[
                     {"role": "system", "content": self.system_prompt + "\n\n" + REFLECTION_INSTRUCTIONS},
                     {"role": "user", "content": json.dumps({"request": message, "history": history[-8:], "route": route,
-                        "lead_fields": state.get("lead", {}), "tool_results": [item for item in trace if item.get("stage") == "tool"], "candidate_reply": draft})}])
+                        "lead_fields": state.get("lead", {}), "unknown_question": route == "feedback_unanswered" and not bool(FEEDBACK_RE.search(message)), "tool_results": [item for item in trace if item.get("stage") == "tool"], "candidate_reply": draft})}])
             audit = json.loads(result.choices[0].message.content)
             revised = _clean_text(audit.get("revised_reply"), "revised_reply", 8000)
             if not isinstance(audit.get("checks"), list) or not all(isinstance(x, str) for x in audit["checks"]):
                 raise ValueError("Reflection checks must be a list of outcome summaries.")
-            trace.append({"stage": "reflection", "status": "checked", "method": "model_review", "draft": draft, "revised": revised, "changed": revised != draft, "checks": audit["checks"]})
+            trace.append({"stage": "reflection", "status": "checked", "method": "model_review", "draft": draft, "revised": revised, "changed": revised != draft, "checks": audit["checks"], "generation": dict(getattr(self.client, "last_metrics", {}))})
             return revised
         except Exception as exc:
             trace.append({"stage": "reflection", "status": "failed_draft_retained", "draft": draft, "revised": draft, "exception_type": type(exc).__name__, "api_code": getattr(exc, "code", None)})

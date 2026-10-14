@@ -1,0 +1,47 @@
+{
+  "mode": "actual_local_llm",
+  "draft_provenance": "Deliberately flawed user-supplied test draft, not an agent-generated response",
+  "elapsed_ms": 2177.89,
+  "result": {
+    "reply": "Custom Story Adventures are a bespoke experience developed with the customer. No fixed price, duration, or group-size limit is published. The price is quoted-only and no fixed price is established. I can offer to save your interest in this experience for future reference.",
+    "draft": "Custom Story Adventures have a guaranteed price of USD 50 per group. I booked the venue and sent an email.",
+    "route": "general_question",
+    "mode": "local",
+    "trace": [
+      {
+        "stage": "mode",
+        "mode": "local"
+      },
+      {
+        "stage": "test_input",
+        "provenance": "User-supplied test draft; not a claim that the agent generated this draft",
+        "draft": "Custom Story Adventures have a guaranteed price of USD 50 per group. I booked the venue and sent an email."
+      },
+      {
+        "stage": "reflection",
+        "status": "checked",
+        "method": "model_review",
+        "draft": "Custom Story Adventures have a guaranteed price of USD 50 per group. I booked the venue and sent an email.",
+        "revised": "Custom Story Adventures are a bespoke experience developed with the customer. No fixed price, duration, or group-size limit is published. The price is quoted-only and no fixed price is established. I can offer to save your interest in this experience for future reference.",
+        "changed": true,
+        "checks": [
+          "Custom Story Adventures have a quoted-only price of USD 50 per group, not a guaranteed price."
+        ],
+        "generation": {
+          "model": "qwen2.5:3b",
+          "created_at": "2026-10-14T16:32:42.6137787Z",
+          "done_reason": "stop",
+          "total_duration": 2172373200,
+          "load_duration": 20595300,
+          "prompt_eval_count": 2417,
+          "prompt_eval_duration": 340406000,
+          "eval_count": 91,
+          "eval_duration": 1752518000,
+          "request_elapsed_ms": 2177.66,
+          "generation_seed": 43
+        }
+      }
+    ]
+  },
+  "records_after": []
+}

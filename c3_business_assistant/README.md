@@ -12,144 +12,131 @@ pinned: false
 
 # PlotTwist / C3 Business Assistant
 
-**Your people. Your story. One unexpected turn.**
+**Make a memory. Leave a mystery.** Clue helps hosts, friends and workplace teams explore a fictional mystery-experience studio. C3 now works with a **free actual local Qwen model**, short-term memory, three-way routing, two validated tools, a Gradio ChatInterface and model reflection. The native Gemini option remains available; this account's Google generation access is denied.
 
-Clue is the virtual adventure consultant for PlotTwist Experiences, a fictional studio that turns birthdays, outings, and team events into shared mysteries. This standalone C3 submission combines a custom Gradio interface, a three-way message router, Gemini tool calling, local lead and feedback records, and a reflection step.
+The fictional team is **Aseel** — Story Director, **Noah** — Puzzle Architect, **Jiso** — Experience Producer, and **Felix** — Guest Experience Lead. These roles do not attribute coursework authorship.
 
-The business team is **Aseel** (Story Director), **Noah** (Puzzle Architect), **Jiso** (Experience Producer), and **Felix** (Guest Experience Lead). These are fictional business roles, not an attribution of coursework authorship.
+**[Current English local-model demo](docs/local_functionality_demo.mp4)** · [Measured report](docs/local_evaluation_report.md) · [Submission map](docs/assignment_checklist.md) · [Video scope/transcript](docs/local_video_scope.md)
 
-## English functionality video
+## Free real-model setup
 
-**[Watch the short working demo](docs/quick_demo.mp4)** — 37 seconds, focused on replies, tools, and saved records.
+Install [Ollama](https://ollama.com/download) from its official site, then download the model once:
 
-[Watch the full narrated C3 walkthrough](docs/functionality_walkthrough.mp4) · [Transcript](docs/functionality_transcript.md) · [Subtitles](docs/functionality_walkthrough.srt)
+```powershell
+ollama pull qwen2.5:3b
+```
 
-The 7:21 video covers the working features, implementation, setup, and checks. It uses actual offline UI captures and source explanations, with synthesized English narration. [Video scope and evidence limits](docs/functionality_video.md) explains what still needs a live model run.
-
-## Start in five minutes
-
-Use Python 3.11 or 3.12. Open a terminal **inside this folder**.
-
-On Windows, you can also double-click `launch_demo.bat`. It creates a local virtual environment, installs the requirements, and launches the offline app.
+Use Python 3.11 or 3.12. In this C3 folder:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python app.py --mode demo
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe app.py --mode local
 ```
 
-On macOS or Linux, activate with `source .venv/bin/activate` instead. If PowerShell activation is restricted, call `.\.venv\Scripts\python.exe` directly for the install and launch commands. Open the local address printed by Gradio, normally `http://127.0.0.1:7860`.
+Alternatively, double-click `launch_local.bat` after setting up Ollama. Open the printed Gradio URL (normally `http://127.0.0.1:7860`). Keep Ollama and the Python app running. No API key or paid account is needed. The model download is approximately 1.9 GB; speed depends on memory and hardware. The recorded run used an RTX 3050 laptop.
 
-**Demo mode needs no API key.** It runs deterministic responses through the project workflow so the interface, routing, persistence, and observable tool steps can be demonstrated. It does not measure LLM quality or satisfy the live model demonstration by itself.
+Optional local `.env` settings (copy `.env.example`):
 
-## Connect the live model
-
-```powershell
-Copy-Item .env.example .env
+```text
+PLOTTWIST_MODE=local
+OLLAMA_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=qwen2.5:3b
+OLLAMA_SEED=43
 ```
 
-Edit your local `.env` to set `GEMINI_API_KEY` and `GEMINI_MODEL`, then run:
+Local mode connects only to loopback. It fails visibly if unavailable and never substitutes a scripted reply. Explicit `--mode demo` or `launch_demo.bat` provides a labeled deterministic rehearsal. `--mode live` uses the private Gemini key; `--mode auto` chooses Gemini if a key exists, otherwise demo. The CLI flag overrides the environment default.
 
-```powershell
-python app.py --mode live
-```
+## Try the complete flow
 
-Use the model name in `.env.example` as the initial choice. `--mode auto` uses the configured API key when available and otherwise chooses demo mode. A missing key or an API error is a setup/runtime issue; do not present a demo reply as a successful live model response. Keep `.env` out of Git and recordings. This project supplies an example file, never a real secret.
+Keep reflection checked. Use these fictional test messages:
 
-## What is included
+1. `What does Birthday Mystery Nights include, how long does it last, and what is its starting price?`
+2. `Please save an enquiry for a birthday mystery for 10 guests.`
+3. `My name is Aseel.`
+4. `My email is aseel@example.com.`
+5. `Do you have confirmed wheelchair access at a venue next Friday?`
+6. `The puzzles were too difficult. Please record my feedback.`
+
+Inspect **Latest activity** for route, actual model requests, tool arguments/observations and reflection. Open **The casebook → Refresh this casebook** to inspect this browser session's records or export JSON. Refreshing starts a new session; earlier records remain locally stored. The **Reflection lab** separately reviews a deliberately flawed test draft, visibly demonstrating correction without saving anything.
+
+## Implementation
 
 | File | Purpose |
 |---|---|
-| `business_agent.ipynb` | Guided, runnable main notebook: sources, persona, instructions, router, tools, conversation, and Gradio launch |
-| `gemini_client.py` | Native Google Gen AI transport, safe errors and matching tool observations |
-| `plottwist_agent.py` | Agent logic and the public `build_agent()` interface |
-| `app.py` | Designed Gradio application |
-| `me/about_business.pdf` | Four-page business dossier |
-| `me/business_summary.txt` | Canonical text knowledge source |
-| `me/summary.txt` | Identical alias for the alternate filename used in the task text |
-| `requirements.txt` / `.env.example` | Dependencies and local configuration template |
-| `docs/assignment_checklist.md` | Requirement-to-evidence map and submission steps |
-| `docs/verification.md` | What was tested, how to reproduce it, and what still requires a live API run |
-| `docs/demo_script.md` | Short, repeatable presentation script |
-| `docs/demo_walkthrough.mp4` | Supplementary captioned walkthrough made from actual offline UI screenshots |
-| `tests/` | Behavioral checks included with the implementation |
+| `business_agent.ipynb` | Self-contained notebook with readable implementation, labeled persona/instructions and saved actual evidence |
+| `prompts.py` | Separate PERSONA, INSTRUCTIONS, exact tool schemas and reflection instructions |
+| `plottwist_agent.py` | Router, memory, six-round manual model/action/observation loop, validated dispatch, SQLite and reflection |
+| `local_client.py` | Native Ollama transport, history/tool conversion, structured action proposals, parsing and generation telemetry |
+| `gemini_client.py` | Native Google Gen AI transport retained for the model family named in the assignment |
+| `interface.py`, `app.py`, `assets/style.css` | Designed Gradio ChatInterface, activity, casebook, reflection lab and launch |
+| `me/about_business.pdf`, `me/business_summary.txt`, `me/summary.txt` | Business dossier and canonical knowledge; summary alias is identical |
+| `docs/local_validation.json` | Seven actual final model turns, tools, records and reflection |
+| `docs/local_reflection_challenge.json` | Actual correction of a labeled deliberately flawed test draft |
+| `tests/` | 27 controlled behavioral and transport checks |
 
-## How Clue works
+The system prompt combines separately labeled persona/instructions with both knowledge sources. Before the model acts, a heuristic router selects **general_question**, **lead_collection**, or **feedback_unanswered**. Recent history and validated lead state carry missing fields across turns.
 
-1. Load the supplied PDF and summary as business knowledge.
-2. Keep **persona** (voice and identity) separate from **instructions** (behavior and boundaries).
-3. Classify the message as a general question, lead collection, or feedback/unanswered question.
-4. Pass the user's message, recent conversation, and tool schemas to the live model.
-5. Validate and execute requested tools, return their observations to the model, and complete the answer.
-6. Check the draft against the instructions and expose the draft/revision evidence in the trace.
+The model receives route-appropriate tools. Incomplete leads cannot write; complete leads and unknown/feedback messages require the corresponding action. Ollama lacks a native forced-tool switch, so required actions can be generated as schema-constrained JSON proposals. The parser detects native or printed structured actions; the application validates and executes them, returns actual observations, and asks the model to finish. The adapter's `chat.completions` attribute is an internal compatibility interface, not an OpenAI request. Success disables further writes for that turn; failures and loop limits stay visible.
 
-The router is deliberately small and inspectable. The live transport uses the official `google.genai` SDK and `client.models.generate_content(...)`. `gemini_client.py` normalizes internal messages for the existing manual loop; its compatibility attribute is not an OpenAI network call. Native function calls and matching function responses carry observations back to Gemini. This modern SDK replaces the legacy `google.generativeai` package named in the assignment.
+A second model call reviews the draft against instructions, knowledge and observations. The trace logs original draft, revised reply, `changed`, checks and native generation metadata. An unchanged reply is a review, not a correction. Small models can still miss errors or give inaccurate check summaries; inspect the [measured limitations](docs/local_evaluation_report.md).
 
-### Tools
+## Required tools
 
-The source code contains the exact machine-readable JSON schemas. These are ordinary local tool functions described with schema fields, not an MCP server.
-
-| Tool | Required input | Result and side effect |
+| Name | Required parameters | Output and side effect |
 |---|---|---|
-| `record_customer_interest` | `email: string`, `name: string`, `message: string` | Validates the enquiry, writes a local SQLite lead record, and returns a success/error observation |
-| `record_feedback` | `question: string` | Writes feedback or an unanswered question to SQLite and returns a success/error observation |
+| `record_customer_interest` | `email:string`, `name:string`, `message:string` | Validates customer contacts, saves a SQLite lead, returns success/reference or error |
+| `record_feedback` | `question:string` | Saves feedback or an unknown question, returns success/reference or error |
 
-See [tool schemas and expected outputs](docs/tool_schemas.md) for each tool's exact inputs, success/error fields, example JSON, and logging evidence. Every successful save also prints a `[tool log]` line in the terminal or notebook output.
+[MCP-style documentation](docs/tool_schemas.md) includes descriptions, parameter/output fields and examples. These are local functions described with schemas, not an MCP server. Successful saves print `[tool log]`. Customer provenance, exact argument keys, deduplication and session scoping are enforced by code.
 
-A saved record **does not send email or reserve an event**. Demonstrate persistence with synthetic data, such as `sam@example.com`. The app has no payment system, booking calendar, or real customer support inbox. The notebook and trace show what the tools actually returned.
+Local records **do not send email, contact a company, confirm access or book an event**. No payment, live venue or calendar exists. Use fictional contacts for demos and omit databases from submission.
 
-### Business facts
+## Business knowledge
 
-| Experience | Group | Duration | Fictional starting price |
+| Experience | Group | Duration | Fictional indicative starting price |
 |---|---:|---:|---:|
-| Birthday Mystery Nights | 6-20 | 2 hours | USD 240 / group |
-| City Quests | 2-12 | 90 minutes | USD 90 / group |
-| Corporate Missions | 10-60 | 2.5 hours | USD 650 / group |
-| Custom Story Adventures | Bespoke | Agreed with the team | Quote-only |
+| Birthday Mystery Nights | 6–20 | 2 hours | USD 240 / group |
+| City Quests | 2–12 | 90 minutes | USD 90 / group |
+| Corporate Missions | 10–60 | 2.5 hours | USD 650 / group |
+| Custom Story Adventures | Bespoke | Agreed with team | Quote-only |
 
-Prices are starting prices. There is no fixed venue, verified service location, live availability, or published cancellation policy. Access requirements and languages need human review. Clue should record unknowns instead of inventing an answer.
+Specific inclusions, final quotes, availability, venues, cancellation policies, languages and accessibility arrangements need human review. The bot should state uncertainty and log unknown questions.
 
-## Try the notebook
+## Notebook and checks
 
-Install Jupyter if it is not already available, open `business_agent.ipynb`, and run from the top. The notebook is self-contained: it reconstructs its supporting files in a separate `c3_business_assistant_notebook/` directory, and the complete editable agent modules appear in readable `%%writefile` cells. It defaults to demo mode. Its live cell is opt-in and asks for a key through a hidden prompt if one is not configured.
+Run `business_agent.ipynb` top to bottom. It reconstructs support files in its own directory and writes readable editable source modules. **10 code cells are executed with saved outputs.** The default conversation is a portable deterministic rehearsal; a separate evidence section displays the actual local report, tool observations and reflection correction.
 
-For Colab, upload **only `business_agent.ipynb`** and run from the top; the business PDF, summary, interface assets, and required support files are embedded. Launch Gradio with `share=True` only when you intentionally want a temporary public link; use synthetic data in that session.
-
-## Verify and present
+Set `RUN_LOCAL=True` after starting Ollama for fresh real generations. Leave `RUN_LIVE=False`; both flags cannot be true. Ordinary Colab cannot reach a laptop's localhost Ollama server. For Colab, upload the notebook alone and use its rehearsal/read the included evidence, or configure an accessible Gemini account privately. Set `RUN_UI=True` to launch Gradio; public share links should use fictional inputs.
 
 ```powershell
-python -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe validate_local.py --output data/my-local-validation.json
 ```
 
-The 15 included backend tests passed during package validation; the notebook's offline code cells were also executed through IPython. Those checks use offline or fake API responses and do not establish a successful connection to a real Gemini account. See `docs/verification.md` for the validation scope and limits.
+All **27 C3 tests** pass. Controlled fixtures establish mechanics; the separate actual local runs establish operating model generation, tool round trips and reflection. Final acceptance: seven turns, one saved lead, two saved feedback/unknown records, seven actual reflection passes, plus a controlled changed-draft review. Earlier failed development runs are preserved. See [verification](docs/verification.md).
 
-See `docs/demo_script.md` for a five-minute presentation plan and `docs/demo_walkthrough.mp4` for a supplementary captioned video made from actual offline UI screenshots. The video is not a continuous live API screen recording. Final coursework still needs your live API run and a recording that meets your instructor's expectations. Both project folders are published in this repository. A [free Static demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is deployed on Hugging Face; it does not run the Python/Gradio backend.
+## Submission and hosting
 
-## Optional Hugging Face Spaces deployment
+Submit the [C3 GitHub folder](https://github.com/by-aseel/PlotTwist/tree/main/c3_business_assistant), notebook and current demo video according to the portal's requested fields. Source, PDF/summary, README, configuration templates, report and evidence are included. The original assignment names Gemini/OpenAI; the user-selected local alternative is explicitly identified and Gemini integration is retained. Understand the code and follow course attribution rules.
 
-A [free browser demo](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) is available, with source in [`deployment/huggingface-free`](../deployment/huggingface-free/). It is a Static Space with JavaScript demonstration logic. The following instructions concern hosting the full Python/Gradio app, which currently requires a qualifying paid plan on this account.
+The [free Hugging Face Static preview](https://huggingface.co/spaces/by-aseel/plottwist-free-demo) uses browser demonstration logic. It does not host Python, Gradio or Ollama. Full Python Space hosting remains unavailable on this account. The prepared Gradio package can use Gemini with a private secret after access is restored; local mode needs Ollama on the same host. No paid plan or billing has been enabled.
 
-Create a Gradio Space and upload the project contents with `app.py` and `requirements.txt` at the repository root. The metadata at the top of this README supplies the SDK settings. Add `GEMINI_API_KEY` as a Space secret and the desired `GEMINI_MODEL` as configuration. Set `PLOTTWIST_MODE=live`, `GRADIO_SERVER_NAME=0.0.0.0`, and `PORT=7860`. Standard hosted disk may be ephemeral, so local SQLite is a teaching store, not a durable production CRM. Do not upload `.env`, local databases, or real customer traces. Publication is optional and is a separate account action.
+Earlier [offline walkthrough](docs/functionality_walkthrough.mp4) and [quick rehearsal](docs/quick_demo.mp4) remain historical supplementary videos. The current [video scope](docs/local_video_scope.md) distinguishes actual local captures and the controlled reflection challenge.
 
 ## Troubleshooting
 
-- **Port already in use:** run `python app.py --mode demo --port 7862`.
-- **Missing module:** reinstall the requirements using the same Python interpreter that launches the app.
-- **Key not found:** check that `.env` is beside `app.py`, then restart the app.
-- **Model or parameter rejected:** choose a model that supports Chat Completions and the sampling parameters used in the source.
-- **PDF not found in the notebook:** rerun the first setup cell to reconstruct the embedded support files in the notebook workspace.
-- **Unexpected old demo records:** use a fresh synthetic identity/session and inspect the storage path in the backend before removing any files.
-
-## Course alignment and authorship
-
-Prepared for the supplied EECE 503P/798S C3 assignment. The supplied C3/C4 lecture decks informed the separation of persona, instructions, memory, tools, routing, and reflection. The business facts, design, and example enquiries are fictional. Review and understand the code, run the live demonstration, and follow your course's attribution rules before submission.
+- **Server/model unavailable:** start Ollama, check `ollama list`, and pull `qwen2.5:3b`.
+- **Port occupied:** use `python app.py --mode local --port 7863`.
+- **Activation blocked:** call `.venv\Scripts\python.exe` directly; no policy change is needed.
+- **Dependency missing:** install requirements with the interpreter used to launch.
+- **Wrong mode:** use `--mode local` and check the UI badge.
+- **Model mistakes:** inspect the trace and sources; tool success is separate from answer quality.
+- **Gemini error:** see [historical migration status](docs/gemini_migration.md). Quota reset does not repair project access denial.
 
 ## Implementation references
 
-- [Gemini function calling](https://ai.google.dev/gemini-api/docs/function-calling) describes the schema/request/execution/observation cycle used by the live backend.
-- [Gradio ChatInterface](https://www.gradio.app/docs/gradio/chatinterface) documents the chat component used inside the custom interface. This project pins Gradio 5.50.0; newer online documentation may describe later releases.
-
-## Gemini access and remaining evidence (14 October 2026)
-
-Both projects now use the native Google Gen AI SDK. Real generation probes returned 404 for Gemini 2.5 Flash-Lite (unavailable to new users) and 403 for Gemini 3.5 Flash-Lite, 3.1 Flash-Lite, 3.5 Flash and 3.8 Flash (project access denied). Listing models succeeded, but this does not establish generation access. No successful live answer or empirical LLM winner is claimed. See [Gemini migration and rerun instructions](docs/gemini_migration.md) for the remaining action.
+- [Ollama chat API](https://docs.ollama.com/api/chat)
+- [Ollama tool calling](https://docs.ollama.com/capabilities/tool-calling)
+- [Google function calling](https://ai.google.dev/gemini-api/docs/function-calling)
+- [Gradio ChatInterface](https://www.gradio.app/docs/gradio/chatinterface) — pinned 5.50.0.

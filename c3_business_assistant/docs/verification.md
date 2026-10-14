@@ -1,26 +1,15 @@
-# C3 verification / Gemini migration
+# C3 verification / 14 October 2026
 
-Validated on **14 October 2026**.
+**27 behavioral/transport tests pass.** These controlled fixtures verify routing, multi-turn collection, customer provenance, deduplication, session isolation, malformed arguments, loop bounds, failure handling, native Gemini observation matching, local transport, structured actions and reflection. Fixtures do not measure model quality.
 
-| Check | Result | Scope |
-|---|---|---|
-| Backend and native SDK transport | **20 tests passed** | Routing/tools/history/reflection or ReAct graph, privacy, errors, Gemini settings, IDs and signatures |
-| Dependency check | `pip check` passed | Installed pinned dependencies are compatible |
-| Notebook | **10 offline cells executed through IPython** | Embedded modules/assets reconstruct and execute; no live quality evidence |
-| Generation access | **Failed** | Actual Gemini API generation returned 403; no demo fallback |
-| Live attempt log | `docs/live_access_attempt.json` | Actual request, safe error code and skipped reflection after failure |
+Separate actual Ollama runs are preserved in [local_validation.json](local_validation.json) and [local_reflection_challenge.json](local_reflection_challenge.json), with the [measured report](local_evaluation_report.md). The final seven turns request and execute both required tools and review replies with the actual model. Earlier development failures are retained. The controlled flawed-draft correction has no database side effects. No cloud answer or fallback is claimed.
 
-## Reproduce
+The self-contained notebook's **10 code cells** execute through IPython in a clean directory. Its default conversation is a deterministic rehearsal; a separate evidence cell displays saved actual local outputs and the report. Set RUN_LOCAL=True for fresh local generations after starting Ollama. No remote Colab session is claimed.
 
 ```powershell
 python -m unittest discover -s tests -v
-python app.py --mode demo
+ollama pull qwen2.5:3b
+python app.py --mode local
 ```
 
-The five native transport tests use fake SDK responses to validate native function observation matching, preserved signatures, history/system conversion, JSON mode, output controls, truncation and sanitized remote errors. They do not establish service access. Existing tests validate real local tools and persistence, including deduplication and session isolation.
-
-The notebook runs locally through IPython in a separate workspace; this does not claim an interactive Colab session. Business PDFs and the archived offline UI footage were reviewed during earlier preparation. Video source narration predates the Gemini migration; its scope note identifies that limitation.
-
-The public Hugging Face Space is the free Static edition. The updated Python/Gradio deployment bundle is prepared and locally validated, but the full backend hosting bonus is pending hosting access. C3's model reflection bonus is implemented and tested with controlled responses; a successful live recording still needs restored Gemini access.
-
-See [Gemini migration and rerun instructions](gemini_migration.md) for status and exact commands. No empirical persona winner or sampled configuration effect is claimed from scripted output or failed generation calls.
+The browser UI is exercised with actual local-model responses, tool observations, the session casebook and Reflection lab. [Current English video](local_functionality_demo.mp4) and [scope](local_video_scope.md) document that evidence. Earlier offline videos remain historical rehearsals. Full Python hosting on Hugging Face is still account-blocked; the free Static Space is a scripted preview. Gemini's historical 403/404 failures are preserved and have not been retried. Notebook bundles and submission archives exclude credentials, customer databases and model weights.

@@ -27,7 +27,7 @@ def render_trace(events):
 
 def brand(mode):
     tag = 'THE PERSONA LAB / CHAPTER 04' if IS_LAB else 'EXPERIENCES WITH A SECRET / CHAPTER 03'
-    runtime = 'LIVE AI · GEMINI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED'
+    runtime = 'LOCAL AI · OLLAMA' if mode == 'local' else ('LIVE AI · GEMINI' if mode == 'live' else 'OFFLINE DEMO · SCRIPTED')
     return f'<div class="brandbar"><div class="wordmark">plot<span>twist</span><i>®</i></div><span class="brand-note">{tag}</span><span class="runtime"><b></b>{runtime}</span></div>'
 
 def hero():
@@ -104,7 +104,7 @@ def create_app(mode=None):
                             if not sid:
                                 raise gr.Error('Your browser session expired. Refresh the page and try again.')
                             result=agent.respond(message,history=history,session_id=sid,settings=settings)
-                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Live Gemini' if result.get('mode')=='live' else 'Scripted offline demo')
+                            return result['reply'], render_trace(result.get('trace',[])), '**'+str(result.get('route','general')).replace('_',' ').title()+'** · '+('Local LLM' if result.get('mode')=='local' else ('Live Gemini' if result.get('mode')=='live' else 'Scripted offline demo'))
                         if IS_LAB:
                             def respond(message,history,persona,reasoning,examples,instruction_role,temperature,top_p,frequency,presence,max_tokens,request:gr.Request):
                                 settings=dict(persona=persona,reasoning=reasoning,examples=examples,instruction_role=instruction_role,temperature=temperature,top_p=top_p,frequency_penalty=frequency,presence_penalty=presence,max_tokens=max_tokens)
@@ -147,6 +147,18 @@ def create_app(mode=None):
                         return results
                     compare.click(duel,inputs=[duel_prompt],outputs=duel_outputs,api_name='compare_personas')
                     gr.Markdown('For controlled experiments, use `python experiments.py --mode live`. The runner saves raw answers, tool traces, configuration, and metrics. Human ratings of helpfulness and naturalness should be entered after reviewing the answers.')
+            if not IS_LAB:
+                with gr.Tab('Reflection lab',id='reflection-lab'):
+                    gr.Markdown('## Watch a reply improve\nThe normal chat reviews every reply. This controlled experiment submits a **deliberately flawed test draft** to the same model review. It does not save records, send email, or make bookings.')
+                    review_question=gr.Textbox(value='Tell me about Custom Story Adventures.',label='Customer question')
+                    review_input=gr.Textbox(value='Custom Story Adventures have a guaranteed price of USD 50 per group. I booked the venue and sent an email.',label='Deliberately flawed test draft',lines=3)
+                    review_button=gr.Button('Review this draft ↗',variant='primary')
+                    reviewed_reply=gr.Markdown('The reviewed reply will appear here.')
+                    review_trace=gr.HTML(render_trace([]))
+                    def review(question,draft):
+                        result=agent.review_draft(question,draft)
+                        return result['reply'],render_trace(result['trace'])
+                    review_button.click(review,inputs=[review_question,review_input],outputs=[reviewed_reply,review_trace],api_name='review_draft')
             with gr.Tab('The casebook',id='casebook'):
                 gr.HTML('<div class="chapter-heading"><span class="eyebrow">YOUR SESSION / YOUR RECORDS</span><h2>Good details deserve a paper trail.</h2><p>Enquiries and feedback appear here after a successful tool call.</p></div>')
                 refresh=gr.Button('Refresh this casebook ↻',variant='secondary')

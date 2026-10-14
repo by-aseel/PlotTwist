@@ -22,9 +22,11 @@ The interval is request pacing, not a claim about your quota. Check actual limit
 - Persona controls include temperature, top-p, top-k, frequency/presence penalties and output cap. Gemini 2.5 is the intended sampling-study family when accessible. Google discourages sampling changes for Gemini 3; disclose this if using Gemini 3. Minimal thinking is selected for interactive Gemini 3 requests, and private reasoning is not displayed.
 - Each API request has a timeout and no hidden retries. Safe errors expose status codes, never credentials or headers. The experiment runner checkpoints and stops on systemic access/quota errors.
 
-## Live attempts and remaining work
+## Cloud attempts and free local alternative
 
-On 14 October 2026 model listing succeeded, but generation did not: Gemini 2.5 Flash-Lite returned 404 (unavailable to new users); the replacement Gemini 3.5 Flash-Lite and other tested Gemini 3 models returned 403 (project denied access). There is no successful live comparison evidence. Resolve the denial in Google AI Studio / Google support before further generation attempts. Waiting for quota reset does not fix a 403 access denial.
+C3 now supports actual free Qwen2.5 3B generation through Ollama with `python app.py --mode local`, after `ollama pull qwen2.5:3b`. No key is needed. [The measured C3 report](local_evaluation_report.md) documents actual tool use and reflection; C4 also contains actual local comparisons. The failures below concern Gemini cloud access, not the functioning local route.
+
+On 14 October 2026 model listing succeeded, but Gemini generation did not: Gemini 2.5 Flash-Lite returned 404 (unavailable to new users); the replacement Gemini 3.5 Flash-Lite and other tested Gemini 3 models returned 403 (project denied access). There is no successful Gemini comparison evidence. Resolve the denial in Google AI Studio / Google support before further cloud attempts. Waiting for quota reset does not fix a 403 access denial. No further identical cloud probes were made.
 
 After access is restored:
 
@@ -42,7 +44,7 @@ This requests 252 cases: 18 variants × 7 cases × 2 repeats; each case may need
 
 ## Bonus scope
 
-C3 reflection and its visible draft/revision logs are implemented. The free public Hugging Face Space remains a Static browser demonstration. It does not run Python, Gradio or Gemini and cannot be described as the full backend deployment bonus. The Gradio deployment package is updated for Gemini and ready for an account with hosting access; set GEMINI_API_KEY as a private Space secret.
+C3 reflection is now exercised with the actual local model, including a controlled flawed-draft correction. The free public Hugging Face Space remains a Static browser demonstration. It does not run Python, Gradio, Gemini or Ollama and cannot be described as the full backend deployment bonus. The Gradio deployment package includes both transports; a cloud host would need its own working model backend. For Gemini, set GEMINI_API_KEY as a private Space secret after restoring access.
 
 ## Official references
 

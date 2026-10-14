@@ -33,6 +33,10 @@ Without an Gemini key, the interface explicitly runs a scripted offline demo wit
 
 `app.py` bootstraps a ZIP bundle of those same Python modules, CSS, and business files. The bundle has no environment file, credentials, or runtime database. Keeping the deployment to four root files makes browser upload reproducible; the readable implementations remain available in GitHub and in the coursework notebook.
 
+## Free local generation
+
+The packaged source also supports `--mode local` with Ollama and `qwen2.5:3b`. That server must run on the same machine as Python; an ordinary hosted Space cannot connect to the owner’s laptop at localhost. This package does not install model weights or provide a hosted Ollama server. Actual local-model evidence and the current video are in the linked C3 repository.
+
 ## Owner configuration
 
 For live mode, the owner can add `GEMINI_API_KEY` as a **Space secret**, set `GEMINI_MODEL=gemini-3.5-flash-lite`, and set `PLOTTWIST_MODE=live`. The default is `auto`, which chooses demo when no key is configured. Do not put a key in repository files.

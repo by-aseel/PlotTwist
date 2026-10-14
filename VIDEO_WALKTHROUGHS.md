@@ -1,5 +1,7 @@
 # PlotTwist video walkthroughs
 
+**Current C3 actual local-model video:** [Watch](c3_business_assistant/docs/local_functionality_demo.mp4) · [Scope/transcript](c3_business_assistant/docs/local_video_scope.md). This new video shows actual Qwen-generated replies, tools, records and controlled reflection correction. The older videos below are archived offline demonstrations.
+
 **[Quick working demo — 69 seconds](media/PlotTwist-Quick-Demo.mp4)** · [C3 only — 37 seconds](c3_business_assistant/docs/quick_demo.mp4) · [C4 only — 32 seconds](c4_persona_lab/docs/quick_demo.mp4)
 
 The short version focuses on the apps responding, actual tool actions, saved records, exports, and the persona comparison. It uses the same verified offline UI captures and English narration.
@@ -20,7 +22,7 @@ C4 covers the three personas and their defaults, prompt/sampling controls, catal
 
 The earlier 32-second `demo_walkthrough.mp4` files remain supplementary previews. These new videos are the detailed functionality walkthroughs.
 
-Before claiming live-model performance in a final assignment, add an actual API demonstration and C4 live comparison results with human ratings. See the per-project assignment checklists.
+The current source now includes actual free local-model C3 evidence and C4 comparisons. C4 subjective assistant review remains distinguished from independent human ratings. See the updated per-project assignment checklists.
 
 ![Video preview](media/PlotTwist-Video-Preview.jpg)
 
